@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Dropbox
+.dropbox
+.dropbox.attr
+.dropbox.cache
+
+# 暫存與系統檔
+*.tmp
+*.log
+*.bak
+~$*
+
+# 機密資料（不要上傳到 GitHub）
+*.pem
+*.key
+.env
+secrets/
+
+# Google OAuth 憑證（含 client_secret）
+.playwright-mcp/
+client-secret-*.json
+
+# Claude Code 本地設定
+.claude/
+
+# Python 暫存
+__pycache__/
+*.pyc

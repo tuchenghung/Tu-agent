@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>報價單產生器</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, '微軟正黑體', sans-serif;
+    background: linear-gradient(160deg, #020617 0%, #0F172A 45%, #1E293B 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-header {
+    background: rgba(2,6,23,0.6);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(200,151,58,0.25);
+    flex-shrink: 0;
+  }
+  .app-header h1 { font-size: 16px; font-weight: 600; letter-spacing: 1px; }
+  .app-header .badge {
+    background: #C8973A; color: #fff;
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+  }
+  .btn-print {
+    margin-left: auto;
+    background: #C8973A; color: #fff;
+    border: none; padding: 7px 18px; border-radius: 6px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-print:hover { background: #DDB96A; }
+
+  .app-body {
+    display: flex;
+    flex: 1;
+    gap: 0;
+    overflow: hidden;
+    height: calc(100vh - 49px);
+  }
+
+  /* ===== LEFT PANEL ===== */
+  .form-panel {
+    width: 380px;
+    min-width: 320px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(255,255,255,0.15);
+    overflow-y: auto;
+    padding: 16px;
+    flex-shrink: 0;
+  }
+  .form-panel::-webkit-scrollbar { width: 5px; }
+  .form-panel::-webkit-scrollbar-track { background: transparent; }
+  .form-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 3px; }
+
+  .section-title {
+    color: #DDB96A;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 18px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .section-title:first-child { margin-top: 4px; }
+
+  .field-group { margin-bottom: 10px; }
+  .field-group label {
+    display: block;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .field-group input,
+  .field-group textarea,
+  .field-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    color: #fff;
+    padding: 7px 10px;
+    font-size: 13px;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+    font-family: inherit;
+  }
+  .field-group input::placeholder,
+  .field-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .field-group input:focus,
+  .field-group textarea:focus,
+  .field-group select:focus {
+    border-color: #C8973A;
+    background: rgba(255,255,255,0.18);
+  }
+  .field-group textarea { resize: vertical; min-height: 60px; }
+  .field-group select option { background: #1a5c73; }
+
+  .field-row { display: flex; gap: 8px; }
+  .field-row .field-group { flex: 1; }
+
+  /* Upload fields */
+  .upload-area {
+    border: 1px dashed rgba(255,255,255,0.3);
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    transition: border 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .upload-area:hover { border-color: #34a0c4; color: #a8dff0; }
+  .upload-area input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .upload-preview {
+    max-height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+    display: none;
+    margin: 0 auto;
+  }
+
+  /* Items table */
+  .items-header {
+    display: grid;
+    grid-template-columns: 1fr 55px 75px 20px;
+    gap: 4px;
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    padding: 0 2px;
+  }
+  .item-row {
+    display: grid;
+    grid-template-columns: 1fr 55px 75px 20px;
+    gap: 4px;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+  .item-row input {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 7px;
+    font-size: 12px;
+    outline: none;
+    width: 100%;
+    font-family: inherit;
+  }
+  .item-row input:focus { border-color: #34a0c4; }
+  .item-row input::placeholder { color: rgba(255,255,255,0.25); }
+  .btn-remove {
+    background: none;
+    border: none;
+    color: rgba(255,100,100,0.6);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .btn-remove:hover { color: #ff6b6b; }
+  .btn-add-item {
+    width: 100%;
+    background: rgba(200,151,58,0.15);
+    border: 1px dashed rgba(200,151,58,0.45);
+    color: #DDB96A;
+    border-radius: 6px;
+    padding: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .btn-add-item:hover { background: rgba(200,151,58,0.28); }
+
+  /* ===== RIGHT PANEL ===== */
+  .preview-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .preview-panel::-webkit-scrollbar { width: 6px; }
+  .preview-panel::-webkit-scrollbar-track { background: transparent; }
+  .preview-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+
+  /* ===== INVOICE ===== */
+  .invoice {
+    background: #fff;
+    width: 794px;
+    min-height: 1122px;
+    padding: 40px 44px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border-radius: 4px;
+    font-family: 'Helvetica Neue', Arial, '微軟正黑體', sans-serif;
+    color: #333;
+    position: relative;
+  }
+
+  /* Invoice Header */
+  .inv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .inv-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 280px;
+  }
+  .inv-logo-img {
+    max-height: 60px;
+    max-width: 80px;
+    object-fit: contain;
+    display: none;
+  }
+  .inv-logo-placeholder {
+    width: 56px;
+    height: 56px;
+    background: #1E293B;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .inv-logo-placeholder svg { width: 30px; height: 30px; fill: #fff; }
+  .inv-company-name-block {}
+  .inv-company-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2d3748;
+    line-height: 1.3;
+  }
+  .inv-company-tagline {
+    font-size: 11px;
+    color: #718096;
+    margin-top: 2px;
+  }
+  .inv-company-info {
+    text-align: right;
+    font-size: 11.5px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+  .inv-company-info strong { font-size: 12px; }
+
+  /* Invoice Title */
+  .inv-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0F172A;
+    padding: 10px 18px;
+    margin-bottom: 18px;
+    border-radius: 2px;
+    border-left: 4px solid #C8973A;
+  }
+  .inv-title-text {
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+  .inv-date-block {
+    text-align: right;
+    color: #fff;
+  }
+  .inv-date-block .label { font-size: 10px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+  .inv-date-block .value { font-size: 14px; font-weight: 600; }
+  .inv-number-block {
+    text-align: right;
+    color: #fff;
+    margin-left: 24px;
+  }
+  .inv-number-block .label { font-size: 10px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+  .inv-number-block .value { font-size: 14px; font-weight: 600; }
+
+  /* Billed To / Project */
+  .inv-billed-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 18px;
+    border: 1px solid #e2e8f0;
+  }
+  .inv-billed-box {
+    padding: 12px 16px;
+    min-height: 100px;
+  }
+  .inv-billed-box:first-child {
+    border-right: 1px solid #e2e8f0;
+  }
+  .inv-box-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #A67C2A;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #C8973A;
+    padding-bottom: 5px;
+  }
+  .inv-billed-content {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: #4a5568;
+  }
+  .inv-billed-content strong { color: #2d3748; font-size: 13px; }
+
+  /* Items Table */
+  .inv-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+  }
+  .inv-items-table thead tr {
+    background: #1E293B;
+  }
+  .inv-items-table thead th {
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 9px 12px;
+    text-align: left;
+  }
+  .inv-items-table thead th:last-child,
+  .inv-items-table thead th:nth-child(2),
+  .inv-items-table thead th:nth-child(3) {
+    text-align: right;
+  }
+  .inv-items-table tbody tr {
+    border-bottom: 1px solid #edf2f7;
+  }
+  .inv-items-table tbody tr:nth-child(even) { background: #f8fafc; }
+  .inv-items-table tbody td {
+    padding: 9px 12px;
+    font-size: 12.5px;
+    color: #4a5568;
+    vertical-align: top;
+  }
+  .inv-items-table tbody td:last-child,
+  .inv-items-table tbody td:nth-child(2),
+  .inv-items-table tbody td:nth-child(3) {
+    text-align: right;
+  }
+  .inv-items-table .empty-row td {
+    color: #a0aec0;
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  /* Totals */
+  .inv-totals-section {
+    display: flex;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    margin-bottom: 18px;
+  }
+  .inv-signature-box {
+    flex: 1;
+    padding: 12px 16px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-end;
+    font-style: italic;
+    color: #718096;
+    font-size: 13px;
+    min-height: 80px;
+  }
+  .inv-totals-box {
+    width: 260px;
+    padding: 10px 16px;
+  }
+  .inv-totals-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .inv-totals-box table td { padding: 4px 0; color: #4a5568; }
+  .inv-totals-box table td:last-child { text-align: right; font-weight: 500; }
+  .inv-totals-box .grand-total td {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+    border-top: 2px solid #C8973A;
+    padding-top: 7px;
+  }
+  .inv-totals-box .grand-total td:last-child {
+    text-decoration: underline;
+  }
+
+  /* Payment Info */
+  .inv-payment-section {
+    border: 1px solid #e2e8f0;
+    margin-bottom: 18px;
+  }
+  .inv-payment-title {
+    background: #1E293B;
+    color: #DDB96A;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding: 7px 12px;
+    text-transform: uppercase;
+  }
+  .inv-payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  .inv-payment-cell {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #edf2f7;
+    display: flex;
+    gap: 6px;
+  }
+  .inv-payment-cell:nth-child(odd) { border-right: 1px solid #e2e8f0; }
+  .inv-payment-cell .plabel { color: #718096; min-width: 90px; flex-shrink: 0; }
+  .inv-payment-cell .pvalue { color: #2d3748; font-weight: 500; }
+
+  /* Notes */
+  .inv-notes-section {
+    border: 1px solid #e2e8f0;
+    padding: 12px 16px;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .inv-notes-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #718096;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .inv-notes-text {
+    font-size: 12px;
+    color: #4a5568;
+    line-height: 1.6;
+    max-width: 480px;
+  }
+  .inv-stamp-area {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #cbd5e0;
+    text-align: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .inv-stamp-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+  }
+
+  /* ===== HISTORY PANEL ===== */
+  .history-panel {
+    width: 210px;
+    min-width: 210px;
+    background: rgba(2,6,23,0.55);
+    backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(200,151,58,0.18);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .history-header {
+    padding: 14px 14px 10px;
+    border-bottom: 1px solid rgba(200,151,58,0.18);
+    flex-shrink: 0;
+  }
+  .history-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .history-title {
+    color: #DDB96A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .btn-new-invoice {
+    background: #C8973A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 9px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-new-invoice:hover { background: #DDB96A; }
+  .history-search {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 11px;
+    outline: none;
+    font-family: inherit;
+  }
+  .history-search::placeholder { color: rgba(255,255,255,0.3); }
+  .history-search:focus { border-color: #C8973A; }
+
+  .history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+  .history-list::-webkit-scrollbar { width: 4px; }
+  .history-list::-webkit-scrollbar-track { background: transparent; }
+  .history-list::-webkit-scrollbar-thumb { background: rgba(200,151,58,0.3); border-radius: 2px; }
+
+  .hist-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 10px 11px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .hist-item:hover {
+    background: rgba(200,151,58,0.12);
+    border-color: rgba(200,151,58,0.35);
+  }
+  .hist-item.active {
+    background: rgba(200,151,58,0.18);
+    border-color: #C8973A;
+  }
+  .hist-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: #C8973A;
+    border-radius: 8px 0 0 8px;
+  }
+  .hist-inv-num {
+    font-size: 10px;
+    font-weight: 700;
+    color: #DDB96A;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .hist-client {
+    font-size: 11.5px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hist-project {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+  }
+  .hist-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hist-date {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+  }
+  .hist-total {
+    font-size: 11px;
+    font-weight: 700;
+    color: #C8973A;
+  }
+  .hist-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .hist-badge.paid { background: rgba(72,187,120,0.2); color: #68d391; }
+  .hist-badge.pending { background: rgba(237,137,54,0.2); color: #f6ad55; }
+  .hist-badge.draft { background: rgba(160,174,192,0.15); color: #a0aec0; }
+
+  /* Print */
+  @media print {
+    body { background: #fff !important; }
+    .app-header, .form-panel, .history-panel { display: none !important; }
+    .preview-panel { padding: 0; overflow: visible; }
+    .invoice { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div style="width:26px;height:26px;background:#C8973A;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg>
+  </div>
+  <h1>報價單產生器</h1>
+  <span class="badge">即時預覽</span>
+  <button class="btn-print" onclick="window.print()">🖨 列印 / 匯出 PDF</button>
+</div>
+
+<div class="app-body">
+
+  <!-- ===== HISTORY PANEL ===== -->
+  <div class="history-panel">
+    <div class="history-header">
+      <div class="history-header-top">
+        <span class="history-title">歷史紀錄</span>
+        <button class="btn-new-invoice" onclick="newInvoice()">＋ 新增</button>
+      </div>
+      <input class="history-search" type="text" placeholder="搜尋客戶或品號…" oninput="filterHistory(this.value)">
+    </div>
+    <div class="history-list" id="history-list"></div>
+  </div>
+
+  <!-- ===== LEFT FORM PANEL ===== -->
+  <div class="form-panel">
+
+    <div class="section-title">公司資訊（賣方）</div>
+    <div class="field-row">
+      <div class="field-group" style="flex:1">
+        <label>LOGO 圖片</label>
+        <div class="upload-area" id="logo-upload-area">
+          <input type="file" accept="image/*" onchange="handleUpload(this,'logo')">
+          <img class="upload-preview" id="logo-preview-thumb">
+          <span id="logo-upload-hint">點擊上傳 LOGO</span>
+        </div>
+      </div>
+      <div class="field-group" style="flex:1">
+        <label>公司章圖片</label>
+        <div class="upload-area" id="stamp-upload-area">
+          <input type="file" accept="image/*" onchange="handleUpload(this,'stamp')">
+          <img class="upload-preview" id="stamp-preview-thumb">
+          <span id="stamp-upload-hint">點擊上傳公章</span>
+        </div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>公司名稱</label>
+      <input type="text" id="f-company-name" placeholder="遊牧青年數位內容有限公司" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>副標題 / 標語</label>
+      <input type="text" id="f-company-tagline" placeholder="霸業三十・橡智夫妻" oninput="update()">
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>統一編號 (Tax ID)</label>
+        <input type="text" id="f-tax-id" placeholder="83242975" oninput="update()">
+      </div>
+      <div class="field-group">
+        <label>電話</label>
+        <input type="text" id="f-phone" placeholder="+886-2-XXXX-XXXX" oninput="update()">
+      </div>
+    </div>
+    <div class="field-group">
+      <label>地址</label>
+      <input type="text" id="f-address" placeholder="25F., No. 9, Songgao Rd., Xinyi Dist., Taipei City" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>Email</label>
+      <input type="email" id="f-email" placeholder="hey@yourcompany.com" oninput="update()">
+    </div>
+
+    <div class="section-title">發票資訊</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>發票日期</label>
+        <input type="date" id="f-inv-date" oninput="update()">
+      </div>
+      <div class="field-group">
+        <label>發票編號</label>
+        <input type="text" id="f-inv-number" placeholder="INV-2026-001" oninput="update()">
+      </div>
+    </div>
+
+    <div class="section-title">客戶資訊（買方）</div>
+    <div class="field-group">
+      <label>公司名稱</label>
+      <input type="text" id="f-client-name" placeholder="XXXXX LTD" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>統編 / VAT</label>
+      <input type="text" id="f-client-vat" placeholder="VAT: 38821246-000-11" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>地址</label>
+      <input type="text" id="f-client-address" placeholder="26/F., Beautiful Group Tower, 77 Connaught Rd" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>Email</label>
+      <input type="email" id="f-client-email" placeholder="client@email.com" oninput="update()">
+    </div>
+
+    <div class="section-title">專案名稱</div>
+    <div class="field-group">
+      <label>Project Name</label>
+      <input type="text" id="f-project-name" placeholder="XXXXXXXX 宣傳" oninput="update()">
+    </div>
+
+    <div class="section-title">品項明細</div>
+    <div class="field-row">
+      <div class="field-group" style="flex:1">
+        <label>幣別</label>
+        <select id="f-currency" onchange="update()">
+          <option value="USD">USD 美元</option>
+          <option value="TWD">TWD 新台幣</option>
+          <option value="HKD">HKD 港幣</option>
+          <option value="CNY">CNY 人民幣</option>
+          <option value="EUR">EUR 歐元</option>
+        </select>
+      </div>
+    </div>
+    <div class="items-header">
+      <span>描述</span><span style="text-align:right">數量</span><span style="text-align:right">單價</span><span></span>
+    </div>
+    <div id="items-container"></div>
+    <button class="btn-add-item" onclick="addItem()">＋ 新增品項</button>
+
+    <div class="section-title">費用計算</div>
+    <div class="field-group">
+      <label>稅率 (%)</label>
+      <input type="number" id="f-tax-rate" placeholder="0" value="0" min="0" max="100" step="0.1" oninput="update()">
+    </div>
+
+    <div class="section-title">付款資訊</div>
+    <div class="field-group">
+      <label>付款截止日</label>
+      <input type="date" id="f-pay-due" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>銀行名稱</label>
+      <input type="text" id="f-bank-name" placeholder="玉山銀行 (808)" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>帳戶名稱</label>
+      <input type="text" id="f-account-name" placeholder="遊牧青年文創有限公司" oninput="update()">
+    </div>
+    <div class="field-group">
+      <label>帳號</label>
+      <input type="text" id="f-account-number" placeholder="1229-900-000000" oninput="update()">
+    </div>
+
+    <div class="section-title">備註</div>
+    <div class="field-group">
+      <textarea id="f-notes" placeholder="更多匯款資訊（Paypal、美國銀行...等），詳見：https://yoursite.notion.site" oninput="update()"></textarea>
+    </div>
+
+    <div style="height:24px"></div>
+  </div>
+
+  <!-- ===== RIGHT PREVIEW PANEL ===== -->
+  <div class="preview-panel">
+    <div class="invoice" id="invoice-preview">
+
+      <!-- Header -->
+      <div class="inv-header">
+        <div class="inv-logo-area">
+          <div id="inv-logo-placeholder" class="inv-logo-placeholder">
+            <svg viewBox="0 0 24 24"><path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/></svg>
+          </div>
+          <img id="inv-logo-img" class="inv-logo-img">
+          <div class="inv-company-name-block">
+            <div class="inv-company-name" id="inv-company-name">公司名稱</div>
+            <div class="inv-company-tagline" id="inv-company-tagline">副標題 / 標語</div>
+          </div>
+        </div>
+        <div class="inv-company-info">
+          <div><strong>Tax ID :</strong> <span id="inv-tax-id">—</span></div>
+          <div id="inv-address-line">地址</div>
+          <div id="inv-phone-line" style="display:none"></div>
+          <div id="inv-email-line">email@company.com</div>
+        </div>
+      </div>
+
+      <!-- Title Row -->
+      <div class="inv-title-row">
+        <div class="inv-title-text">Invoice</div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div id="inv-number-block" class="inv-number-block" style="display:none">
+            <div class="label">Invoice No.</div>
+            <div class="value" id="inv-number-val"></div>
+          </div>
+          <div class="inv-date-block">
+            <div class="label">Invoice Date</div>
+            <div class="value" id="inv-date-val">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billed To / Project -->
+      <div class="inv-billed-row">
+        <div class="inv-billed-box">
+          <div class="inv-box-title">Billed To:</div>
+          <div class="inv-billed-content" id="inv-billed-to">
+            <strong>—</strong>
+          </div>
+        </div>
+        <div class="inv-billed-box">
+          <div class="inv-box-title">Project Name:</div>
+          <div class="inv-billed-content" id="inv-project-name" style="color:#2d3748;font-size:14px;font-weight:600;">—</div>
+        </div>
+      </div>
+
+      <!-- Items Table -->
+      <table class="inv-items-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th style="text-align:right">Quantity</th>
+            <th style="text-align:right">Price (<span class="currency-label">USD</span>)</th>
+            <th style="text-align:right">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="inv-items-body">
+          <tr class="empty-row"><td colspan="4" style="text-align:center;padding:16px;color:#a0aec0;font-style:italic">尚未新增品項</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Totals -->
+      <div class="inv-totals-section">
+        <div class="inv-signature-box">Client Signature</div>
+        <div class="inv-totals-box">
+          <table>
+            <tr><td>Subtotal</td><td id="inv-subtotal">0</td></tr>
+            <tr><td>Tax Rate (<span id="inv-tax-rate-label">0</span>%)</td><td id="inv-tax-amount">0</td></tr>
+            <tr class="grand-total"><td>Grand Total (<span class="currency-label">USD</span>)</td><td id="inv-grand-total">0</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Payment Info -->
+      <div class="inv-payment-section">
+        <div class="inv-payment-title">Payment Information</div>
+        <div class="inv-payment-grid">
+          <div class="inv-payment-cell">
+            <span class="plabel">Payment Due Date:</span>
+            <span class="pvalue" id="inv-pay-due">—</span>
+          </div>
+          <div class="inv-payment-cell">
+            <span class="plabel">Account Name:</span>
+            <span class="pvalue" id="inv-account-name">—</span>
+          </div>
+          <div class="inv-payment-cell">
+            <span class="plabel">Bank Name:</span>
+            <span class="pvalue" id="inv-bank-name">—</span>
+          </div>
+          <div class="inv-payment-cell">
+            <span class="plabel">Account Number:</span>
+            <span class="pvalue" id="inv-account-number">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="inv-notes-section">
+        <div style="flex:1;padding-right:16px">
+          <div class="inv-notes-label">Notes:</div>
+          <div class="inv-notes-text" id="inv-notes">—</div>
+        </div>
+        <div class="inv-stamp-area" id="inv-stamp-area">
+          <img id="inv-stamp-img" class="inv-stamp-img">
+          <span id="inv-stamp-hint" style="font-size:10px;color:#cbd5e0;text-align:center;padding:8px">公司章<br>上傳區</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== HISTORY DEMO DATA =====
+const historyData = [
+  {
+    id: 'INV-2026-001',
+    status: 'paid',
+    invDate: '2026-03-10',
+    invNumber: 'INV-2026-001',
+    clientName: '台灣精密科技股份有限公司',
+    clientVat: '統編：12345678',
+    clientAddress: '新竹市科學園區研發二路88號',
+    clientEmail: 'procurement@twprecision.com.tw',
+    projectName: '無塵室工程（514坪）Class 1000/10000',
+    currency: 'TWD',
+    taxRate: '5',
+    payDue: '2026-04-10',
+    bankName: '台灣銀行（004）',
+    accountName: '佑祥開發實業有限公司',
+    accountNumber: '044-001-654321',
+    notes: '依工程進度分三期付款：簽約30%、進場50%、驗收20%。\n工程保固期一年，驗收完成後開立正式統一發票。',
+    items: [
+      { desc: '無塵室隔間系統工程（含潔淨板材CNS認證）', qty: 1, price: 1850000 },
+      { desc: 'AHU空調設備安裝及配管工程', qty: 1, price: 680000 },
+      { desc: '電力配置工程（三相220V，60A迴路×8）', qty: 1, price: 420000 },
+      { desc: '輕鋼架天花板＋照明工程', qty: 1, price: 280000 },
+    ]
+  },
+  {
+    id: 'INV-2026-002',
+    status: 'pending',
+    invDate: '2026-02-15',
+    invNumber: 'INV-2026-002',
+    clientName: '信義聯合牙醫診所',
+    clientVat: '統編：87654321',
+    clientAddress: '台北市信義區忠孝東路五段22號2樓',
+    clientEmail: 'admin@sinyi-dental.com.tw',
+    projectName: '診所全室裝修工程（120坪）',
+    currency: 'TWD',
+    taxRate: '5',
+    payDue: '2026-03-15',
+    bankName: '玉山銀行（808）',
+    accountName: '佑祥開發實業有限公司',
+    accountNumber: '0441-940-123456',
+    notes: '含X光室防輻射牆面補強工程。驗收合格後7日內付清尾款。',
+    items: [
+      { desc: '診療室隔間裝修（三間）', qty: 3, price: 85000 },
+      { desc: '候診室設計施工（含家具配置）', qty: 1, price: 120000 },
+      { desc: '無障礙廁所改建', qty: 1, price: 45000 },
+      { desc: '診所入口門面設計施工', qty: 1, price: 38000 },
+    ]
+  },
+  {
+    id: 'INV-2026-003',
+    status: 'draft',
+    invDate: '2026-01-20',
+    invNumber: 'INV-2026-003',
+    clientName: '林先生（大安私宅）',
+    clientVat: '',
+    clientAddress: '台北市大安區仁愛路四段136號12樓',
+    clientEmail: '',
+    projectName: '全室翻新工程（85坪）',
+    currency: 'TWD',
+    taxRate: '0',
+    payDue: '2026-02-28',
+    bankName: '國泰世華銀行（013）',
+    accountName: '佑祥開發實業有限公司',
+    accountNumber: '013-501-654321',
+    notes: '工期約90天，施工期間每週五提供工程進度報告。\n建材選用以業主確認樣品為準，變更設計另行報價。',
+    items: [
+      { desc: '全室拆除清運', qty: 1, price: 68000 },
+      { desc: '客廳＋餐廳裝修工程', qty: 1, price: 320000 },
+      { desc: '主臥＋更衣室設計施工', qty: 1, price: 180000 },
+      { desc: '廚房設備更換及裝修', qty: 1, price: 145000 },
+      { desc: '衛浴改裝（HCG衛浴設備 40折）', qty: 2, price: 65000 },
+    ]
+  }
+];
+let activeHistoryId = null;
+
+function renderHistory(filter = '') {
+  const list = document.getElementById('history-list');
+  const filtered = filter
+    ? historyData.filter(d =>
+        d.clientName.includes(filter) ||
+        d.invNumber.includes(filter) ||
+        d.projectName.includes(filter))
+    : historyData;
+
+  list.innerHTML = filtered.map(d => {
+    const subtotal = d.items.reduce((s, i) => s + i.qty * i.price, 0);
+    const tax = subtotal * (parseFloat(d.taxRate)||0) / 100;
+    const total = subtotal + tax;
+    const statusLabel = { paid:'已付款', pending:'待付款', draft:'草稿' }[d.status];
+    return `
+    <div class="hist-item${d.id === activeHistoryId ? ' active' : ''}" onclick="loadInvoice('${d.id}')">
+      <div class="hist-badge ${d.status}">${statusLabel}</div>
+      <div class="hist-inv-num">${d.invNumber}</div>
+      <div class="hist-client">${d.clientName}</div>
+      <div class="hist-project">${d.projectName}</div>
+      <div class="hist-footer">
+        <span class="hist-date">${d.invDate}</span>
+        <span class="hist-total">$${total.toLocaleString()}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterHistory(val) {
+  renderHistory(val.trim());
+}
+
+function loadInvoice(id) {
+  const d = historyData.find(x => x.id === id);
+  if (!d) return;
+  activeHistoryId = id;
+  renderHistory(document.querySelector('.history-search').value);
+
+  const s = (elId, val) => { const el = document.getElementById(elId); if(el) el.value = val||''; };
+  s('f-inv-date', d.invDate);
+  s('f-inv-number', d.invNumber);
+  s('f-client-name', d.clientName);
+  s('f-client-vat', d.clientVat);
+  s('f-client-address', d.clientAddress);
+  s('f-client-email', d.clientEmail);
+  s('f-project-name', d.projectName);
+  s('f-currency', d.currency);
+  s('f-tax-rate', d.taxRate);
+  s('f-pay-due', d.payDue);
+  s('f-bank-name', d.bankName);
+  s('f-account-name', d.accountName);
+  s('f-account-number', d.accountNumber);
+  s('f-notes', d.notes);
+
+  items = d.items.map(i => ({ ...i }));
+  renderItemsForm();
+  update();
+}
+
+function newInvoice() {
+  activeHistoryId = null;
+  renderHistory();
+  const today = new Date().toISOString().split('T')[0];
+  ['f-inv-number','f-client-name','f-client-vat','f-client-address',
+   'f-client-email','f-project-name','f-pay-due','f-bank-name',
+   'f-account-name','f-account-number','f-notes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('f-inv-date').value = today;
+  document.getElementById('f-tax-rate').value = '0';
+  document.getElementById('f-currency').value = 'TWD';
+  items = [{ desc: '', qty: 1, price: 0 }];
+  renderItemsForm();
+  update();
+}
+
+// ===== ITEMS STATE =====
+let items = [];
+let logos = { logo: null, stamp: null };
+
+function addItem() {
+  items.push({ desc: '', qty: 1, price: 0 });
+  renderItemsForm();
+  update();
+}
+
+function removeItem(idx) {
+  items.splice(idx, 1);
+  renderItemsForm();
+  update();
+}
+
+function renderItemsForm() {
+  const c = document.getElementById('items-container');
+  c.innerHTML = '';
+  items.forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <input type="text" placeholder="品項描述" value="${esc(item.desc)}"
+        oninput="items[${i}].desc=this.value;update()">
+      <input type="number" placeholder="1" value="${item.qty}" min="0" step="0.01"
+        oninput="items[${i}].qty=parseFloat(this.value)||0;update()" style="text-align:right">
+      <input type="number" placeholder="0" value="${item.price}" min="0" step="0.01"
+        oninput="items[${i}].price=parseFloat(this.value)||0;update()" style="text-align:right">
+      <button class="btn-remove" onclick="removeItem(${i})">×</button>
+    `;
+    c.appendChild(row);
+  });
+}
+
+function esc(str) {
+  return (str||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+// ===== IMAGE UPLOAD =====
+function handleUpload(input, type) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    logos[type] = e.target.result;
+    // Update thumb in form
+    const thumb = document.getElementById(type + '-preview-thumb');
+    const hint = document.getElementById(type + '-upload-hint');
+    thumb.src = e.target.result;
+    thumb.style.display = 'block';
+    hint.style.display = 'none';
+    update();
+  };
+  reader.readAsDataURL(file);
+}
+
+// ===== MAIN UPDATE =====
+function update() {
+  const g = id => (document.getElementById(id) || {}).value || '';
+  const currency = document.getElementById('f-currency')?.value || 'USD';
+
+  // Currency labels
+  document.querySelectorAll('.currency-label').forEach(el => el.textContent = currency);
+
+  // Company info
+  document.getElementById('inv-company-name').textContent = g('f-company-name') || '公司名稱';
+  document.getElementById('inv-company-tagline').textContent = g('f-company-tagline') || '副標題';
+  document.getElementById('inv-tax-id').textContent = g('f-tax-id') || '—';
+  document.getElementById('inv-address-line').textContent = g('f-address') || '公司地址';
+  const phone = g('f-phone');
+  const phoneLine = document.getElementById('inv-phone-line');
+  if (phone) { phoneLine.textContent = phone; phoneLine.style.display = ''; }
+  else { phoneLine.style.display = 'none'; }
+  document.getElementById('inv-email-line').textContent = g('f-email') || 'email@company.com';
+
+  // Logo
+  const logoImg = document.getElementById('inv-logo-img');
+  const logoPlaceholder = document.getElementById('inv-logo-placeholder');
+  if (logos.logo) {
+    logoImg.src = logos.logo;
+    logoImg.style.display = 'block';
+    logoPlaceholder.style.display = 'none';
+  } else {
+    logoImg.style.display = 'none';
+    logoPlaceholder.style.display = 'flex';
+  }
+
+  // Stamp
+  const stampImg = document.getElementById('inv-stamp-img');
+  const stampHint = document.getElementById('inv-stamp-hint');
+  if (logos.stamp) {
+    stampImg.src = logos.stamp;
+    stampImg.style.display = 'block';
+    stampHint.style.display = 'none';
+  } else {
+    stampImg.style.display = 'none';
+    stampHint.style.display = 'block';
+  }
+
+  // Invoice date & number
+  const invDate = g('f-inv-date');
+  document.getElementById('inv-date-val').textContent = invDate ? formatDate(invDate) : '—';
+  const invNum = g('f-inv-number');
+  const numBlock = document.getElementById('inv-number-block');
+  if (invNum) {
+    document.getElementById('inv-number-val').textContent = invNum;
+    numBlock.style.display = 'block';
+  } else {
+    numBlock.style.display = 'none';
+  }
+
+  // Billed To
+  const clientName = g('f-client-name');
+  const clientVat = g('f-client-vat');
+  const clientAddr = g('f-client-address');
+  const clientEmail = g('f-client-email');
+  let billedHtml = '';
+  if (clientName) billedHtml += `<strong>${esc(clientName)}</strong><br>`;
+  if (clientVat) billedHtml += `${esc(clientVat)}<br>`;
+  if (clientAddr) billedHtml += `${esc(clientAddr)}<br>`;
+  if (clientEmail) billedHtml += `Email: ${esc(clientEmail)}`;
+  document.getElementById('inv-billed-to').innerHTML = billedHtml || '<span style="color:#a0aec0">—</span>';
+
+  // Project name
+  document.getElementById('inv-project-name').textContent = g('f-project-name') || '—';
+
+  // Items
+  const tbody = document.getElementById('inv-items-body');
+  if (items.length === 0) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="4" style="text-align:center;padding:16px;color:#a0aec0;font-style:italic">尚未新增品項</td></tr>';
+  } else {
+    let html = '';
+    items.forEach(item => {
+      const amount = (item.qty || 0) * (item.price || 0);
+      html += `<tr>
+        <td>${esc(item.desc) || '—'}</td>
+        <td style="text-align:right">${fmt(item.qty)}</td>
+        <td style="text-align:right">${fmtMoney(item.price)}</td>
+        <td style="text-align:right">${fmtMoney(amount)}</td>
+      </tr>`;
+    });
+    tbody.innerHTML = html;
+  }
+
+  // Totals
+  const subtotal = items.reduce((s, i) => s + (i.qty||0)*(i.price||0), 0);
+  const taxRate = parseFloat(g('f-tax-rate')) || 0;
+  const taxAmt = subtotal * taxRate / 100;
+  const grand = subtotal + taxAmt;
+  document.getElementById('inv-subtotal').textContent = fmtMoney(subtotal);
+  document.getElementById('inv-tax-rate-label').textContent = taxRate;
+  document.getElementById('inv-tax-amount').textContent = fmtMoney(taxAmt);
+  document.getElementById('inv-grand-total').textContent = fmtMoney(grand);
+
+  // Payment info
+  const payDue = g('f-pay-due');
+  document.getElementById('inv-pay-due').textContent = payDue ? formatDate(payDue) : '—';
+  document.getElementById('inv-account-name').textContent = g('f-account-name') || '—';
+  document.getElementById('inv-bank-name').textContent = g('f-bank-name') || '—';
+  document.getElementById('inv-account-number').textContent = g('f-account-number') || '—';
+
+  // Notes
+  const notes = g('f-notes');
+  document.getElementById('inv-notes').innerHTML = notes
+    ? notes.replace(/\n/g,'<br>').replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" style="color:#A67C2A">$1</a>')
+    : '—';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function fmt(n) {
+  if (n === undefined || n === null || n === '') return '—';
+  return Number(n).toLocaleString();
+}
+
+function fmtMoney(n) {
+  if (isNaN(n)) return '—';
+  return Number(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+}
+
+// Init — 佑祥預設值
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+
+  // LOGO 預設嵌入
+  const logoB64 = 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSLkvZHnpaXplovnmbzlr6bmpa3mnInpmZDlhazlj7giPgogIDx0aXRsZT7kvZHnpaXplovnmbzlr6bmpa3mnInpmZDlhazlj7g8L3RpdGxlPgogIDwhLS0gQmFja2dyb3VuZCAtLT4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjI4IiBmaWxsPSIjMUMyQjNBIi8+CiAgPCEtLSBJbm5lciBnb2xkIGZyYW1lIC0tPgogIDxyZWN0IHg9IjciIHk9IjciIHdpZHRoPSIxNDYiIGhlaWdodD0iMTQ2IiByeD0iMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0M4OTczQSIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNDUiLz4KICA8IS0tIEdyb3VuZCBsaW5lIC0tPgogIDxsaW5lIHgxPSIyMiIgeTE9IjExOCIgeDI9IjEzOCIgeTI9IjExOCIgc3Ryb2tlPSIjQzg5NzNBIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwhLS0gTGVmdCBjb2x1bW4gLS0+CiAgPHJlY3QgeD0iMzQiIHk9IjcyIiB3aWR0aD0iMjIiIGhlaWdodD0iNDYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC44OCkiIHJ4PSIyIi8+CiAgPCEtLSBSaWdodCBjb2x1bW4gLS0+CiAgPHJlY3QgeD0iMTA0IiB5PSI3MiIgd2lkdGg9IjIyIiBoZWlnaHQ9IjQ2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuODgpIiByeD0iMiIvPgogIDwhLS0gUm9vZiAvIGdhYmxlIC0tPgogIDxwb2x5bGluZSBwb2ludHM9IjE2LDcyIDgwLDI4IDE0NCw3MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzg5NzNBIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwhLS0gSG9yaXpvbnRhbCBiZWFtIHVuZGVyIHJvb2YgLS0+CiAgPGxpbmUgeDE9IjM0IiB5MT0iNzIiIHgyPSIxMjYiIHkyPSI3MiIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuODgpIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwhLS0gQXJjaGVkIGRvb3IgKGNlbnRyZSkgLS0+CiAgPHJlY3QgeD0iNjgiIHk9Ijg4IiB3aWR0aD0iMjQiIGhlaWdodD0iMzAiIHJ4PSIxMiIgZmlsbD0iI0M4OTczQSIvPgogIDwhLS0gUGVhayBkb3QgLS0+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSIyOCIgcj0iNSIgZmlsbD0iI0M4OTczQSIvPgo8L3N2Zz4K';
+  logos.logo = logoB64;
+  const logoThumb = document.getElementById('logo-preview-thumb');
+  logoThumb.src = logoB64;
+  logoThumb.style.display = 'block';
+  document.getElementById('logo-upload-hint').style.display = 'none';
+
+  // 公司資訊
+  document.getElementById('f-company-name').value    = '佑祥開發實業有限公司';
+  document.getElementById('f-company-tagline').value = '專業室內裝修工程｜INTERIOR RENOVATION';
+  document.getElementById('f-tax-id').value          = '54301290';
+  document.getElementById('f-email').value           = 'gemini7361@gmail.com';
+  document.getElementById('f-address').value         = '';   // 請補充地址
+  document.getElementById('f-phone').value           = '';   // 請補充電話
+
+  // 發票預設
+  document.getElementById('f-inv-date').value        = today;
+
+  // 付款預設
+  document.getElementById('f-currency').value        = 'TWD';
+
+  renderHistory();
+  addItem();
+  update();
+});
+</script>
+</body>
+</html>
