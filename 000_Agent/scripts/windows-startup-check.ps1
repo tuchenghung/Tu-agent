@@ -1,7 +1,9 @@
 # windows-startup-check.ps1
 # Claude Code 跨裝置同步 — Windows 開機自動偵測
-# 放在 Dropbox 裡，由 windows-startup-reminder.bat 呼叫
+# 放在 Dropbox 裡，由 claude-startup.bat 呼叫
 # 已設定完成後會靜默退出，不再跳視窗
+
+Add-Type -AssemblyName System.Windows.Forms
 
 $ErrorActionPreference = "SilentlyContinue"
 
@@ -24,6 +26,9 @@ if ($skillsOk -and $settingsOk) { exit 0 }
 # ── 找 Dropbox 母體路徑 ────────────────────────────────────────────
 $possiblePaths = @(
     "$env:USERPROFILE\Dropbox\Tu-agent",
+    "D:\Dropbox\Tu-agent",
+    "C:\Dropbox\Tu-agent",
+    "E:\Dropbox\Tu-agent",
     "$env:USERPROFILE\OneDrive\Dropbox\Tu-agent"
 )
 $MOTHER = $null
