@@ -25,8 +25,28 @@ secrets/
 .playwright-mcp/
 client-secret-*.json
 
-# Claude Code 本地設定
-.claude/
+# Claude Code 本機狀態（不該跨機同步）
+.claude/settings.local.json
+.claude/projects/
+.claude/shell-snapshots/
+.claude/todos/
+.claude/statsig/
+.claude/.credentials.json
+.claude/sessions/
+.claude/session-env/
+.claude/paste-cache/
+.claude/image-cache/
+.claude/cache/
+.claude/file-history/
+.claude/history.jsonl
+.claude/stats-cache.json
+.claude/backups/
+.claude/telemetry/
+.claude/plugins/
+.claude/downloads/
+.claude/.last-cleanup
+.claude/statusline-command.sh
+.claude/skills.bak*/
 
 # Python 暫存
 __pycache__/
