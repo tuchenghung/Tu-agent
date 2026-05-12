@@ -7,18 +7,29 @@
 
 ## 執行步驟
 
+### Step 0：偵測平台
+
+用 Bash 執行 `uname -s 2>/dev/null || echo Windows` 判斷平台：
+- 結果為 `Darwin` → **Mac 模式**：後續使用 `mcp__gmail__`、`mcp__google-calendar__`、`mcp__notion__`
+- 結果為其他（Windows / MINGW / Linux 等）→ **Windows 模式**：後續使用 `mcp__gmail-win__`、`mcp__calendar-win__`、`mcp__notion-win__`
+
+Windows 模式下，Apple 提醒事項（Step 5）直接略過，標註「Windows 裝置不支援」。
+
+---
+
 ### Step 1：取得日期
 
 用 Bash 取得：
-- 今天：`TODAY=$(date +%Y-%m-%d)`
-- 昨天：`YESTERDAY=$(date -v-1d +%Y-%m-%d)`
+- Mac：`TODAY=$(date +%Y-%m-%d)` / `YESTERDAY=$(date -v-1d +%Y-%m-%d)`
+- Windows：`TODAY` 用 `date +%Y-%m-%d`，`YESTERDAY` 用 `date -d "yesterday" +%Y-%m-%d 2>/dev/null || date +%Y-%m-%d -d "-1 day"`
 - 今天星期幾：`date +%A`（轉成中文）
 
 ---
 
 ### Step 2：Gmail — 昨日郵件
 
-使用工具：`mcp__gmail__search_emails`
+- **Mac 模式**：使用工具 `mcp__gmail__search_emails`
+- **Windows 模式**：使用工具 `mcp__gmail-win__search_emails`
 
 執行以下兩個搜尋（可並行）：
 
@@ -39,7 +50,8 @@
 
 ### Step 3：Google Calendar — 昨天與今天行程
 
-使用工具：`mcp__google-calendar__list-events`
+- **Mac 模式**：使用工具 `mcp__google-calendar__list-events`
+- **Windows 模式**：使用工具 `mcp__calendar-win__list-events`
 
 執行以下兩個查詢（可並行）：
 
@@ -59,7 +71,8 @@
 
 ### Step 4：Notion — 任務與專案狀態
 
-使用工具：`mcp__notion__API-post-search`
+- **Mac 模式**：使用工具 `mcp__notion__API-post-search`
+- **Windows 模式**：使用工具 `mcp__notion-win__API-post-search`
 
 執行兩個搜尋（可並行）：
 
@@ -82,9 +95,7 @@
 
 ### Step 5：Apple 提醒事項
 
-使用工具：Bash
-
-執行以下指令取得所有未完成的提醒事項：
+**Mac 模式**：使用工具 Bash，執行以下指令：
 
 ```bash
 osascript -e '
@@ -108,6 +119,8 @@ end tell'
 整理結果：
 - 列出清單名稱 + 提醒事項名稱 + 截止日期（若有）
 - 若無任何提醒，標明「無待辦提醒」
+
+**Windows 模式**：直接略過此步驟，在報告中標記「提醒事項：Windows 裝置不支援，請至 Mac 查看」。
 
 ---
 
@@ -142,7 +155,7 @@ end tell'
 **待辦 / 截止**
 - [需要回覆的郵件]
 - [Notion 中進行中的任務]
-- [Apple 提醒事項，有截止日者優先列出]
+- [Apple 提醒事項，有截止日者優先列出（Mac 限定）]
 
 **工程專案提醒**
 - [Notion 中進行中的工程相關專案，若有尺寸/金額/截止日請照實列出]
