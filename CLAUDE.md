@@ -274,7 +274,13 @@
 
 > 這一區會隨我糾正你的次數慢慢長出來。一開始是空的。
 
-（尚無規則）
+### 雙系統隔離原則（Windows / macOS）
+
+使用者同時有 **Windows 11（PC）** 與 **macOS（MacBook Pro M3 Pro）**，兩邊透過 Dropbox 同步專案資料夾。
+
+- **NEVER**：在 Windows 操作時修改 Mac 專屬設定（`~/.nvm/`、Mac 路徑的 MCP 設定、`-mac` 結尾設定）
+- **NEVER**：在 Mac 操作時修改 Windows 專屬設定（`C:\Users\deco01\nodejs\`、`-win` 結尾的 MCP 設定）
+- **ALWAYS**：設定檔有平台差異時，以當前執行平台為準，不跨平台套用
 
 ---
 
