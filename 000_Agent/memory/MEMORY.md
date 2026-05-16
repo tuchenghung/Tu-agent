@@ -20,9 +20,33 @@
 
 ---
 
+## 工作流 SOP
+
+### /project-import — 工程專案資料夾匯入
+- **觸發**：使用者提供 Dropbox 專案資料夾路徑
+- **功能**：自動掃描 → 依 A-I 分類移檔 → 建 Notion 專案頁面 → 建折疊標題
+- **Skill 檔**：`.claude/commands/project-import.md`
+- **關鍵**：heading_2 toggleable 需用 Node.js 直接呼叫 Notion API（MCP 工具不支援）
+- **Notion Projects DB**：`3355cac1-0351-4ef4-8eb1-8b8f0bb619c3`
+- **實際驗證案例**：羅東聖母醫院S棟5樓耳鼻喉科（2026-05-15）、南投基督教醫院（2026-05-15）
+
+---
+
+## Dropbox API
+
+| 項目 | 值 |
+|---|---|
+| 申請頁面 | https://www.dropbox.com/developers/apps |
+| Token 有效期 | 約 4 小時，需手動重新產生 |
+| Token 位置 | Settings → OAuth 2 → Generate access token |
+| 必要 Permission | `sharing.write`（在 Permissions 頁籤勾選）|
+| 建立/取得分享連結腳本 | `D:\Dropbox\Tu-agent\000_Agent\scripts\dropbox_notion_links.mjs` |
+
+---
+
 ## 踩坑筆記
 
-（還是空的）
+- `mcp__notion-win__API-patch-block-children` 只支援 `paragraph` / `bulleted_list_item`，無法建立 `heading_2 toggleable`。需用 Node.js + Notion REST API 直接建立。
 
 ---
 
