@@ -238,6 +238,11 @@
 | 記憶、偏好、踩坑                | `000_Agent/memory/MEMORY.md`                    |
 | 每日反思 / session log          | `000_Agent/memory/daily/YYYY-MM-DD.md`          |
 | 我自己建的工作流（Skill）       | `000_Agent/skills/`（已 symlink 至 `~/.claude/skills`） |
+| 建材規格筆記（岩棉、防火板等）  | `400_Knowledge/工程/建材規格/YYYY-MM-DD_規格名.md` |
+| 工程踩坑 / 經驗教訓             | `400_Knowledge/工程/工法踩坑/YYYY-MM-DD_專案名.md` |
+| 客戶背景 / 溝通紀錄             | `400_Knowledge/工程/客戶/客戶名.md`             |
+| AI 工作摘要（重要任務完成後）   | `400_Knowledge/AI工作流/YYYY-MM-DD_任務名.md`  |
+| 個人學習 / 工具心得             | `400_Knowledge/學習/YYYY-MM-DD_主題.md`         |
 
 > 當我要你「回一封 Email」「寫報價說明」時：**先翻 `200_Reference/writing-samples/emails/` 找 2-3 個我過去的範例學語氣**，再開始寫。不要憑空想像我的風格。
 
