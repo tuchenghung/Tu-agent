@@ -93,6 +93,65 @@ Windows 模式下，Apple 提醒事項（Step 5）直接略過，標註「Window
 
 ---
 
+### Step 4.5：Tasks 到期提醒（3 天內）
+
+查詢 Notion Tasks（行動任務庫）中，Deadline 在今天起 3 天內且狀態未完成的任務。
+
+**兩個平台均使用 Bash + Node.js 直接呼叫 Notion API：**
+
+- Windows 模式：Node 路徑為 `C:\Users\deco01\nodejs\node.exe`
+- Mac 模式：Node 路徑為 `~/.nvm/versions/node/v24.14.1/bin/node`
+
+執行以下腳本（以當前平台對應的 node 路徑執行）：
+
+```js
+// 儲存為暫存檔後執行，或用 node -e 內嵌執行
+const TOKEN = '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';
+const DB_ID = 'f1dc0829-774c-493a-aa21-eefc6e35b034';
+const today = new Date().toISOString().split('T')[0];
+const plus3 = new Date(Date.now() + 3*86400000).toISOString().split('T')[0];
+const body = JSON.stringify({
+  filter: { and: [
+    { property: 'Deadline', date: { on_or_before: plus3 } },
+    { property: 'Deadline', date: { on_or_after: today } },
+    { property: '狀態', status: { does_not_equal: '完成' } }
+  ]},
+  sorts: [{ property: 'Deadline', direction: 'ascending' }]
+});
+const resp = await fetch(`https://api.notion.com/v1/databases/${DB_ID}/query`, {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${TOKEN}`, 'Notion-Version': '2022-06-28', 'Content-Type': 'application/json' },
+  body
+});
+const data = await resp.json();
+console.log(`TOTAL:${data.results?.length ?? 0}`);
+for (const r of data.results ?? []) {
+  const p = r.properties;
+  const name = (p['任務']?.title || []).map(t => t.plain_text).join('');
+  const dl = p.Deadline?.date?.start || '';
+  const st = p['狀態']?.status?.name || '';
+  const pr = p['優先級']?.select?.name || '';
+  console.log(`TASK|${dl}|${st}|${pr}|${name}`);
+}
+```
+
+**Windows 實際執行方式**：
+```bash
+"C:\Users\deco01\nodejs\node.exe" "D:\Dropbox\Tu-agent\000_Agent\scripts\notion_tasks_deadline.mjs"
+```
+
+**Mac 實際執行方式**：
+```bash
+~/.nvm/versions/node/v24.14.1/bin/node ~/Dropbox/Tu-agent/000_Agent/scripts/notion_tasks_deadline.mjs
+```
+
+整理結果：
+- 列出任務名稱 + 截止日 + 狀態 + 優先級
+- 若無即將到期任務，標明「Tasks：3 天內無到期任務」
+- ⚠️ 截止日為今天或明天的任務，標記為「緊急」
+
+---
+
 ### Step 5：Apple 提醒事項
 
 **Mac 模式**：使用工具 Bash，執行以下指令：
@@ -156,6 +215,10 @@ end tell'
 - [需要回覆的郵件]
 - [Notion 中進行中的任務]
 - [Apple 提醒事項，有截止日者優先列出（Mac 限定）]
+
+**⏰ Tasks 到期提醒（3 天內）**
+- [任務名稱] — [截止日] [狀態][優先級]（若截止日為今天或明天標記 🔴 緊急）
+- [若無則標明「3 天內無到期任務」]
 
 **工程專案提醒**
 - [Notion 中進行中的工程相關專案，若有尺寸/金額/截止日請照實列出]
