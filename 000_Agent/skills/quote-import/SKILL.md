@@ -1,6 +1,6 @@
 ---
 name: quote-import
-description: "報價單匯入 Notion。收到 PDF/Excel/JPG 報價單後，建立摘要確認 → 查詢/建立供應商 → 建立工程報價品項 → 建立工作文件中心報價單文件，全程依 SOP 完成所有 Notion 關聯與欄位填寫。觸發方式：使用者提供報價單檔案路徑，或直接輸入 /quote-import。"
+description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報價單後，建立摘要確認 → 查詢/建立供應商 → 建立工程報價品項 → 建立工作文件中心報價單文件 → 自動複製檔案到 Dropbox 專案廠商報價資料夾並改名。觸發方式：使用者提供報價單檔案路徑，或直接輸入 /quote-import。"
 ---
 
 # 報價單匯入 Notion SOP
@@ -137,7 +137,119 @@ properties:
 
 ---
 
-### STEP 6：最終確認與回報
+### STEP 5.5：歸檔原始報價單到 Dropbox 專案資料夾
+
+**目的：** 將使用者提供的原始報價單檔案，複製到對應專案的 `F供應商報價與資料/廠商報價/` 目錄，並依命名規則重新命名。
+
+#### 1. 確認 Dropbox 根目錄與專案集團
+
+依平台與集團（STEP 1 or STEP 3 已知）取得 `$DROPBOX_ROOT`：
+
+| 平台 | 集團 | 路徑 |
+|------|------|------|
+| Windows | 宏祐集團 | `D:\Dropbox\宏祐` |
+| Windows | YUSHI | `D:\Dropbox\yushi` |
+| Mac | 宏祐集團 | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐` |
+| Mac | YUSHI | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/yushi` |
+
+若集團尚未確認，以 **AskUserQuestion** 詢問。
+
+#### 2. 掃描並匹配專案資料夾
+
+以 Node.js 掃描 `$DROPBOX_ROOT`，找出名稱含有案件關鍵字的資料夾：
+
+```js
+const fs = require('fs');
+const dirs = fs.readdirSync(DROPBOX_ROOT, { withFileTypes: true })
+  .filter(d => d.isDirectory() && d.name.includes(CASE_KEYWORD))
+  .map(d => d.name);
+console.log(JSON.stringify(dirs));
+```
+
+- `CASE_KEYWORD`：從 STEP 3 的工程案件名稱取前 4~6 字
+- 找到唯一符合 → 自動使用
+- 找到多個 → **AskUserQuestion** 讓使用者選
+- 找不到 → 詢問使用者，或選「跳過歸檔」
+
+記下 `$PROJECT_FOLDER`（完整路徑）。
+
+#### 3. 確認目標子目錄存在
+
+目標路徑依實際狀況選擇（優先順序）：
+
+1. `$PROJECT_FOLDER/F供應商報價與資料/廠商報價/`（A-I 標準結構已整理）
+2. `$PROJECT_FOLDER/廠商報價/`（尚未整理 A-I 結構，只有廠商報價資料夾）
+3. 兩者都不存在 → 在 `$PROJECT_FOLDER` 下建立 `廠商報價/`
+
+掃描邏輯（Node.js）：
+```js
+const fs = require('fs'), path = require('path');
+const p1 = path.join(PROJECT_FOLDER, 'F供應商報價與資料', '廠商報價');
+const p2 = path.join(PROJECT_FOLDER, '廠商報價');
+let dest;
+if (fs.existsSync(p1))      dest = p1;
+else if (fs.existsSync(p2)) dest = p2;
+else { fs.mkdirSync(p2, { recursive: true }); dest = p2; }
+console.log(dest);
+```
+
+記下 `$DEST_DIR`（最終目標路徑）。
+
+#### 4. 複製並重新命名
+
+新檔名格式：`YYYYMMDD-{廠商簡稱}-{工種}.{副檔名}`
+- 廠商簡稱：去掉「有限公司/股份有限公司/工程行」後綴
+- 範例：`20260518-極鋼-鐵工工程.pdf`
+
+```bash
+# Windows
+Copy-Item -Path "$SOURCE_PATH" -Destination "$DEST_DIR\$NEW_FILENAME"
+# Mac
+cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
+```
+
+複製成功後記下 `$ARCHIVED_PATH`，供 STEP 6 使用。若失敗，詢問使用者是否跳過歸檔繼續。
+
+---
+
+### STEP 6：將原始報價單檔案嵌入 Notion 文件
+
+使用 `mcp__notion__API-patch-block-children` 將檔案資訊加入 STEP 5 建立的工作文件中心頁面。
+
+1. 優先使用 `$ARCHIVED_PATH`（STEP 5.5 歸檔後路徑），若跳過則用原始路徑
+2. 若路徑在 Dropbox → 嘗試取得 Dropbox 分享連結
+3. 加入以下區塊：
+
+```json
+[
+  {
+    "type": "callout",
+    "callout": {
+      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }],
+      "icon": { "emoji": "📎" },
+      "color": "gray_background"
+    }
+  },
+  {
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [{ "type": "text", "text": { "content": "檔案名稱：{$NEW_FILENAME}" } }]
+    }
+  },
+  {
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [{ "type": "text", "text": { "content": "歸檔路徑：{$ARCHIVED_PATH}" } }]
+    }
+  }
+]
+```
+
+4. 若取得 Dropbox 分享連結，額外加入 bookmark 區塊。
+
+---
+
+### STEP 7：最終確認與回報
 
 完成後向使用者回報：
 
@@ -150,6 +262,7 @@ properties:
    - {編號} {品項名稱} {數量}{單位} × {單價} = {小計}
    ...
 💰 總計：{總金額}（未稅）
+📁 歸檔路徑：{$ARCHIVED_PATH}
 
 🔗 Notion 連結：
    報價單：{url}

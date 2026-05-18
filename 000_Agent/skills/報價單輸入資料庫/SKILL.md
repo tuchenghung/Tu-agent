@@ -1,6 +1,6 @@
 ---
 name: 報價單輸入資料庫
-description: "報價單匯入 Notion。收到 PDF/Excel/JPG 報價單後，建立摘要確認 → 查詢/建立供應商 → 建立工程報價品項 → 建立工作文件中心報價單文件，全程依 SOP 完成所有 Notion 關聯與欄位填寫。觸發方式：使用者提供報價單檔案路徑，或直接輸入 /報價單輸入資料庫。"
+description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報價單後，建立摘要確認 → 查詢/建立供應商 → 建立工程報價品項 → 建立工作文件中心報價單文件 → 自動複製檔案到 Dropbox 專案廠商報價資料夾並改名。觸發方式：使用者提供報價單檔案路徑，或直接輸入 /報價單輸入資料庫。"
 ---
 
 # 報價單匯入 Notion SOP
@@ -137,26 +137,118 @@ properties:
 
 ---
 
+### STEP 5.5：歸檔原始報價單到 Dropbox 專案資料夾
+
+**目的：** 將使用者提供的原始報價單檔案，複製到對應專案的 `F供應商報價與資料/廠商報價/` 目錄，並依命名規則重新命名。
+
+#### 1. 確認 Dropbox 根目錄與專案集團
+
+依平台與集團（STEP 1 or STEP 3 已知）取得 `$DROPBOX_ROOT`：
+
+| 平台 | 集團 | 路徑 |
+|------|------|------|
+| Windows | 宏祐集團 | `D:\Dropbox\宏祐` |
+| Windows | YUSHI | `D:\Dropbox\yushi` |
+| Mac | 宏祐集團 | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐` |
+| Mac | YUSHI | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/yushi` |
+
+若集團尚未確認，以 **AskUserQuestion** 詢問。
+
+#### 2. 掃描並匹配專案資料夾
+
+以 Node.js 掃描 `$DROPBOX_ROOT`，找出名稱含有案件關鍵字的資料夾：
+
+```js
+// Windows
+const NODE = 'C:\\Users\\deco01\\nodejs\\node.exe';
+
+// 掃描邏輯（以 Node 執行）
+const fs = require('fs');
+const dirs = fs.readdirSync(DROPBOX_ROOT, { withFileTypes: true })
+  .filter(d => d.isDirectory() && d.name.includes(CASE_KEYWORD))
+  .map(d => d.name);
+console.log(JSON.stringify(dirs));
+```
+
+- `CASE_KEYWORD`：從 STEP 3 的工程案件名稱取前 4~6 字（去掉常見前綴如「羅東」「博訊」）
+- 若找到唯一符合的資料夾 → 自動使用
+- 若找到多個 → 用 **AskUserQuestion** 讓使用者選擇
+- 若找不到 → 提示使用者確認案件名稱，或選「跳過歸檔」
+
+記下 `$PROJECT_FOLDER`（完整路徑）。
+
+#### 3. 確認目標子目錄存在
+
+目標路徑依實際狀況選擇（優先順序）：
+
+1. `$PROJECT_FOLDER/F供應商報價與資料/廠商報價/`（A-I 標準結構已整理）
+2. `$PROJECT_FOLDER/廠商報價/`（尚未整理 A-I 結構，只有廠商報價資料夾）
+3. 兩者都不存在 → 在 `$PROJECT_FOLDER` 下建立 `廠商報價/`
+
+掃描邏輯（Node.js）：
+```js
+const fs = require('fs'), path = require('path');
+const p1 = path.join(PROJECT_FOLDER, 'F供應商報價與資料', '廠商報價');
+const p2 = path.join(PROJECT_FOLDER, '廠商報價');
+let dest;
+if (fs.existsSync(p1))      dest = p1;
+else if (fs.existsSync(p2)) dest = p2;
+else { fs.mkdirSync(p2, { recursive: true }); dest = p2; }
+console.log(dest);
+```
+
+記下 `$DEST_DIR`（最終目標路徑）。
+
+#### 4. 複製並重新命名
+
+新檔名格式：`YYYYMMDD-{廠商名稱}-{工種}.{副檔名}`
+- `YYYYMMDD`：報價日期（STEP 1 取得）
+- `廠商名稱`：供應商名稱（去掉「有限公司/股份有限公司/工程行」等後綴，保留簡稱）
+- `工種`：STEP 4 判斷的工種（中文，如「鐵工工程」）
+- 副檔名：保留原始副檔名（.pdf / .xlsx / .jpg）
+
+範例：`20260518-極鋼-鐵工工程.pdf`
+
+```bash
+# Windows（PowerShell）
+Copy-Item -Path "$SOURCE_PATH" -Destination "$DEST_DIR\$NEW_FILENAME"
+
+# Mac
+cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
+```
+
+#### 5. 確認複製成功
+
+```bash
+# 驗證檔案存在
+Test-Path "$DEST_DIR\$NEW_FILENAME"   # Windows
+ls "$DEST_DIR/$NEW_FILENAME"           # Mac
+```
+
+成功後記下 `$ARCHIVED_PATH`（完整歸檔路徑），供 STEP 6 使用。
+
+若複製失敗（權限、路徑不存在等），顯示錯誤原因，詢問使用者：「跳過歸檔並繼續建立 Notion？」
+
+---
+
 ### STEP 6：將原始報價單檔案嵌入 Notion 文件
 
 使用 `mcp__notion__API-patch-block-children` 將原始檔案資訊加入 STEP 5 建立的工作文件中心頁面（block_id = 報價單文件 page_id）。
 
 **流程：**
 
-1. 取得檔案完整路徑（STEP 1 使用者傳入的路徑）
-2. 判斷檔案來源：
-   - **Dropbox 路徑**（含 `Dropbox`）→ 嘗試用 Playwright 開啟 Dropbox 網頁版取得分享連結，若無法取得則執行步驟 3
-   - **其他本機路徑** → 直接執行步驟 3
-3. 使用 `mcp__notion__API-patch-block-children` 加入以下區塊至報價單文件頁面：
+1. 取得歸檔後的路徑（優先使用 `$ARCHIVED_PATH`，若 STEP 5.5 跳過則用原始路徑）
+2. 判斷路徑是否在 Dropbox：
+   - **是** → 嘗試用 Playwright 取得 Dropbox 分享連結（`dropbox_notion_links.mjs` 邏輯）
+   - **否** → 直接記錄本機路徑
+3. 使用 `mcp__notion__API-patch-block-children` 加入以下區塊：
 
 ```json
-children: [
+[
   {
     "type": "callout",
     "callout": {
-      "rich_text": [
-        { "type": "text", "text": { "content": "📎 原始報價單檔案" } }
-      ],
+      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }],
       "icon": { "emoji": "📎" },
       "color": "gray_background"
     }
@@ -164,30 +256,24 @@ children: [
   {
     "type": "paragraph",
     "paragraph": {
-      "rich_text": [
-        { "type": "text", "text": { "content": "檔案名稱：{檔案名稱}" } }
-      ]
+      "rich_text": [{ "type": "text", "text": { "content": "檔案名稱：{$NEW_FILENAME 或原始檔名}" } }]
     }
   },
   {
     "type": "paragraph",
     "paragraph": {
-      "rich_text": [
-        { "type": "text", "text": { "content": "本機路徑：{完整檔案路徑}" } }
-      ]
+      "rich_text": [{ "type": "text", "text": { "content": "歸檔路徑：{$ARCHIVED_PATH}" } }]
     }
   }
 ]
 ```
 
-4. 若 STEP 2 成功取得 Dropbox 分享連結，額外加入 bookmark 區塊：
+4. 若成功取得 Dropbox 分享連結，額外加入 bookmark 區塊：
 
 ```json
 {
   "type": "bookmark",
-  "bookmark": {
-    "url": "{Dropbox分享連結}"
-  }
+  "bookmark": { "url": "{Dropbox分享連結}" }
 }
 ```
 
