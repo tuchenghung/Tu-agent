@@ -130,10 +130,17 @@ parent: { database_id: "2617aebd-089f-80e8-90b1-faae6e0bc21a" }
 properties:
   文件名稱: { title: [{ text: { content: "YYYYMMDD{工程名稱}報價-{供應商名稱}" } }] }
   類別: { multi_select: [{ name: "報價單" }] }
-  報價單: { relation: [ { id: "品項1_page_id" }, { id: "品項2_page_id" }, ... ] }
 ```
 
 文件名稱格式範例：`20260428聖母醫院介護病房鐵格柵報價-極鋼工程行`
+
+記下回傳的工作文件中心頁面 `page_id`，完成後**逐筆更新 STEP 4 的所有品項**，設定 `報價單及圖面` 關聯：
+
+```
+對每個品項 page_id，呼叫 API-patch-page：
+properties:
+  報價單及圖面: { relation: [{ id: "工作文件中心_page_id" }] }
+```
 
 ---
 
