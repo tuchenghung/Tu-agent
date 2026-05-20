@@ -197,6 +197,7 @@
 | `/loop` | 設定循環執行任務（可自訂間隔） |
 | `/schedule` | 建立排程代理（cron 排程） |
 | `/claude-api` | Claude API / Anthropic SDK 應用開發 |
+| `/請購開單` | 請購單開單流程（找資料夾→複製範本→填 Excel→輸出 PDF→開 Outlook 郵件） |
 
 
 <!-- AI 分身起始助手紀錄:START -->
