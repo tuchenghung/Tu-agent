@@ -224,17 +224,20 @@ cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
 使用 `mcp__notion__API-patch-block-children` 將檔案資訊加入 STEP 5 建立的工作文件中心頁面。
 
 1. 優先使用 `$ARCHIVED_PATH`（STEP 5.5 歸檔後路徑），若跳過則用原始路徑
-2. 若路徑在 Dropbox → 嘗試取得 Dropbox 分享連結
-3. 加入以下區塊：
+2. **Dropbox 分享連結（必要步驟，不可跳過）**：
+   - 憑證來源：`D:\Dropbox\Tu-agent\000_Agent\scripts\add_dropbox_link_to_notion.mjs`（或 Mac 同路徑）
+   - Dropbox 路徑格式：`/{集團}/{專案資料夾名稱}/廠商報價/{$NEW_FILENAME}`（正斜線，無磁碟代號）
+   - 使用以下流程取得 `$SHARE_URL`：
+     1. 用 refresh_token 換取 access_token（POST `https://api.dropboxapi.com/oauth2/token`）
+     2. 呼叫 `create_shared_link_with_settings`，若回傳 `shared_link_already_exists` 則改呼叫 `list_shared_links` 取既有連結
+3. 加入以下區塊（**依序全部加入**）：
 
 ```json
 [
   {
-    "type": "callout",
-    "callout": {
-      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }],
-      "icon": { "emoji": "📎" },
-      "color": "gray_background"
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }]
     }
   },
   {
@@ -248,11 +251,18 @@ cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
     "paragraph": {
       "rich_text": [{ "type": "text", "text": { "content": "歸檔路徑：{$ARCHIVED_PATH}" } }]
     }
+  },
+  {
+    "type": "bookmark",
+    "bookmark": {
+      "url": "{$SHARE_URL}",
+      "caption": [{ "type": "text", "text": { "content": "點此開啟 Dropbox 檔案" } }]
+    }
   }
 ]
 ```
 
-4. 若取得 Dropbox 分享連結，額外加入 bookmark 區塊。
+4. 若取得分享連結失敗，告知使用者並詢問是否手動補上，不可靜默跳過。
 
 ---
 
@@ -315,4 +325,5 @@ cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
 - 羅東聖母中醫診所建置工程
 - 竹北廠房庫板工程
 - 南港實驗室GTP實驗室修改工程
+- 博洽辦公室
 - 其他（詢問使用者）
