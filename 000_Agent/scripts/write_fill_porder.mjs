@@ -1,12 +1,12 @@
 import fs from 'fs';
 
-const xlsxPath   = 'D:\\Dropbox\\宏祐\\20251104羅東聖母中醫診所規劃案\\P請購單\\20260520測試請購單\\20260520測試請購單.xlsx';
-const today      = new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '/');
-const workType   = '泥作';
-const budget     = 20000.0;
-const budgetItem = '裝修';
-const warranty   = '2年';
-const vendor     = '銓聯工程';
+const xlsxPath   = 'D:\\Dropbox\\宏祐\\20260511羅東聖母醫院防火門維修案\\P請購單\\20260520防火門維修請購單\\20260520防火門維修請購單.xlsx';
+const today      = '2026/05/20';
+const workType   = '鐵工';
+const budget     = '18000';
+const budgetItem = '鐵工';
+const warranty   = '無';
+const vendor     = '鼎堅';
 
 const ps1 = `\$xlsxPath   = "${xlsxPath}"
 \$today      = "${today}"
@@ -42,8 +42,6 @@ try {
 }
 `;
 
-// Write with UTF-8 BOM so PowerShell reads Chinese correctly
 const BOM = Buffer.from([0xEF, 0xBB, 0xBF]);
-const content = Buffer.from(ps1, 'utf8');
-fs.writeFileSync('D:\\Dropbox\\Tu-agent\\000_Agent\\scripts\\fill_porder.ps1', Buffer.concat([BOM, content]));
-console.log('PS1 written with BOM');
+fs.writeFileSync('D:\\Dropbox\\Tu-agent\\000_Agent\\scripts\\fill_porder.ps1', Buffer.concat([BOM, Buffer.from(ps1, 'utf8')]));
+console.log('PS1 written');

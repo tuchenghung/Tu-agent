@@ -1,17 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-const SRC = 'C:\\Users\\deco01\\Downloads\\地坪水泥粉光-銓聯.xls';
-const VENDOR_DIR = 'D:\\Dropbox\\宏祐\\20251104羅東聖母中醫診所規劃案\\P請購單\\20260520測試請購單\\廠商報價';
-
-const fileName = path.basename(SRC);
-const DST = path.join(VENDOR_DIR, fileName);
-
-if (!fs.existsSync(SRC)) {
-  console.error('找不到檔案：' + SRC);
-  process.exit(1);
-}
+const SRC = 'C:\\Users\\deco01\\Downloads\\549482.jpg';
+const VENDOR_DIR = 'D:\\Dropbox\\宏祐\\20260511羅東聖母醫院防火門維修案\\P請購單\\20260520防火門維修請購單\\廠商報價';
+const NEW_NAME = '20260511-鼎堅工業-鐵工工程.jpg';
+const DST = path.join(VENDOR_DIR, NEW_NAME);
 
 fs.copyFileSync(SRC, DST);
-console.log(JSON.stringify({ quotePath: DST, fileName }));
-console.error('✅ 報價單已複製至：' + DST);
+console.log(JSON.stringify({ quotePath: DST }));
+console.error('✅ 報價單已複製：' + DST);

@@ -1,10 +1,9 @@
-﻿$xlsxPath  = "D:\Dropbox\宏祐\20251104羅東聖母中醫診所規劃案\P請購單\20260520測試請購單\20260520測試請購單.xlsx"
-$pdfPath   = "D:\Dropbox\宏祐\20251104羅東聖母中醫診所規劃案\P請購單\20260520測試請購單\20260520測試請購單.pdf"
-$quotePath = "D:\Dropbox\宏祐\20251104羅東聖母中醫診所規劃案\P請購單\20260520測試請購單\廠商報價\地坪水泥粉光-銓聯.xls"
-$caseName  = "20251104羅東聖母中醫診所規劃案"
-$workType  = "泥作"
+﻿$xlsxPath  = "D:\Dropbox\宏祐\20260511羅東聖母醫院防火門維修案\P請購單\20260520防火門維修請購單\20260520防火門維修請購單.xlsx"
+$pdfPath   = "D:\Dropbox\宏祐\20260511羅東聖母醫院防火門維修案\P請購單\20260520防火門維修請購單\20260520防火門維修請購單.pdf"
+$caseName  = "20260511羅東聖母醫院防火門維修案"
+$workType  = "鐵工"
 
-# ─── 匯出 PDF ───
+# ─── 匯出 PDF（第 1 頁）───
 $excel = New-Object -ComObject Excel.Application
 $excel.Visible = $false
 $excel.DisplayAlerts = $false
@@ -26,15 +25,30 @@ try {
     $outlook = New-Object -ComObject Outlook.Application
     $mail = $outlook.CreateItem(0)
 
-    $mail.To      = "陳岱妤; 黃婉姍"
-    $mail.CC      = "游勝基; 鄭至男; 楊芳瑜"
     $mail.Subject = "${caseName}${workType}請購單"
     $mail.Body    = ""
 
+    # 收件者（olTo = 1）
+    foreach ($name in @("凃政宏")) {
+        $r = $mail.Recipients.Add($name)
+        $r.Type = 1
+    }
+    # 副本（olCC = 2）
+    foreach ($name in @("游勝基", "鄭至男", "楊芳瑜")) {
+        $r = $mail.Recipients.Add($name)
+        $r.Type = 2
+    }
+    $mail.Recipients.ResolveAll() | Out-Null
+
     $mail.Attachments.Add($pdfPath)
-    if ($quotePath -ne "" -and (Test-Path $quotePath)) {
-        $mail.Attachments.Add($quotePath)
-        Write-Host "QUOTE_ATTACHED"
+
+    $vendorDir = Join-Path (Split-Path $pdfPath -Parent) "廠商報價"
+    if (Test-Path $vendorDir) {
+        $quoteFiles = Get-ChildItem -Path $vendorDir -File
+        foreach ($f in $quoteFiles) {
+            $mail.Attachments.Add($f.FullName)
+            Write-Host "QUOTE_ATTACHED:$($f.Name)"
+        }
     }
 
     $mail.Display()

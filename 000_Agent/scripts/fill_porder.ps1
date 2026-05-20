@@ -1,10 +1,10 @@
-﻿$xlsxPath   = "D:\Dropbox\宏祐\20251104羅東聖母中醫診所規劃案\P請購單\20260520測試請購單\20260520測試請購單.xlsx"
+﻿$xlsxPath   = "D:\Dropbox\宏祐\20260511羅東聖母醫院防火門維修案\P請購單\20260520防火門維修請購單\20260520防火門維修請購單.xlsx"
 $today      = "2026/05/20"
-$workType   = "泥作"
-$budget     = "20000"
-$budgetItem = "裝修"
-$warranty   = "2年"
-$vendor     = "銓聯工程"
+$workType   = "鐵工"
+$budget     = "18000"
+$budgetItem = "鐵工"
+$warranty   = "無"
+$vendor     = "鼎堅"
 
 $excel = New-Object -ComObject Excel.Application
 $excel.Visible = $false

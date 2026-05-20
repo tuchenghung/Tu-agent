@@ -274,10 +274,18 @@ $workType     = "施工項目"
 $outlook = New-Object -ComObject Outlook.Application
 $mail = $outlook.CreateItem(0)  # 0 = olMailItem
 
-$mail.To      = "陳岱妤; 黃婉姍"
-$mail.CC      = "游勝基; 鄭至男; 楊芳瑜"
 $mail.Subject = "${caseName}${workType}請購單"
 $mail.Body    = ""
+
+# 收件者（olTo = 1）
+foreach ($addr in @("purchase3@richlins.com.tw", "purchase2@richlins.com.tw")) {
+    $r = $mail.Recipients.Add($addr); $r.Type = 1
+}
+# 副本（olCC = 2）
+foreach ($addr in @("yu@richlins.com.tw", "account01@richlins.com.tw")) {
+    $r = $mail.Recipients.Add($addr); $r.Type = 2
+}
+$mail.Recipients.ResolveAll() | Out-Null
 
 $mail.Attachments.Add($pdfPath)
 
@@ -315,8 +323,8 @@ Write-Host "✅ Outlook 郵件已開啟，請確認後手動按傳送"
 | Windows Node | `C:\Users\deco01\nodejs\node.exe` |
 | Dropbox 宏祐 | `D:\Dropbox\宏祐` |
 | Dropbox yushi | `D:\Dropbox\yushi` |
-| Outlook 收件者 | 陳岱妤; 黃婉姍 |
-| Outlook 副本 | 游勝基; 鄭至男; 楊芳瑜 |
+| Outlook 收件者 | 陳岱妤(行政總務) purchase3@richlins.com.tw; 黃婉姍(採購) purchase2@richlins.com.tw |
+| Outlook 副本 | 游勝基 yu@richlins.com.tw; 楊芳瑜(會計1) account01@richlins.com.tw |
 
 ---
 
