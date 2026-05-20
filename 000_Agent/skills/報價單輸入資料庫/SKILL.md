@@ -18,6 +18,13 @@ description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報�
 ### STEP 1：讀取報價單並建立摘要
 
 1. 使用 `Read` 工具讀取使用者提供的檔案（PDF / JPG / Excel）
+   - Excel（.xls/.xlsx）為二進位格式，需用 Node.js 解析：
+     ```js
+     const XLSX = require('C:/Users/deco01/nodejs/node_modules/xlsx');
+     const wb = XLSX.readFile('檔案路徑');
+     const ws = wb.Sheets[wb.SheetNames[0]];
+     console.log(XLSX.utils.sheet_to_csv(ws));
+     ```
 2. 整理以下資訊並以表格呈現給使用者確認：
    - **供應商名稱**、聯絡人、電話、手機、統一編號
    - **報價日期**（民國轉西元）
@@ -33,21 +40,23 @@ description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報�
 
 ### STEP 1.5：重複報價單檢查
 
+> 可與 STEP 2 同時執行（兩者皆為唯讀查詢，無相依性）
+
 使用 `mcp__notion__API-post-search` 搜尋工作文件中心，確認是否已存在相同報價單。
 
-**搜尋條件：** 以「供應商名稱」+ 「報價日期（YYYYMMDD）」作為關鍵字搜尋。
+**搜尋條件：** 以「供應商名稱」+「報價日期（YYYYMMDD）」作為關鍵字搜尋。
 
-**情況 A：未找到重複** → 繼續 STEP 2
+**情況 A：未找到重複** → 繼續 STEP 3
 
 **情況 B：找到疑似重複的文件**
 1. 列出所有符合的文件名稱與 Notion 連結
 2. 告知使用者：
    ```
    ⚠️ 警告：偵測到可能重複的報價單
-   
+
    已存在以下相似文件：
    - {文件名稱}（{Notion連結}）
-   
+
    請確認是否為重複？
    [ 是重複，取消本次匯入 ] / [ 非重複，繼續建立 ]
    ```
@@ -56,6 +65,8 @@ description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報�
 ---
 
 ### STEP 2：查詢供應商資料庫
+
+> 可與 STEP 1.5 同時執行
 
 使用 `mcp__notion__API-post-search` 搜尋供應商名稱。
 
@@ -84,12 +95,12 @@ description: "報價單匯入 Notion + 自動歸檔。收到 PDF/Excel/JPG 報�
 
 **工程案件名稱**（`工程案件名稱` select 欄位）：
 - 從現有選項中找最符合的
-- 若無完全符合，選最接近的，並告知使用者
+- 若無完全符合，新增選項並告知使用者
 
 **編號規則**（`編號` title 欄位，每個品項一筆）：
 - 格式：`供應商簡稱-YYMMDD-序號`
-- 供應商簡稱：取名稱前2~3字（去掉「工程行/有限公司/股份有限公司」等後綴）
-- YYMMDD：報價日期（西元後2碼+月+日），例如 260427
+- 供應商簡稱：取名稱前 2~3 字（去掉「工程行/有限公司/股份有限公司」等後綴）
+- YYMMDD：報價日期（西元後 2 碼+月+日），例如 260427
 - 序號：從 001 開始，同一張報價單的品項依序遞增
 - 參考現有範例：`楷程-251210-001`、`楷程-251210-002`
 
@@ -146,11 +157,7 @@ properties:
 
 ### STEP 5.5：歸檔原始報價單到 Dropbox 專案資料夾
 
-**目的：** 將使用者提供的原始報價單檔案，複製到對應專案的 `F供應商報價與資料/廠商報價/` 目錄，並依命名規則重新命名。
-
 #### 1. 確認 Dropbox 根目錄與專案集團
-
-依平台與集團（STEP 1 or STEP 3 已知）取得 `$DROPBOX_ROOT`：
 
 | 平台 | 集團 | 路徑 |
 |------|------|------|
@@ -163,13 +170,7 @@ properties:
 
 #### 2. 掃描並匹配專案資料夾
 
-以 Node.js 掃描 `$DROPBOX_ROOT`，找出名稱含有案件關鍵字的資料夾：
-
 ```js
-// Windows
-const NODE = 'C:\\Users\\deco01\\nodejs\\node.exe';
-
-// 掃描邏輯（以 Node 執行）
 const fs = require('fs');
 const dirs = fs.readdirSync(DROPBOX_ROOT, { withFileTypes: true })
   .filter(d => d.isDirectory() && d.name.includes(CASE_KEYWORD))
@@ -177,22 +178,18 @@ const dirs = fs.readdirSync(DROPBOX_ROOT, { withFileTypes: true })
 console.log(JSON.stringify(dirs));
 ```
 
-- `CASE_KEYWORD`：從 STEP 3 的工程案件名稱取前 4~6 字（去掉常見前綴如「羅東」「博訊」）
-- 若找到唯一符合的資料夾 → 自動使用
-- 若找到多個 → 用 **AskUserQuestion** 讓使用者選擇
-- 若找不到 → 提示使用者確認案件名稱，或選「跳過歸檔」
+- `CASE_KEYWORD`：從工程案件名稱取前 4~6 字（去掉常見前綴如「羅東」「博訊」）
+- 找到唯一符合 → 自動使用
+- 找到多個 → **AskUserQuestion** 讓使用者選擇
+- 找不到 → 提示使用者確認，或選「跳過歸檔」
 
-記下 `$PROJECT_FOLDER`（完整路徑）。
+#### 3. 確認目標子目錄
 
-#### 3. 確認目標子目錄存在
+優先順序：
+1. `$PROJECT_FOLDER/F供應商報價與資料/廠商報價/`
+2. `$PROJECT_FOLDER/廠商報價/`
+3. 兩者都不存在 → 建立 `$PROJECT_FOLDER/廠商報價/`
 
-目標路徑依實際狀況選擇（優先順序）：
-
-1. `$PROJECT_FOLDER/F供應商報價與資料/廠商報價/`（A-I 標準結構已整理）
-2. `$PROJECT_FOLDER/廠商報價/`（尚未整理 A-I 結構，只有廠商報價資料夾）
-3. 兩者都不存在 → 在 `$PROJECT_FOLDER` 下建立 `廠商報價/`
-
-掃描邏輯（Node.js）：
 ```js
 const fs = require('fs'), path = require('path');
 const p1 = path.join(PROJECT_FOLDER, 'F供應商報價與資料', '廠商報價');
@@ -204,66 +201,51 @@ else { fs.mkdirSync(p2, { recursive: true }); dest = p2; }
 console.log(dest);
 ```
 
-記下 `$DEST_DIR`（最終目標路徑）。
-
 #### 4. 複製並重新命名
 
-新檔名格式：`YYYYMMDD-{廠商名稱}-{工種}.{副檔名}`
-- `YYYYMMDD`：報價日期（STEP 1 取得）
-- `廠商名稱`：供應商名稱（去掉「有限公司/股份有限公司/工程行」等後綴，保留簡稱）
-- `工種`：STEP 4 判斷的工種（中文，如「鐵工工程」）
-- 副檔名：保留原始副檔名（.pdf / .xlsx / .jpg）
+新檔名格式：`YYYYMMDD-{廠商簡稱}-{工種}.{副檔名}`
+- 廠商簡稱：去掉「有限公司/股份有限公司/工程行/泥作」等後綴，保留簡稱
+- 範例：`20260518-極鋼-鐵工工程.pdf`
 
-範例：`20260518-極鋼-鐵工工程.pdf`
-
-```bash
-# Windows（PowerShell）
-Copy-Item -Path "$SOURCE_PATH" -Destination "$DEST_DIR\$NEW_FILENAME"
-
-# Mac
-cp "$SOURCE_PATH" "$DEST_DIR/$NEW_FILENAME"
-```
-
-#### 5. 確認複製成功
-
-```bash
-# 驗證檔案存在
-Test-Path "$DEST_DIR\$NEW_FILENAME"   # Windows
-ls "$DEST_DIR/$NEW_FILENAME"           # Mac
+```js
+const fs = require('fs'), path = require('path');
+fs.copyFileSync(SOURCE_PATH, path.join(DEST_DIR, NEW_FILENAME));
+if (!fs.existsSync(path.join(DEST_DIR, NEW_FILENAME))) throw new Error('複製失敗');
+console.log('✅ 複製成功：', path.join(DEST_DIR, NEW_FILENAME));
 ```
 
 成功後記下 `$ARCHIVED_PATH`（完整歸檔路徑），供 STEP 6 使用。
-
-若複製失敗（權限、路徑不存在等），顯示錯誤原因，詢問使用者：「跳過歸檔並繼續建立 Notion？」
+若複製失敗，顯示錯誤原因，詢問使用者：「跳過歸檔並繼續建立 Notion？」
 
 ---
 
 ### STEP 6：將原始報價單檔案嵌入 Notion 文件
 
-使用 `mcp__notion__API-patch-block-children` 將原始檔案資訊加入 STEP 5 建立的工作文件中心頁面（block_id = 報價單文件 page_id）。
+使用 `mcp__notion__API-patch-block-children` 將檔案資訊加入 STEP 5 建立的工作文件中心頁面。
 
-**流程：**
-
-1. 取得歸檔後的路徑（優先使用 `$ARCHIVED_PATH`，若 STEP 5.5 跳過則用原始路徑）
-2. 判斷路徑是否在 Dropbox：
-   - **是** → 嘗試用 Playwright 取得 Dropbox 分享連結（`dropbox_notion_links.mjs` 邏輯）
-   - **否** → 直接記錄本機路徑
-3. 使用 `mcp__notion__API-patch-block-children` 加入以下區塊：
+1. 優先使用 `$ARCHIVED_PATH`（STEP 5.5 歸檔後路徑），若跳過則用原始路徑
+2. **取得 Dropbox 分享連結（必要步驟，不可跳過）**：
+   - 憑證來源：`D:\Dropbox\Tu-agent\000_Agent\scripts\add_dropbox_link_to_notion.mjs`
+   - Dropbox API 路徑格式：`/{集團}/{專案資料夾名稱}/廠商報價/{$NEW_FILENAME}`（正斜線，無磁碟代號）
+   - 流程：
+     1. 用 refresh_token 換取 access_token（POST `https://api.dropboxapi.com/oauth2/token`）
+     2. 呼叫 `create_shared_link_with_settings`
+     3. 若回傳 `shared_link_already_exists` → 改呼叫 `list_shared_links` 取既有連結
+   - 若取得失敗 → 告知使用者並詢問是否手動補上，**不可靜默跳過**
+3. 加入以下區塊（依序全部加入）：
 
 ```json
 [
   {
-    "type": "callout",
-    "callout": {
-      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }],
-      "icon": { "emoji": "📎" },
-      "color": "gray_background"
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [{ "type": "text", "text": { "content": "📎 原始報價單檔案" } }]
     }
   },
   {
     "type": "paragraph",
     "paragraph": {
-      "rich_text": [{ "type": "text", "text": { "content": "檔案名稱：{$NEW_FILENAME 或原始檔名}" } }]
+      "rich_text": [{ "type": "text", "text": { "content": "檔案名稱：{$NEW_FILENAME}" } }]
     }
   },
   {
@@ -271,24 +253,20 @@ ls "$DEST_DIR/$NEW_FILENAME"           # Mac
     "paragraph": {
       "rich_text": [{ "type": "text", "text": { "content": "歸檔路徑：{$ARCHIVED_PATH}" } }]
     }
+  },
+  {
+    "type": "bookmark",
+    "bookmark": {
+      "url": "{$SHARE_URL}",
+      "caption": [{ "type": "text", "text": { "content": "點此開啟 Dropbox 檔案" } }]
+    }
   }
 ]
-```
-
-4. 若成功取得 Dropbox 分享連結，額外加入 bookmark 區塊：
-
-```json
-{
-  "type": "bookmark",
-  "bookmark": { "url": "{Dropbox分享連結}" }
-}
 ```
 
 ---
 
 ### STEP 7：最終確認與回報
-
-完成後向使用者回報：
 
 ```
 ✅ Notion 建立完成
@@ -299,6 +277,7 @@ ls "$DEST_DIR/$NEW_FILENAME"           # Mac
    - {編號} {品項名稱} {數量}{單位} × {單價} = {小計}
    ...
 💰 總計：{總金額}（未稅）
+📁 歸檔路徑：{$ARCHIVED_PATH}
 
 🔗 Notion 連結：
    報價單：{url}
@@ -344,4 +323,5 @@ ls "$DEST_DIR/$NEW_FILENAME"           # Mac
 - 羅東聖母中醫診所建置工程
 - 竹北廠房庫板工程
 - 南港實驗室GTP實驗室修改工程
+- 博洽辦公室
 - 其他（詢問使用者）
