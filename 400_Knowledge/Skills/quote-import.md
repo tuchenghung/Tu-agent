@@ -24,3 +24,6 @@
 
 ## 踩坑紀錄
 - Notion MCP 無法建立 `heading_2 toggleable`，需改用 Node.js 直接呼叫 Notion REST API
+- **PDF 數字填入 XLS 模板會格式全掉**：SheetJS / xlrd 2.0 / openpyxl 全部會破壞原始格式。
+  解法：`xlrd==1.2.0`（venv）+ `xlutils.copy` + 直接替換 `xc.NumberCell/FormulaCell`（保留 `xf_idx`）。
+  詳見 `400_Knowledge/AI工作流/2026-05-23_XLS格式保留填入數值.md`
