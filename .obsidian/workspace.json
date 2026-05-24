@@ -1,0 +1,240 @@
+{
+  "main": {
+    "id": "2fde770ce1e22e2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c0ee1eb783c039dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fb51fd407dec60e9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "400_Knowledge/系統架構/Obsidian知識庫.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Obsidian知識庫"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "054651ef756917a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f18ce373d146923",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ddeb978bb741aeb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
+            }
+          },
+          {
+            "id": "fc558de0d79567f2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
+            }
+          },
+          {
+            "id": "a4d629c2b57ce4d1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d6ce154aabae91cc",
+    "type": "split",
+    "children": [
+      {
+        "id": "c0fb6d58c7a4e72e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0dfd1e8919b915f2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "未命名.base",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "未命名 的反向連結"
+            }
+          },
+          {
+            "id": "4019b55b8a0959cd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "未命名.base",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "未命名 的對外連結"
+            }
+          },
+          {
+            "id": "861d89b807c38775",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
+            }
+          },
+          {
+            "id": "9edd3249c359db72",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "所有屬性"
+            }
+          },
+          {
+            "id": "d6bd65a216a7a940",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "400_Knowledge/系統架構/Obsidian知識庫.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Obsidian知識庫 的大綱"
+            }
+          },
+          {
+            "id": "5d416c0c63e5111b",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "bases:建立新的 base": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-kanban:Create new board": false
+    }
+  },
+  "active": "fb51fd407dec60e9",
+  "lastOpenFiles": [
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/工項報價清單.csv",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/04_投標流程追蹤.md",
+    "200_Reference/templates/政府標案投標SOP.md",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md.tmp.70928.e16486579fa4",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/03_原始檔路徑.md",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/02_廠商報價追蹤.md",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/01_工項成本評估.md",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修",
+    "400_Knowledge/系統架構/雙系統同步.md",
+    "400_Knowledge/工程/施工紀錄SOP.md",
+    "CLAUDE.md",
+    "clients-list.png",
+    "未命名.md",
+    "未命名.base",
+    "2026-04-15-報價單歸檔小助手-design.md",
+    "2026-05-23.md",
+    "未命名.canvas",
+    "000_Agent/scripts/add_dropbox_link_to_notion.mjs",
+    "000_Agent/memory/daily/2026-05-18.md",
+    "100_Todo/plans/2026-05-18-新增任務Skill.md",
+    "100_Todo/drafts/2026-05-17_羅東聖母醫院耐震補強簡報話術.md",
+    "000_Agent/memory/daily/2026-05-16.md",
+    "100_Todo/plans/2026-05-16-施工紀錄自動化.md",
+    "400_Knowledge/系統架構/Obsidian知識庫.md",
+    "000_Agent/templates/日誌.md",
+    "000_Agent/templates/工作流筆記.md",
+    "000_Agent/templates",
+    "Untitled Kanban.md",
+    "000_Agent/memory/MEMORY.md",
+    "000_Agent/skills/obsidian-markdown/references/PROPERTIES.md",
+    "000_Agent/skills/obsidian-markdown/references/EMBEDS.md",
+    "000_Agent/skills/obsidian-markdown/references/CALLOUTS.md",
+    "000_Agent/skills/obsidian-markdown/references",
+    "000_Agent/skills/obsidian-markdown",
+    "000_Agent/skills/obsidian-cli",
+    "000_Agent/skills/obsidian-bases/references",
+    "000_Agent/skills/obsidian-bases"
+  ]
+}

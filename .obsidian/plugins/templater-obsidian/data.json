@@ -1,0 +1,13 @@
+{
+  "command_timeout": 5,
+  "enable_folder_templates": false,
+  "enable_ribbon_icon": true,
+  "enable_system_commands": false,
+  "folder_templates": [],
+  "syntax_highlighting": true,
+  "auto_jump_to_cursor": true,
+  "enable_keybinds": true,
+  "templates_pairs": [["", ""]],
+  "trigger_on_file_creation": false,
+  "templates_folder": "000_Agent/templates"
+}
