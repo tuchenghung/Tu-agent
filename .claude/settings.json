@@ -54,60 +54,6 @@
       "args": [
         "/Users/tuzhenghong/.nvm/versions/node/v24.14.1/lib/node_modules/@gongrzhe/server-gmail-autoauth-mcp/dist/index.js"
       ]
-    },
-    "notion-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\@notionhq\\notion-mcp-server\\bin\\cli.mjs"
-      ],
-      "env": {
-        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer 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\", \"Notion-Version\": \"2022-06-28\"}"
-      }
-    },
-    "calendar-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\@cocal\\google-calendar-mcp\\build\\index.js"
-      ],
-      "env": {
-        "GOOGLE_OAUTH_CREDENTIALS": "C:\\Users\\deco01\\.google-mcp\\gcp-oauth.keys.json"
-      }
-    },
-    "gmail-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\@gongrzhe\\server-gmail-autoauth-mcp\\dist\\index.js"
-      ]
-    },
-    "playwright-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\@playwright\\mcp\\cli.js"
-      ]
-    },
-    "filesystem-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\@modelcontextprotocol\\server-filesystem\\dist\\index.js",
-        "C:\\Users\\deco01\\Desktop",
-        "C:\\Users\\deco01\\Documents",
-        "C:\\Users\\deco01\\Downloads"
-      ]
-    },
-    "firecrawl-win": {
-      "type": "stdio",
-      "command": "C:\\Users\\deco01\\nodejs\\node.exe",
-      "args": [
-        "C:\\Users\\deco01\\nodejs\\node_modules\\firecrawl-mcp\\dist\\index.js"
-      ],
-      "env": {
-        "FIRECRAWL_API_KEY": "fc-6273ee2c1326402eac1c3eec694212b5"
-      }
     }
   },
   "hooks": {
@@ -117,7 +63,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd /Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent && git log origin/main..HEAD --oneline 2>/dev/null | grep -q . && echo '📌 提醒：今天有新 commit 尚未 push，請告訴 Claude「push」或執行 git push origin main'"
+            "command": "cd /Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent && git log origin/main..HEAD --oneline 2>/dev/null | grep -q . && echo '📌 提醒：今天有新 commit 尚未 push，請告訴 Claude「push」或執行 git push origin main' || true"
           }
         ]
       }
