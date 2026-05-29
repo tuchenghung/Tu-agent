@@ -1,7 +1,9 @@
+from dotenv import load_dotenv; load_dotenv()
+import os
 import sys, json, urllib.request
 sys.stdout.reconfigure(encoding='utf-8')
 
-TOKEN = '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'
+TOKEN = os.environ['NOTION_TOKEN']
 
 def to_url(path):
     return 'file:///' + path.replace('\\', '/').replace(' ', '%20')

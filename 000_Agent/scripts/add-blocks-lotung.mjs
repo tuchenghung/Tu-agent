@@ -1,4 +1,5 @@
-const TOKEN = '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';
+import 'dotenv/config';
+const TOKEN = process.env.NOTION_TOKEN;
 const PAGE_ID = '367c47de-5bd0-4dd6-85b6-817d2c23975a';
 const BASE = 'D:\\Dropbox\\宏祐\\202605-羅東聖母醫院S棟5樓耳鼻喉科整修工程';
 const SEP = '\\';

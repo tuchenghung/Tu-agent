@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import https from 'https';
 
-const TOKEN = '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';
+const TOKEN = process.env.NOTION_TOKEN;
 const body = JSON.stringify({
   sorts: [{ timestamp: 'last_edited_time', direction: 'descending' }],
   page_size: 8

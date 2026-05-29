@@ -1,4 +1,5 @@
-const NOTION_TOKEN = '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';
+import 'dotenv/config';
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const PAGE_ID = '3667aebd-089f-8171-a124-ce4ad2179727';
 
 const photos = [

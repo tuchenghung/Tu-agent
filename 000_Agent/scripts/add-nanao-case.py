@@ -1,7 +1,9 @@
+from dotenv import load_dotenv; load_dotenv()
+import os
 import sys, json, urllib.request
 sys.stdout.reconfigure(encoding='utf-8')
 
-TOKEN = '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'
+TOKEN = os.environ['NOTION_TOKEN']
 DB_ID = '36c7aebd-089f-81f2-adfc-e984d65b4bbd'
 
 QUOTE = r'D:\Dropbox\宏祐\舊案件\羅東聖母醫院南澳日照中心\D預算報價\20250818南澳工成報價單.xlsx'

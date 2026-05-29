@@ -1,4 +1,5 @@
-const TOKEN = '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';
+import 'dotenv/config';
+const TOKEN = process.env.NOTION_TOKEN;
 const PAGE_ID = '36b7aebd-089f-81c2-b191-e124c1be3ef0';
 const BASE = 'D:\\Dropbox\\yushi\\20240612名毅吾山';
 const SEP = '\\';

@@ -1,9 +1,10 @@
+import 'dotenv/config';
 // Dropbox OAuth2 設定（永久有效的 refresh token，不需要手動更新）
 const DROPBOX_APP_KEY = 't1n8ea51gyluo9o';
-const DROPBOX_APP_SECRET = '94re6pu3w7da7ai';
-const DROPBOX_REFRESH_TOKEN = 'LuH8PZgPJFMAAAAAAAAAAdr6cHmLKVVJlbIMEuT134q6eRdGp7H9rh8Niq_UBsbh';
+const DROPBOX_APP_SECRET = process.env.DROPBOX_APP_SECRET;
+const DROPBOX_REFRESH_TOKEN = process.env.DROPBOX_REFRESH_TOKEN;
 
-const NOTION_TOKEN = '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';
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_PAGE_ID = '3617aebd-089f-81ec-878a-c8b671569956'; // 修改為目標頁面 ID
 const PROJECT_PATH = '/宏祐/20260331南投基督教醫院的裝修工程';  // 修改為目標專案路徑
 

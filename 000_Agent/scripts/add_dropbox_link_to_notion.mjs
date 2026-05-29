@@ -1,7 +1,8 @@
+import 'dotenv/config';
 const DROPBOX_APP_KEY = 't1n8ea51gyluo9o';
-const DROPBOX_APP_SECRET = '94re6pu3w7da7ai';
-const DROPBOX_REFRESH_TOKEN = 'LuH8PZgPJFMAAAAAAAAAAdr6cHmLKVVJlbIMEuT134q6eRdGp7H9rh8Niq_UBsbh';
-const NOTION_TOKEN = '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';
+const DROPBOX_APP_SECRET = process.env.DROPBOX_APP_SECRET;
+const DROPBOX_REFRESH_TOKEN = process.env.DROPBOX_REFRESH_TOKEN;
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_PAGE_ID = '3647aebd-089f-817c-878f-eb83989589e4';
 const FILE_PATH = '/宏祐/202605-羅東聖母醫院S棟5樓耳鼻喉科整修工程/廠商報價/20260518-陳樂屏-室內裝修審查.pdf';
 const FILE_NAME = '20260518-陳樂屏-室內裝修審查.pdf';

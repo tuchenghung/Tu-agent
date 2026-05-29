@@ -1,7 +1,8 @@
+import 'dotenv/config';
 const DROPBOX_APP_KEY = 't1n8ea51gyluo9o';
-const DROPBOX_APP_SECRET = '94re6pu3w7da7ai';
-const DROPBOX_REFRESH_TOKEN = 'LuH8PZgPJFMAAAAAAAAAAdr6cHmLKVVJlbIMEuT134q6eRdGp7H9rh8Niq_UBsbh';
-const NOTION_TOKEN = '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';
+const DROPBOX_APP_SECRET = process.env.DROPBOX_APP_SECRET;
+const DROPBOX_REFRESH_TOKEN = process.env.DROPBOX_REFRESH_TOKEN;
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
 
 // 取得 Dropbox access token
 const tokenResp = await fetch('https://api.dropboxapi.com/oauth2/token', {

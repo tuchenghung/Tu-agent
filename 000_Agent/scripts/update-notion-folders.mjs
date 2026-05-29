@@ -1,4 +1,5 @@
-const TOKEN = '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';
+import 'dotenv/config';
+const TOKEN = process.env.NOTION_TOKEN;
 const PAGE_ID = '36b7aebd-089f-8142-945f-eb5c2054bb06';
 const BASE = 'D:\\Dropbox\\宏祐\\規劃中案件\\202605-羅東聖母醫院ICU及開刀房備援氣體工程';
 const folders = [

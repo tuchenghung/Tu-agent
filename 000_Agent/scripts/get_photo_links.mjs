@@ -1,6 +1,7 @@
+import 'dotenv/config';
 const APP_KEY = 't1n8ea51gyluo9o';
-const APP_SECRET = '94re6pu3w7da7ai';
-const REFRESH_TOKEN = 'LuH8PZgPJFMAAAAAAAAAAdr6cHmLKVVJlbIMEuT134q6eRdGp7H9rh8Niq_UBsbh';
+const APP_SECRET = process.env.DROPBOX_APP_SECRET;
+const REFRESH_TOKEN = process.env.DROPBOX_REFRESH_TOKEN;
 
 const DROPBOX_FOLDER = '/宏祐/20260511羅東聖母醫院防火門維修案/M  照片/2026-05-20';
 const PHOTOS = [

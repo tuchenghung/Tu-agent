@@ -1,5 +1,6 @@
+import 'dotenv/config';
 // 查詢 Tasks（行動任務庫）3 天內到期未完成任務
-const TOKEN = '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';
+const TOKEN = process.env.NOTION_TOKEN;
 const DB_ID = 'f1dc0829-774c-493a-aa21-eefc6e35b034';
 
 const today = new Date().toISOString().split('T')[0];
