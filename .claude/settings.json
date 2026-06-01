@@ -1,8 +1,5 @@
 {
   "permissions": {
-    "additionalDirectories": [
-      "/Users/tuzhenghong/Tu-agent"
-    ],
     "deny": [
       "Bash(: >*)",
       "Bash(chmod -R 777 *)",
@@ -25,8 +22,29 @@
       "Bash(sudo *)",
       "Bash(truncate *)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "/Users/tuzhenghong/Tu-agent"
+    ]
   },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent && git log origin/main..HEAD --oneline 2>/dev/null | grep -q . && echo '📌 提醒：今天有新 commit 尚未 push，請告訴 Claude「push」或執行 git push origin main' || true"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/tuzhenghong/.claude/statusline-command.sh"
+  },
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "notion": {
       "type": "stdio",
@@ -56,22 +74,12 @@
       ]
     }
   },
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd /Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent && git log origin/main..HEAD --oneline 2>/dev/null | grep -q . && echo '📌 提醒：今天有新 commit 尚未 push，請告訴 Claude「push」或執行 git push origin main' || true"
-          }
-        ]
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
       }
-    ]
-  },
-  "skipDangerousModePermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "bash /Users/tuzhenghong/.claude/statusline-command.sh"
+    }
   }
 }
