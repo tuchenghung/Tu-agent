@@ -34,9 +34,9 @@
           {
             "type": "command",
             "command": "hour=$(date +%H); if [ \"$hour\" -ge 8 ] && [ \"$hour\" -lt 10 ]; then printf '現在是早晨，請立即主動執行 /morning 早晨日報，不要等待使用者指示。'; exit 2; fi",
+            "timeout": 5,
             "asyncRewake": true,
-            "rewakeMessage": "🌅 早晨日報提醒：",
-            "timeout": 5
+            "rewakeMessage": "🌅 早晨日報提醒："
           }
         ]
       }
@@ -56,6 +56,14 @@
   "statusLine": {
     "type": "command",
     "command": "bash /Users/tuzhenghong/.claude/statusline-command.sh"
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    }
   },
   "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
@@ -85,14 +93,6 @@
       "args": [
         "/Users/tuzhenghong/.nvm/versions/node/v24.14.1/lib/node_modules/@gongrzhe/server-gmail-autoauth-mcp/dist/index.js"
       ]
-    }
-  },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
-      }
     }
   }
 }
