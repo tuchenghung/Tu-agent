@@ -34,12 +34,27 @@ def select_nfb_at(flc: float, factor: float = 1.5) -> int:
     return NFB_AT_SERIES[-1]
 
 
-def select_nfb_af(at: int) -> str:
-    """依 AT 值選 NFB 框架容量 AF。"""
+def select_nfb_af(at: int) -> int:
+    """依 AT 值選 NFB 框架容量 AF（數字）。"""
     for max_at, af in NFB_AF_SERIES:
         if at <= max_at:
             return af
-    return "3P-1200"
+    return 1200
+
+
+def format_nfb(poles: int, at: int, af: int) -> str:
+    """產生 NFB 標示字串，格式：3-50/100（極數-AT/AF）。"""
+    return f"{poles}-{at}/{af}"
+
+
+def format_wire_spec(wire_mm2: float, phase: str, emt_phi: int) -> str:
+    """
+    產生線材規格字串，格式：4C-8PEX 31ØEMT（SLD 標準格式）。
+    3φ = 4導線（3L+E），1φ = 3導線（2L+E）。
+    """
+    n_cond = 4 if phase == "3φ" else 3
+    size_str = str(int(wire_mm2)) if wire_mm2 == int(wire_mm2) else str(wire_mm2)
+    return f"{n_cond}C-{size_str}PEX {emt_phi}ØEMT"
 
 
 def select_wire_size(flc: float) -> float:
@@ -101,6 +116,9 @@ def calc_circuit(name: str, kw: float, voltage: int = 380,
     emt_phi = select_emt_conduit(wire_mm2)
     gnd_mm2 = select_ground_wire(nfb_at)
     start = get_start_method(kw, voltage) if phase == "3φ" else "MS"
+    poles = 3 if phase == "3φ" else 2
+    nfb_label = format_nfb(poles, nfb_at, nfb_af)
+    wire_spec = format_wire_spec(wire_mm2, phase, emt_phi)
 
     return {
         "name": name,
@@ -110,8 +128,10 @@ def calc_circuit(name: str, kw: float, voltage: int = 380,
         "flc_a": flc,
         "nfb_at": nfb_at,
         "nfb_af": nfb_af,
+        "nfb_label": nfb_label,   # e.g. "3-50/100"
         "wire_mm2": wire_mm2,
         "emt_phi": emt_phi,
+        "wire_spec": wire_spec,   # e.g. "4C-8PEX 31ØEMT"
         "gnd_mm2": gnd_mm2,
         "start_method": start,
     }

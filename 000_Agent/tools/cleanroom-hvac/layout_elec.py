@@ -5,9 +5,12 @@ from electrical import calc_circuit, calc_panel_nfb, build_hvac_circuits
 def draw_sld(ax, circuits: list, panel: dict):
     """
     空調電力單線圖（SLD）— matplotlib 版。
-    由上到下：MDP → 子配電盤 → 各分路 → 設備
+    格式參考：ACP-401 實際竣工圖（電力系統.pdf）
+    上方：匯流排 + 各分路 NFB/MS/設備；下方：電路明細表
     """
     import matplotlib.patches as mpatches
+    import matplotlib.lines as mlines
+
     ax.set_facecolor("#12121f")
     ax.axis("off")
 
@@ -17,74 +20,151 @@ def draw_sld(ax, circuits: list, panel: dict):
         return
 
     n = len(circuits)
-    col_w = max(1.2, 10.0 / (n + 1))
-    ax.set_xlim(-0.5, n * col_w + 0.5)
-    ax.set_ylim(-1, 8)
+    col_w = max(1.5, 14.0 / max(n, 1))
+    total_w = n * col_w
+    ax.set_xlim(-1.0, total_w + 0.5)
+    ax.set_ylim(-3.5, 9.5)   # 下方留 3.5 單位放電路表格
 
-    # MDP 匯流排
-    ax.plot([-0.5, n * col_w], [7, 7], color="#f4c430", lw=3)
-    ax.text((n * col_w) / 2, 7.25, "空調配電盤 (ACP)", ha="center",
-            color="#f4c430", fontsize=9, fontweight="bold")
+    # ── 電源標題 ────────────────────────────────────────────────
+    at  = panel.get("panel_nfb_at", "?")
+    af  = panel.get("panel_nfb_af", "?")
+    kva = panel.get("total_kva", 0)
+    ax.text(total_w / 2, 9.2,
+            f"Power From MACP  3Ø-4W-380/220V-60Hz",
+            ha="center", color="#aaaacc", fontsize=7)
+    ax.text(total_w / 2, 8.8,
+            f"空調配電盤 (ACP)  |  總NFB: 3-{at}/{af}  |  計算電流: {panel.get('total_required_a',0):.1f}A  |  {kva} kVA",
+            ha="center", color="#f4c430", fontsize=8, fontweight="bold")
+    ax.text(-0.9, 8.3, panel.get("calc_note", ""), color="#aaaacc", fontsize=6.5, va="top")
 
-    # 總 NFB
-    nfb_label = f"總NFB\n{panel.get('panel_nfb_at','?')}A/{panel.get('panel_nfb_af','?')}"
-    ax.text(-0.5, 7, nfb_label, ha="right", va="center",
-            color="white", fontsize=7)
+    # ── 主匯流排 ────────────────────────────────────────────────
+    bus_y = 8.0
+    ax.plot([-0.5, total_w], [bus_y, bus_y], color="#f4c430", lw=4)
 
     for i, c in enumerate(circuits):
         x = i * col_w + col_w / 2
 
-        # 垂直匯流排線
-        ax.plot([x, x], [7, 5.5], color="#aaaacc", lw=1.5)
+        # 垂直降落線（匯流排→NFB）
+        ax.plot([x, x], [bus_y, 6.8], color="#aaaacc", lw=1.5)
 
-        # NFB 方塊
-        rect = mpatches.FancyBboxPatch(
-            (x - 0.35, 5.0), 0.7, 0.8,
-            boxstyle="round,pad=0.05",
-            facecolor="#264653", edgecolor="#4ecdc4", linewidth=1.2,
+        # NFB 符號（圓圈）+ 標示 "3-AT/AF"
+        nfb_label = c.get("nfb_label", f"3-{c['nfb_at']}/{c.get('nfb_af','?')}")
+        circle = mpatches.Circle((x, 6.55), 0.22, facecolor="#264653",
+                                  edgecolor="#4ecdc4", linewidth=1.5)
+        ax.add_patch(circle)
+        ax.text(x + 0.28, 6.55, nfb_label, va="center", color="#4ecdc4", fontsize=5.5)
+
+        # NFB → MS 連線
+        ax.plot([x, x], [6.33, 5.8], color="#aaaacc", lw=1.2)
+
+        # MS（電磁接觸器）方塊
+        ms_rect = mpatches.FancyBboxPatch(
+            (x - 0.28, 5.4), 0.56, 0.4,
+            boxstyle="round,pad=0.04",
+            facecolor="#1d3461", edgecolor="#7ecffa", linewidth=1.0,
         )
-        ax.add_patch(rect)
-        ax.text(x, 5.4, f"NFB\n{c['nfb_at']}A", ha="center", va="center",
-                color="white", fontsize=6)
+        ax.add_patch(ms_rect)
+        ax.text(x, 5.6, "MS", ha="center", va="center", color="#7ecffa", fontsize=5.5)
 
-        # 垂直線到設備
-        ax.plot([x, x], [5.0, 3.5], color="#aaaacc", lw=1.2)
+        # 若有 VFD（Y-△ 啟動 → 用 INV 符號）
+        start = c.get("start_method", "MS")
+        if start == "Y-△":
+            inv_rect = mpatches.FancyBboxPatch(
+                (x - 0.28, 4.85), 0.56, 0.35,
+                boxstyle="round,pad=0.04",
+                facecolor="#264653", edgecolor="#f4a261", linewidth=1.0,
+            )
+            ax.add_patch(inv_rect)
+            ax.text(x, 5.02, "Y-△", ha="center", va="center",
+                    color="#f4a261", fontsize=5)
+            eq_top = 4.85
+        else:
+            eq_top = 5.4
 
-        # 線徑標注
-        ax.text(x + 0.12, 4.25, f"{c['wire_mm2']}mm²\nEMT φ{c['emt_phi']}",
-                ha="left", va="center", color="#e9c46a", fontsize=5.5)
+        # MS → 設備連線
+        ax.plot([x, x], [eq_top, 4.2], color="#aaaacc", lw=1.2)
+
+        # 線材規格標注（靠右）
+        wire_spec = c.get("wire_spec", f"{c['wire_mm2']}mm²")
+        ax.text(x + 0.08, 4.6, wire_spec, va="center",
+                color="#e9c46a", fontsize=4.5, style="italic")
 
         # 設備方塊
-        color = "#2a9d8f" if "MAU" in c["name"] else \
-                "#e63946" if "FFU" in c["name"] else \
-                "#457b9d" if "泵" in c["name"] else "#06d6a0"
+        if "MAU" in c["name"]:   clr = "#2a9d8f"
+        elif "FFU" in c["name"]: clr = "#e63946"
+        elif "泵" in c["name"]:  clr = "#457b9d"
+        elif "AHU" in c["name"]: clr = "#9b5de5"
+        else:                     clr = "#06d6a0"
+
         eq_rect = mpatches.FancyBboxPatch(
-            (x - 0.45, 2.5), 0.9, 1.0,
+            (x - 0.42, 3.2), 0.84, 1.0,
             boxstyle="round,pad=0.05",
-            facecolor=color, edgecolor="white", linewidth=1.0, alpha=0.9,
+            facecolor=clr, edgecolor="white", linewidth=1.0, alpha=0.9,
         )
         ax.add_patch(eq_rect)
         label = c["name"].replace(" ", "\n")
-        ax.text(x, 3.0, f"{label}\n{c['kw']}kW",
-                ha="center", va="center", color="white", fontsize=5.5)
-
-        # 電壓/啟動方式
-        ax.text(x, 2.3, f"{c['voltage']}V {c['phase']}\n{c['start_method']}",
-                ha="center", va="top", color="#a8dadc", fontsize=5.5)
+        ax.text(x, 3.7, f"{label}", ha="center", va="center",
+                color="white", fontsize=5.0, fontweight="bold")
 
         # 接地線
-        ax.plot([x, x], [2.5, 1.5], color="#06d6a0", lw=0.8, ls="--")
-        ax.plot([x - 0.15, x + 0.15], [1.5, 1.5], color="#06d6a0", lw=0.8)
-        ax.text(x, 1.3, f"E={c['gnd_mm2']}mm²",
-                ha="center", va="top", color="#06d6a0", fontsize=5)
+        ax.plot([x, x], [3.2, 2.6], color="#06d6a0", lw=0.8, ls="--")
+        gnd_bar_w = 0.18
+        for dx in [-gnd_bar_w, 0, gnd_bar_w]:
+            ax.plot([x + dx - 0.05, x + dx + 0.05], [2.55, 2.55],
+                    color="#06d6a0", lw=1.0 - abs(dx) * 2)
+        ax.text(x, 2.4, f"E={c['gnd_mm2']}mm²",
+                ha="center", va="top", color="#06d6a0", fontsize=4.5)
 
-    # 合計
-    kva = panel.get("total_kva", 0)
-    at = panel.get("panel_nfb_at", 0)
-    ax.text((n * col_w) / 2, 0.5,
-            f"設備總 kVA：{kva} kVA | 總 NFB：{at}A | "
-            f"計算電流：{panel.get('total_required_a', 0):.1f}A",
-            ha="center", color="#e9c46a", fontsize=8)
+    # ── 下方電路明細表（對應 ACP-401 SLD 格式） ─────────────────
+    table_y = -0.3
+    col_labels = ["CIRCUIT\nNO.", "DESCRIPTION", "LOAD\n(kW)", "CURRENT\n(A)",
+                  "VOLTAGE\n(V)", "PHASE", "WIRE SPEC"]
+    col_widths = [0.6, 2.0, 0.8, 0.8, 0.8, 0.7, 2.0]
+    col_x_starts = [-1.0]
+    for w in col_widths[:-1]:
+        col_x_starts.append(col_x_starts[-1] + w)
+
+    # 表頭
+    for j, (lbl, cx) in enumerate(zip(col_labels, col_x_starts)):
+        ax.text(cx + col_widths[j] / 2, table_y, lbl,
+                ha="center", va="top", color="#f4c430", fontsize=5.5,
+                fontweight="bold")
+
+    row_h = 0.55
+    # 表格外框
+    table_total_w = sum(col_widths)
+    ax.add_patch(mpatches.FancyBboxPatch(
+        (-1.0, table_y - (len(circuits) + 0.5) * row_h),
+        table_total_w, (len(circuits) + 0.5) * row_h + 0.1,
+        boxstyle="square,pad=0",
+        facecolor="#1a1a2e", edgecolor="#555", linewidth=0.8, zorder=0,
+    ))
+
+    for i, c in enumerate(circuits):
+        ry = table_y - (i + 1.0) * row_h
+        row_bg = "#23233a" if i % 2 == 0 else "#1a1a2e"
+        ax.add_patch(mpatches.Rectangle(
+            (-1.0, ry), table_total_w, row_h,
+            facecolor=row_bg, edgecolor="none", zorder=1,
+        ))
+        row_vals = [
+            str(i + 1),
+            c["name"],
+            str(c["kw"]),
+            str(round(c["flc_a"], 1)),
+            str(c["voltage"]),
+            c["phase"],
+            c.get("wire_spec", f"{c['wire_mm2']}mm²"),
+        ]
+        for j, (val, cx) in enumerate(zip(row_vals, col_x_starts)):
+            ax.text(cx + col_widths[j] / 2, ry + row_h / 2, val,
+                    ha="center", va="center", color="white", fontsize=5.2, zorder=2)
+
+    # 表格分隔線（列）
+    for i in range(len(circuits) + 1):
+        ry = table_y - i * row_h
+        ax.plot([-1.0, -1.0 + table_total_w], [ry, ry],
+                color="#444", lw=0.5, zorder=3)
 
     ax.set_title("空調電力單線圖（SLD）", color="white", fontsize=10, pad=8)
 
