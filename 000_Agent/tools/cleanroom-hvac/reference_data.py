@@ -12,7 +12,10 @@ ACH_TABLE = {
 }
 
 POSITIVE_PRESSURE_ACH = {"min": 5, "max": 10, "default": 6}  # 正壓換氣次數
-FFU_AIRFLOW_PER_UNIT = 900   # CMH/台
+FFU_AIRFLOW_PER_UNIT = 900   # CMH/台（2'×4' 大型 FFU 估算值）
+# ⚠️ 600×600模組（574×574×199，型號KW-5745741994LSAT-21）實測：
+#    過濾器528×528，面風速0.35m/s → 351 CMH/台（2026-06-04量測）
+FFU_AIRFLOW_600x600 = 351   # CMH/台（600×600模組，0.35m/s標準設定）
 RCU_ACH = {"min": 15, "max": 20, "default": 18}  # RCU 循環風量換氣次數
 
 # ── 造價基準（成本未稅）─────────────────────────────────────────
