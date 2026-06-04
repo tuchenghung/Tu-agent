@@ -1,49 +1,71 @@
 # 自動控制架構模組 — 控制點表、DDC 架構圖、DXF 匯出
 
+# 矽品CHC案實測 I/O 點數（來源：無塵室空調監控系統IO點數表.md）
+# MAU：22點/2台（一用一備對）→ 每台 11 點
+# EXF：5點/台；D/C（乾盤管）：2點/分區；FFU：1點/台（僅狀態）
 CTRL_POINTS = {
     "MAU": [
-        ("TI", "進氣溫度感測", "AI"),
-        ("HI", "進氣濕度感測", "AI"),
-        ("TO", "出風溫度感測", "AI"),
-        ("HO", "出風濕度感測", "AI"),
-        ("DPS", "過濾器壓差", "DI"),
-        ("CCV", "冷盤管閥", "AO"),
-        ("HCV", "加熱盤管閥", "AO"),
-        ("HUM", "加濕器控制", "DO"),
-        ("FC",  "風車啟停",   "DO"),
-        ("FS",  "風車故障",   "DI"),
+        # DO=1, AO=3, DI=3, AI=4 → 共 11 點/台（兩台=22點，符合知識庫）
+        ("FC",   "開/停機",             "DO"),
+        ("CCV",  "冰水閥（比例）",      "AO"),
+        ("HCV",  "熱水閥（比例）",      "AO"),
+        ("INV",  "變頻器控制",          "AO"),
+        ("FS",   "運轉確認",            "DI"),
+        ("FT",   "跳脫（過電流）",      "DI"),
+        ("DPS",  "過濾器差壓（初+中效）","DI"),
+        ("SAT",  "送風溫度",            "AI"),
+        ("SAH",  "送風濕度",            "AI"),
+        ("SP",   "室內靜壓",            "AI"),
+        ("FINV", "VFD 頻率回饋",        "AI"),
+    ],
+    "EXF": [
+        # 5點/台
+        ("FC",   "開/停機",       "DO"),
+        ("INV",  "變頻器控制",    "AO"),
+        ("FS",   "運轉確認",      "DI"),
+        ("FT",   "跳脫",          "DI"),
+        ("FINV", "VFD 頻率回饋",  "AI"),
     ],
     "RCU": [
-        ("TI", "迴風溫度",   "AI"),
-        ("TO", "出風溫度",   "AI"),
-        ("CCV", "冷盤管閥", "AO"),
-        ("FC",  "風車啟停", "DO"),
-        ("FS",  "風車故障", "DI"),
+        ("TI",  "迴風溫度",    "AI"),
+        ("TO",  "出風溫度",    "AI"),
+        ("CCV", "冷盤管閥",    "AO"),
+        ("FC",  "風車啟停",    "DO"),
+        ("FS",  "風車故障",    "DI"),
     ],
     "AHU": [
-        ("TI", "迴風溫度", "AI"),
-        ("HI", "迴風濕度", "AI"),
-        ("TO", "出風溫度", "AI"),
-        ("DPS", "過濾器壓差", "DI"),
-        ("CCV", "冷盤管閥", "AO"),
-        ("FC",  "送風機啟停", "DO"),
-        ("FS",  "送風機故障", "DI"),
-        ("SP",  "靜壓感測",  "AI"),
-        ("VFD", "變頻器控制", "AO"),
+        ("TI",  "迴風溫度",    "AI"),
+        ("HI",  "迴風濕度",    "AI"),
+        ("TO",  "出風溫度",    "AI"),
+        ("DPS", "過濾器差壓",  "DI"),
+        ("CCV", "冷盤管閥",    "AO"),
+        ("FC",  "送風機啟停",  "DO"),
+        ("FS",  "送風機故障",  "DI"),
+        ("SP",  "靜壓感測",    "AI"),
+        ("VFD", "變頻器控制",  "AO"),
     ],
     "FCU": [
-        ("TI", "室溫感測", "AI"),
-        ("CCV", "冷盤管閥", "AO"),
-        ("FC",  "風機啟停", "DO"),
-        ("FS",  "風機故障", "DI"),
+        ("TI",  "室溫感測",    "AI"),
+        ("CCV", "冷盤管閥",    "AO"),
+        ("FC",  "風機啟停",    "DO"),
+        ("FS",  "風機故障",    "DI"),
+    ],
+    "D/C": [
+        # 乾式盤管每分區 2 點（AO+AI）
+        ("MV",  "比例式電動閥（MV）", "AO"),
+        ("TI",  "室內溫度感測",       "AI"),
+    ],
+    "FFU": [
+        # Fan Filter Unit 每台 1 點（只監狀態，非個別調速）
+        ("FS",  "運轉狀態確認",        "DI"),
     ],
     "Chiller": [
-        ("START", "主機啟停",   "DO"),
-        ("STATUS", "主機狀態",  "DI"),
-        ("FAULT",  "主機故障",  "DI"),
-        ("CHWST",  "冰水出口溫度", "AI"),
-        ("CHWRT",  "冰水回水溫度", "AI"),
-        ("CHWFLOW", "冰水流量",   "AI"),
+        ("START",    "主機啟停",        "DO"),
+        ("STATUS",   "主機狀態",        "DI"),
+        ("FAULT",    "主機故障",        "DI"),
+        ("CHWST",    "冰水出口溫度",    "AI"),
+        ("CHWRT",    "冰水回水溫度",    "AI"),
+        ("CHWFLOW",  "冰水流量",        "AI"),
     ],
 }
 
@@ -51,14 +73,16 @@ CTRL_POINTS = {
 def build_control_schedule(system_type: str, equipment: dict) -> list:
     """
     依系統型式建立控制點表。
-    equipment: {mau_count, rcu_count, ahu_count, fcu_count, chiller_count}
-    回傳: [{device, tag, description, type, count}, ...]
+    equipment: {mau_count, rcu_count, ahu_count, fcu_count, dc_count, ffu_count}
+    回傳: [{device, tag, description, io_type, count, total}, ...]
     """
     rows = []
     mau_n = equipment.get("mau_count", 0)
     rcu_n = equipment.get("rcu_count", 0)
     ahu_n = equipment.get("ahu_count", 0)
     fcu_n = equipment.get("fcu_count", 0)
+    dc_n  = equipment.get("dc_count", 0)
+    ffu_n = equipment.get("ffu_count", 0)
 
     def add_pts(device, count, key):
         for tag, desc, io_type in CTRL_POINTS.get(key, []):
@@ -79,6 +103,12 @@ def build_control_schedule(system_type: str, equipment: dict) -> list:
         add_pts(f"AHU × {ahu_n}台", ahu_n, "AHU")
     if fcu_n > 0:
         add_pts(f"FCU × {fcu_n}台", fcu_n, "FCU")
+    if dc_n > 0:
+        # 乾盤管：每台視為一個控制分區（AO+AI各1）
+        add_pts(f"D/C 乾盤管 × {dc_n}分區", dc_n, "D/C")
+    if ffu_n > 0:
+        # FFU：每台 DI×1（運轉狀態），不做個別調速
+        add_pts(f"FFU × {ffu_n}台", ffu_n, "FFU")
     add_pts("冰水主機 × 1台", 1, "Chiller")
 
     return rows

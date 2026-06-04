@@ -5,7 +5,8 @@ import math
 from typing import Optional
 from reference_data import (
     ACH_TABLE, POSITIVE_PRESSURE_ACH, FFU_AIRFLOW_PER_UNIT,
-    RCU_ACH, COST, RT_PER_PING, CHW_PIPE, PING_TO_M2
+    RCU_ACH, COST, RT_PER_PING, RT_PER_PING_CLEANROOM,
+    CHW_PIPE, CDW_PIPE, PING_TO_M2,
 )
 
 
@@ -85,15 +86,16 @@ def calc_rt(area_m2: float, class_name: str, system_type: str,
     ping = area_m2 / PING_TO_M2
 
     if "一般空調" in class_name or "ISO 9" in class_name or system_type == "FCU":
-        base_rt = ping / RT_PER_PING
+        rt_per_ping = RT_PER_PING              # 5.0坪/RT（一般空調）
         diversity = 1.0
-        note = f"{ping:.1f}坪 ÷ {RT_PER_PING}坪/RT"
+        note = f"{ping:.1f}坪 ÷ {rt_per_ping}坪/RT"
     else:
-        # 無塵室：以坪數估算後加參差因數
-        base_rt = ping / RT_PER_PING
+        # 無塵室/醫療院所：設備熱負荷重，3~3.5坪/RT（知識庫修正）
+        rt_per_ping = RT_PER_PING_CLEANROOM    # 3.5坪/RT
         diversity = COST["mep_diversity_factor"]
-        note = f"{ping:.1f}坪 ÷ {RT_PER_PING}坪/RT × 參差因數{diversity}"
+        note = f"{ping:.1f}坪 ÷ {rt_per_ping}坪/RT（無塵室基準）× 參差因數{diversity}"
 
+    base_rt = ping / rt_per_ping
     equipment_rt = equipment_heat_kw / 3.517 if equipment_heat_kw else 0
     total_rt = base_rt + equipment_rt
 
@@ -108,10 +110,19 @@ def calc_rt(area_m2: float, class_name: str, system_type: str,
 
 
 def select_chw_pipe(rt: float) -> str:
-    for max_rt, size in CHW_PIPE:
+    """回傳冰水管主管徑，格式：英制 (公制∮)，來源 GIP 水管尺寸表"""
+    for max_rt, inch, metric in CHW_PIPE:
         if rt <= max_rt:
-            return size
-    return "> 8\""
+            return f'{inch} ({metric})'
+    return '> 14"'
+
+
+def select_cdw_pipe(rt: float) -> str:
+    """回傳冷卻水管主管徑，格式：英制 (公制∮)，來源 GIP 水管尺寸表"""
+    for max_rt, inch, metric in CDW_PIPE:
+        if rt <= max_rt:
+            return f'{inch} ({metric})'
+    return '> 14"'
 
 
 def calc_duct_area(area_m2: float, system_type: str) -> float:

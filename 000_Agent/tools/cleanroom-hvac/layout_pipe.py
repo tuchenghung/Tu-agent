@@ -1,5 +1,5 @@
 # 管路設計模組 — 冰水/冷卻/排水管系統圖（matplotlib + DXF）
-from reference_data import CHW_PIPE
+from reference_data import CHW_PIPE, CDW_PIPE
 
 
 def build_pipe_schedule(rt: dict, floors: int = 1) -> dict:
@@ -33,24 +33,19 @@ def build_pipe_schedule(rt: dict, floors: int = 1) -> dict:
 
 
 def _select_chw(rt: float) -> str:
-    for max_rt, size in CHW_PIPE:
+    """冰水管徑，2.4 GPM/RT，GIP 鍍鋅鋼管"""
+    for max_rt, inch, metric in CHW_PIPE:
         if rt <= max_rt:
-            return size
-    return '> 8"'
-
-
-# 冷卻水管（3 GPM/RT，比冰水管大一級）
-_CW_PIPE = [
-    (5, '1-1/4"'), (8, '1-1/2"'), (15, '2"'), (28, '2-1/2"'),
-    (45, '3"'), (90, '4"'), (165, '5"'), (270, '6"'), (420, '8"'),
-]
+            return f'{inch} ({metric})'
+    return '> 14"'
 
 
 def _select_cw(rt: float) -> str:
-    for max_rt, size in _CW_PIPE:
+    """冷卻水管徑，3.0 GPM/RT，GIP 鍍鋅鋼管"""
+    for max_rt, inch, metric in CDW_PIPE:
         if rt <= max_rt:
-            return size
-    return '> 8"'
+            return f'{inch} ({metric})'
+    return '> 14"'
 
 
 def _select_drain(rt: float) -> str:
