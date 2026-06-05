@@ -271,7 +271,7 @@
 
 ## 記憶系統（讓 AI 越用越懂我）
 
-- **Session 開始**：自動讀 `000_Agent/memory/MEMORY.md`，回報「上次我們做到 X，還有 Y 沒完成」
+- **Session 開始**：自動讀 `000_Agent/memory/MEMORY.md`，掃描所有 `type: project` 的記憶檔案，找出含「待繼續」「未完成」「下次繼續」「待確認」等關鍵字的項目，主動列出提醒清單：「⚠️ 有 N 個未完成任務：1. XXX 2. YYY …」。沒有未完成項目則不特別提示。
 - **Session 進行中**：發現我的新偏好、我糾正你一個做法、你學到一個踩坑 → **立即**寫進 `MEMORY.md`，不要等 session 結束
 - **Session 結束**：把今天的關鍵決策、完成/未完成的任務寫進 `000_Agent/memory/daily/YYYY-MM-DD.md`；並詢問我是否要寫今天的反思日誌
 
