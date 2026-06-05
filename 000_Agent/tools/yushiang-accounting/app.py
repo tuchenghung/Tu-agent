@@ -17,6 +17,23 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# ── 密碼保護 ──────────────────────────────────────────────────────────────────
+def check_password():
+    if st.session_state.get("authenticated"):
+        return True
+    st.title("佑祥工程財務系統")
+    pwd = st.text_input("請輸入密碼", type="password")
+    if st.button("登入"):
+        if pwd == "chocmay7361":
+            st.session_state["authenticated"] = True
+            st.rerun()
+        else:
+            st.error("密碼錯誤")
+    return False
+
+if not check_password():
+    st.stop()
+
 # ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
