@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+create_notion_dbs.py
+setup_rollups.py
+.streamlit/secrets.toml
