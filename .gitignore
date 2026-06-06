@@ -51,3 +51,9 @@ client-secret-*.json
 # Python 暫存
 __pycache__/
 *.pyc
+
+# Node
+node_modules/
+
+# Claude Code session temp files
+*.tmp.*
