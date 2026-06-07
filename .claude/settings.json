@@ -40,17 +40,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cd /Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent && git log origin/main..HEAD --oneline 2>/dev/null | grep -q . && echo '📌 提醒：今天有新 commit 尚未 push，請告訴 Claude「push」或執行 git push origin main' || true"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
