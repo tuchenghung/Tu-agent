@@ -17,6 +17,7 @@
 ## Feedback（AI 學到的原則）
 
 - **雙系統隔離原則**：使用者同時有 Windows 11（PC）與 macOS（MacBook Pro M3 Pro），兩邊透過 Dropbox 同步專案資料夾。在 Windows 操作時不得修改 Mac 專屬設定（如 `~/.nvm/`、Mac 路徑的 MCP 設定）；在 Mac 操作時同理不動 Windows 設定（如 `C:\Users\deco01\nodejs\`、`-win` 結尾的 MCP 設定）。設定檔若有平台差異，以當前執行平台為準，不要跨平台套用。
+- [建立 Notion 資源前先查重](feedback_check_before_create.md) — 建 database/page 前用 `API-get-block-children` 確認頁面上無同名資源，避免重複建立。
 
 ---
 
