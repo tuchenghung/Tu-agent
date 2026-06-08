@@ -1,0 +1,196 @@
+# 建立規劃案件
+
+從案件名稱自動完成：
+1. 在 Dropbox 建立 A-I 標準資料夾結構
+2. 在 Notion Projects 資料庫建立新專案頁面（狀態：規劃中）
+3. Notion 頁面內建立 A-I 折疊標題
+
+觸發方式：
+- `/建立規劃案件 案件名稱 公司別`
+- 例（宏祐集團）：`/建立規劃案件 台中榮總內視鏡中心 宏宇智慧`
+- 例（YUSHI）：`/建立規劃案件 某某廠房工程 YUSHI`
+
+---
+
+## 執行步驟
+
+### Step 0：偵測平台 + 取得參數
+
+```bash
+uname -s 2>/dev/null || echo Windows
+```
+
+從使用者輸入取得：
+- `$CASE_NAME`：案件名稱（第一個參數）
+- `$COMPANY`：公司別（第二個參數，若未輸入預設「宏宇智慧」）
+
+依平台設定關鍵路徑：
+- **Mac (Darwin)**
+  - `$NODE` = `~/.nvm/versions/node/v24.14.1/bin/node`
+  - `$YYYYMMDD` = 執行 `date +%Y%m%d`
+  - 宏祐集團 Dropbox = `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐`
+  - YUSHI Dropbox = `/Users/tuzhenghong/Library/CloudStorage/Dropbox/yushi`
+- **Windows**
+  - `$NODE` = `C:\Users\deco01\nodejs\node.exe`
+  - `$YYYYMMDD` = 執行 `powershell -Command "Get-Date -Format 'yyyyMMdd'"`
+  - 宏祐集團 Dropbox = `D:\Dropbox\宏祐`
+  - YUSHI Dropbox = `D:\Dropbox\yushi`
+
+使用 **AskUserQuestion** 詢問集團：
+- 問題：「這個案件屬於哪個集團？」
+- 選項：宏祐集團 / YUSHI
+
+依回答設定 `$集團` 與 `$DROPBOX_ROOT`（對應上方路徑）。
+
+`$BASE` = `$DROPBOX_ROOT/$YYYYMMDD-$CASE_NAME`
+
+---
+
+### Step 1：建立 Dropbox 資料夾結構
+
+使用 Node.js 建立（跨平台）：
+
+```bash
+$NODE -e "
+const fs = require('fs');
+const path = require('path');
+const BASE = '$BASE';
+const dirs = [
+  'A業主提供資料', 'B規劃圖面', 'C簡報資料', 'D預算報價',
+  'E業主合同資料', 'F供應商報價與資料', 'G進度計畫管理', 'H照片', 'I其他',
+  'D預算報價/參考報價',
+  'F供應商報價與資料/廠商報價'
+];
+for (const d of dirs) fs.mkdirSync(path.join(BASE, d), { recursive: true });
+console.log('✅ 建立完成：');
+console.log(fs.readdirSync(BASE).sort().join('\n'));
+"
+```
+
+---
+
+### Step 2：Notion 建立新專案頁面
+
+使用 `mcp__notion__API-post-page`：
+
+```json
+{
+  "parent": { "database_id": "3355cac1-0351-4ef4-8eb1-8b8f0bb619c3" },
+  "icon": { "type": "emoji", "emoji": "🏗️" },
+  "properties": {
+    "專案": { "title": [{ "text": { "content": "$CASE_NAME" } }] },
+    "公司別": { "select": { "name": "$COMPANY" } },
+    "集團": { "select": { "name": "$集團" } },
+    "狀態": { "status": { "name": "規劃中" } },
+    "負責人": { "people": [{ "id": "261d872b-594c-8188-8718-000252a44fde" }] },
+    "開始日": { "date": { "start": "YYYY-MM-DD" } }
+  }
+}
+```
+
+記下回傳的 `page_id` 供後續使用。
+
+---
+
+### Step 3：在 Notion 頁面建立 A-I 折疊標題（含 Dropbox 路徑）
+
+每個折疊區塊的子項目直接寫入對應的 Dropbox 資料夾路徑（純文字，可複製貼到檔案總管）。
+Notion 不支援 `file://` 本機連結，故以文字存放。
+
+使用 Node.js 寫成 .mjs 暫存檔執行（避免 shell 跳脫問題）：
+
+寫入暫存腳本 `$TMP_SCRIPT`，內容如下（`$BASE` 與 `$SEP` 依平台替換）：
+
+```js
+// Mac: SEP = '/', Windows: SEP = '\\'
+const TOKEN = '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';
+const PAGE_ID = '$PAGE_ID';
+const BASE = '$BASE';
+const SEP = '$SEP';  // Mac: '/' / Windows: '\\'
+
+const sections = [
+  ['A 業主提供資料', 'A業主提供資料'],
+  ['B 規劃圖面',     'B規劃圖面'],
+  ['C 簡報資料',     'C簡報資料'],
+  ['D 預算報價',     'D預算報價'],
+  ['E 業主合同資料', 'E業主合同資料'],
+  ['F 供應商報價與資料', 'F供應商報價與資料'],
+  ['G 進度計畫管理', 'G進度計畫管理'],
+  ['H 照片',         'H照片'],
+  ['I 其他',         'I其他'],
+];
+
+const children = sections.map(([title, folder]) => ({
+  object: 'block',
+  type: 'heading_2',
+  heading_2: {
+    rich_text: [{ type: 'text', text: { content: title } }],
+    is_toggleable: true,
+    children: [{
+      object: 'block',
+      type: 'bulleted_list_item',
+      bulleted_list_item: {
+        rich_text: [{ type: 'text', text: { content: BASE + SEP + folder } }]
+      }
+    }]
+  }
+}));
+
+const r = await fetch('https://api.notion.com/v1/blocks/' + PAGE_ID + '/children', {
+  method: 'PATCH',
+  headers: {
+    'Authorization': 'Bearer ' + TOKEN,
+    'Notion-Version': '2022-06-28',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ children })
+});
+const d = await r.json();
+console.log('Done:', d.results?.length, 'blocks');
+```
+
+執行：`$NODE $TMP_SCRIPT`
+
+---
+
+### Step 4：輸出執行摘要
+
+```
+## ✅ 規劃案件建立完成
+
+**案件名稱：** $CASE_NAME
+**公司別：** $COMPANY（$集團）
+**Dropbox 路徑：** $BASE
+**Notion 頁面：** https://www.notion.so/$PAGE_ID
+
+### 建立的資料夾
+- A 業主提供資料
+- B 規劃圖面
+- C 簡報資料
+- D 預算報價（含：參考報價）
+- E 業主合同資料
+- F 供應商報價與資料（含：廠商報價）
+- G 進度計畫管理
+- H 照片
+- I 其他
+
+### 下一步
+把業主提供的標案文件放入 A，自己的報價草稿放 D。
+開始跑施工圖時執行 /規劃轉施工 升級資料夾結構。
+```
+
+---
+
+## 關鍵常數
+
+| 項目 | 值 |
+|---|---|
+| Notion Projects 資料庫 ID | `3355cac1-0351-4ef4-8eb1-8b8f0bb619c3` |
+| Notion Token | `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` |
+| 政宏 User ID | `261d872b-594c-8188-8718-000252a44fde` |
+| Mac Node | `~/.nvm/versions/node/v24.14.1/bin/node` |
+| Windows Node | `C:\Users\deco01\nodejs\node.exe` |
+| Dropbox 根目錄（Mac，宏祐集團） | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐` |
+| Dropbox 根目錄（Windows，宏祐集團） | `D:\Dropbox\宏祐` |
+| Dropbox 根目錄（Mac，YUSHI） | `/Users/tuzhenghong/Library/CloudStorage/Dropbox/yushi` |
+| Dropbox 根目錄（Windows，YUSHI） | `D:\Dropbox\yushi` |

@@ -1,0 +1,3 @@
+[mcp_servers.playwright]
+command = "/Users/tuzhenghong/.nvm/versions/node/v24.14.1/bin/node"
+args = ["/Users/tuzhenghong/.nvm/versions/node/v24.14.1/lib/node_modules/@playwright/mcp/cli.js"]
