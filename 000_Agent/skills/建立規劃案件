@@ -28,12 +28,12 @@ uname -s 2>/dev/null || echo Windows
 - **Mac (Darwin)**
   - `$NODE` = `~/.nvm/versions/node/v24.14.1/bin/node`
   - `$YYYYMMDD` = 執行 `date +%Y%m%d`
-  - 宏祐集團 Dropbox = `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐`
+  - 宏祐集團 Dropbox = `/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐/規劃中案件`
   - YUSHI Dropbox = `/Users/tuzhenghong/Library/CloudStorage/Dropbox/yushi`
 - **Windows**
   - `$NODE` = `C:\Users\deco01\nodejs\node.exe`
   - `$YYYYMMDD` = 執行 `powershell -Command "Get-Date -Format 'yyyyMMdd'"`
-  - 宏祐集團 Dropbox = `D:\Dropbox\宏祐`
+  - 宏祐集團 Dropbox = `D:\Dropbox\宏祐\規劃中案件`
   - YUSHI Dropbox = `D:\Dropbox\yushi`
 
 使用 **AskUserQuestion** 詢問集團：
