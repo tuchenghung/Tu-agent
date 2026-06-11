@@ -199,6 +199,7 @@
 | `/claude-api` | Claude API / Anthropic SDK 應用開發 |
 | `/請購開單` | 請購單開單流程（找資料夾→複製範本→填 Excel→輸出 PDF→開 Outlook 郵件） |
 | `/工法入庫` | 建材/工法入庫（Notion 裝修百科全書 + 本機 400_Knowledge/工程/建材規格/ 同步建立，需附來源） |
+| `/新增任務` | 新增任務至 Notion 行動任務資料庫，有截止日時自動建 Google Calendar 提醒 |
 
 ## 建材工法知識庫同步原則（ALWAYS）
 
