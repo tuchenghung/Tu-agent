@@ -9,8 +9,8 @@ description: "新增任務至 Notion 行動任務資料庫。觸發方式：使�
 
 | 資料庫 | ID |
 |--------|-----|
-| Notion 行動任務資料庫 | `8847aebd-089f-82d9-8e4b-816bddc1192a` |
-| Notion 案件財務管理（專案） | `2f97aebd-089f-80f7-9607-df6dc41ab3bd` |
+| Notion Tasks（行動任務庫） | `f1dc0829-774c-493a-aa21-eefc6e35b034` |
+| Notion Projects（專案與指標） | `3355cac1-0351-4ef4-8eb1-8b8f0bb619c3` |
 
 ## 觸發方式
 
@@ -29,7 +29,7 @@ description: "新增任務至 Notion 行動任務資料庫。觸發方式：使�
 
 ---
 
-### STEP 2：詢問截止日與描述（可選）
+### STEP 2：詢問截止日與專案（可選）
 
 用 **AskUserQuestion** 詢問：
 
@@ -39,7 +39,7 @@ description: "新增任務至 Notion 行動任務資料庫。觸發方式：使�
 若選「自訂日期」→ 請使用者用文字回覆日期（格式：YYYY-MM-DD 或中文如「6/20」）
 
 **問題 2**：「要關聯到哪個專案？」（可與問題 1 合併為多問題 AskUserQuestion）
-- 選項：南港GTP / 羅東聖母S棟 / 龍潭廠 / 不關聯 / 我來輸入
+- 選項：南港GTP / 龍潭廠 / 羅東聖母 / 不關聯 / 我來輸入
 
 若使用者選「不關聯」或無明確答案 → 跳過專案關聯。
 
@@ -51,20 +51,21 @@ description: "新增任務至 Notion 行動任務資料庫。觸發方式：使�
 
 ```json
 {
-  "parent": { "database_id": "8847aebd-089f-82d9-8e4b-816bddc1192a" },
+  "parent": { "database_id": "f1dc0829-774c-493a-aa21-eefc6e35b034" },
+  "icon": { "type": "emoji", "emoji": "📋" },
   "properties": {
-    "行動任務卡片": { "title": [{ "text": { "content": "$TASK_NAME" } }] },
-    "行動狀態": { "status": { "name": "尚未開始" } },
-    "截止日": { "date": { "start": "YYYY-MM-DD" } },
-    "問題／目標": { "rich_text": [{ "text": { "content": "$DESCRIPTION" } }] },
-    "專案項目": { "relation": [{ "id": "$PROJECT_PAGE_ID" }] }
+    "任務": { "title": [{ "text": { "content": "$TASK_NAME" } }] },
+    "狀態": { "status": { "name": "待處理" } },
+    "Deadline": { "date": { "start": "YYYY-MM-DD" } },
+    "備註": { "rich_text": [{ "text": { "content": "$DESCRIPTION" } }] },
+    "Project": { "relation": [{ "id": "$PROJECT_PAGE_ID" }] }
   }
 }
 ```
 
-- `截止日` 若無則省略該欄位
-- `問題／目標` 若無描述則省略或填空
-- `專案項目` 若不關聯則省略
+- `Deadline` 若無則省略該欄位
+- `備註` 若無描述則省略
+- `Project` 若不關聯則省略
 
 ---
 
@@ -101,19 +102,23 @@ TaskCreate(
 
 ---
 
-## 常用專案 page_id 對照
+## 常用專案 page_id 對照（來自 Projects（專案與指標）DB）
 
 | 案件 | page_id |
 |------|---------|
-| 南港實驗室GTP實驗室修改工程 | `3057aebd-089f-8017-9b12-d90b5e31933e` |
-| 博訊龍潭廠1、4F裝修工程 | （從案件財務管理 DB 查詢） |
-| 羅東聖母S棟病房整修 | （從案件財務管理 DB 查詢） |
+| 南港實驗室GTP實驗室修改工程 | `3627aebd-089f-81e9-b146-ffc433daf3f0` |
+| 博訊龍潭廠1、4F裝修工程 | `3627aebd-089f-816c-b0ee-e3eb4906cc49` |
+| 博訊龍潭廠1 4F改修追加工程 | `3627aebd-089f-8105-af62-c67aee029abd` |
+| 羅東聖母醫院S棟5樓耳鼻喉科整修工程 | `367c47de-5bd0-4dd6-85b6-817d2c23975a` |
+| 南崁廠房高架地板工程 | `3797aebd-089f-81f4-9bc2-d8a3900c9561` |
+| 市醫和平院區醫療大樓8樓婦兒科病房整修工程 | `adcbd1bd-8636-4ae9-a1a4-219d7557e96d` |
 
 ---
 
 ## 注意事項
 
-1. `行動狀態` 預設值為「尚未開始」
+1. `狀態` 預設值為「待處理」（選項：待處理 / 進行中 / 卡住 / 完成）
 2. 截止日若使用者給中文日期（如「6/20」）→ 轉換為 `2026-06-20`
 3. 若使用者說「今天」→ 用當天日期；「明天」→ +1 天；「本週五」→ 計算當週五
 4. Google Calendar 提醒規則 → 前一天全天行程＋前一小時提醒（固定，不需詢問）
+5. **勿使用 `8847aebd`（雷蒙的行動任務庫），那是第三方模板系統**
