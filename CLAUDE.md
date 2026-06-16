@@ -294,6 +294,12 @@
 
 > 這一區會隨我糾正你的次數慢慢長出來。一開始是空的。
 
+### Skill 優先原則（已犯錯3次：2026-06-08×2、2026-06-16×1）
+
+- **ALWAYS**：收到任何請求（包括只貼一個檔案路徑、沒有額外文字說明）→ 第一步先掃可用 skill 清單，符合觸發條件就呼叫 `Skill` 工具，不得直接手動寫 code 或手動分析
+- **NEVER**：自行判斷「這份檔案是舊案件/已發包項目的歷史檔案，應該不算新報價」而跳過 skill 比對——讓 skill 自己判斷是否適用，不要自己猜測不需要
+- 詳見 `000_Agent/memory/MEMORY.md` 中 `feedback_always_invoke_skill_tool`
+
 ### 雙系統隔離原則（Windows / macOS）
 
 使用者同時有 **Windows 11（PC）** 與 **macOS（MacBook Pro M3 Pro）**，兩邊透過 Dropbox 同步專案資料夾。
