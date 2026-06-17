@@ -39,6 +39,9 @@ description: "收到台股或美股持倉快照截圖後，自動完成：存本
 - 完整持倉明細表（股票/類別/股數/現價/均價/市值/損益/損益%/損益平衡價）
 - vs 上次快照變化表
 
+**Obsidian wikilink 規則（必做）**：完整持倉表、與上次快照變化表、產業分佈表的股票名稱欄，一律使用 `[[股票名]]` 格式。
+例：`| [[台積電]] | 現股 | 100 | ...`、`| 半導體/IC | [[台積電]]、[[同欣電]] | ...`
+
 ---
 
 ### STEP 2：投資週報資料庫新增一筆
@@ -174,6 +177,9 @@ toggle 內容：完整持倉表格（8欄）
 - 損益總覽（USD + TWD換算，匯率記錄）
 - ETF 配置表 + 個股分主題表
 - vs 上次快照變化表
+
+**Obsidian wikilink 規則（必做）**：ETF 配置表、個股各主題表、與上次快照變化表的代號欄，一律使用 `[[代號]]` 格式。
+例：`| [[NVDA]] | 5.00254 | ...`、`| [[VTI]] | 22.36 | ...`
 
 ---
 
@@ -339,3 +345,10 @@ fetch(`https://api.notion.com/v1/blocks/${TW_PAGE}/children?page_size=100`, ...)
 - **table_width 不可修改**：加欄時必須刪舊表再重建，記錄前一個 block ID 作為 `after` 參數
 - **Notion table_width 固定**：建立時設定後不可更新，必須 DELETE + 重建
 - **.env 路徑**：`/Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent/.env`
+
+
+---
+
+## 分類
+
+[[Skill目錄]]

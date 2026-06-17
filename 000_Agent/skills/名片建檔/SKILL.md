@@ -245,3 +245,10 @@ import('dotenv/config').then(async () => {
 3. **手機欄位格式**：直接填數字，如 `0933-522-556`
 4. **名片照片一定要歸檔**，不留在 Downloads
 5. **Obsidian vault 不建立客戶 .md 檔**，統一用 Notion 管理
+
+
+---
+
+## 分類
+
+[[Skill目錄]]

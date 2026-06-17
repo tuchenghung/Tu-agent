@@ -331,3 +331,10 @@ Write-Host "✅ Outlook 郵件已開啟，請確認後手動按傳送"
 ## 腳本暫存路徑慣例
 
 所有暫存腳本一律寫入 `D:\Dropbox\Tu-agent\000_Agent\scripts\` 再執行，避免 shell 中文編碼問題。
+
+
+---
+
+## 分類
+
+[[Skill目錄]]

@@ -30,3 +30,10 @@ tags: [投資, ETF, 美股]
 - Notion 個股研究頁：SPDR Intl Treasury Bond（BWX）
 
 ## 備註
+
+
+---
+
+## 分類
+
+[[投資]]
