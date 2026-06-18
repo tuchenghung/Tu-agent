@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "400_Knowledge/系統架構/Obsidian知識庫.md",
+                "file": "500_Investment/投資.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Obsidian知識庫"
+              "title": "投資"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "400_Knowledge/系統架構/Obsidian知識庫.md",
+                "file": "500_Investment/投資.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Obsidian知識庫 的大綱"
+              "title": "投資 的大綱"
             }
           },
           {
@@ -176,11 +176,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,43 +199,43 @@
   },
   "active": "fb51fd407dec60e9",
   "lastOpenFiles": [
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/工項報價清單.csv",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/04_投標流程追蹤.md",
-    "200_Reference/templates/政府標案投標SOP.md",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md.tmp.70928.e16486579fa4",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/03_原始檔路徑.md",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/02_廠商報價追蹤.md",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/01_工項成本評估.md",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md",
-    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修",
-    "400_Knowledge/系統架構/雙系統同步.md",
-    "400_Knowledge/工程/施工紀錄SOP.md",
-    "CLAUDE.md",
-    "clients-list.png",
-    "未命名.md",
-    "未命名.base",
-    "2026-04-15-報價單歸檔小助手-design.md",
-    "2026-05-23.md",
-    "未命名.canvas",
-    "000_Agent/scripts/add_dropbox_link_to_notion.mjs",
-    "000_Agent/memory/daily/2026-05-18.md",
-    "100_Todo/plans/2026-05-18-新增任務Skill.md",
-    "100_Todo/drafts/2026-05-17_羅東聖母醫院耐震補強簡報話術.md",
-    "000_Agent/memory/daily/2026-05-16.md",
-    "100_Todo/plans/2026-05-16-施工紀錄自動化.md",
-    "400_Knowledge/系統架構/Obsidian知識庫.md",
+    "000_Agent/scripts/stock_alert_log.txt",
+    "000_Agent/scripts/stock_alert_1343.py",
+    "500_Investment/個股/台灣精銳.md.tmp.25018.ffc2ff121bbe",
+    "000_Agent/memory/daily/2026-06-17.md",
+    "500_Investment/決策日誌/2026-06-17_投資組合復盤.md",
+    "500_Investment/個股/雙鴻.md",
+    "500_Investment/個股/奇鋐.md",
+    "500_Investment/個股/SMCI.md",
+    "500_Investment/投資.md",
+    "500_Investment/決策日誌/範本.md",
+    "500_Investment/風險管理/停損追蹤.md",
+    "node_modules/dotenv/skills/dotenv/SKILL.md",
     "000_Agent/templates/日誌.md",
-    "000_Agent/templates/工作流筆記.md",
-    "000_Agent/templates",
-    "Untitled Kanban.md",
-    "000_Agent/memory/MEMORY.md",
-    "000_Agent/skills/obsidian-markdown/references/PROPERTIES.md",
-    "000_Agent/skills/obsidian-markdown/references/EMBEDS.md",
-    "000_Agent/skills/obsidian-markdown/references/CALLOUTS.md",
-    "000_Agent/skills/obsidian-markdown/references",
-    "000_Agent/skills/obsidian-markdown",
-    "000_Agent/skills/obsidian-cli",
-    "000_Agent/skills/obsidian-bases/references",
-    "000_Agent/skills/obsidian-bases"
+    "000_Agent/skills/ui-ux-pro-max/SKILL.md",
+    "400_Knowledge/系統架構/雙系統同步.md",
+    "100_Todo/待辦.md",
+    "400_Knowledge/工程/防水工程.md",
+    "400_Knowledge/投資/股票觀察名單/README.md",
+    "000_Agent/skills/defuddle/SKILL.md",
+    "100_Todo/plans/2026-05-16-施工紀錄自動化.md",
+    "100_Todo/drafts/2026-05-17_羅東聖母醫院耐震補強簡報話術.md",
+    "300_Journal/日誌.md",
+    "000_Agent/memory/daily/AI工作日誌.md",
+    "400_Knowledge/系統架構/Obsidian知識庫.md",
+    "000_Agent/skills/新增任務/SKILL.md",
+    "000_Agent/skills/Skill目錄.md",
+    "000_Agent/skills/零股入帳.md",
+    "400_Knowledge/工程/2026-05-24_三家廠商報價合併標單填寫SOP.md",
+    "000_Agent/memory/daily/AI工作日誌.md.tmp.25018.3b26f61ba3fc",
+    "未命名.canvas",
+    "000_Agent/skills/工法入庫/SKILL.md.tmp.25018.9030266f456b",
+    "400_Knowledge/工程/鋁窗鐵窗工程.md.tmp.25018.e4bacdf9b6d0",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/工項報價清單.csv",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md.tmp.70928.e16486579fa4",
+    "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修",
+    "clients-list.png",
+    "未命名.base",
+    "000_Agent/scripts/add_dropbox_link_to_notion.mjs"
   ]
 }

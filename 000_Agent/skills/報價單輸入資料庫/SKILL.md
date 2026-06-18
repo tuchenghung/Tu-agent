@@ -193,6 +193,12 @@ tags: [工程知識, {工種}, 報價合理性, {案件名稱}]
 - 從現有選項中找最符合的
 - 若無完全符合，新增選項並告知使用者
 
+**案件名稱 relation（`案件名稱` 欄位）— 必填，不得略過：**
+- 用 `API-post-search` 以工程案件名稱關鍵字搜尋，找案件管理系統（DB `3355cac1-0351-4ef4-8eb1-8b8f0bb619c3`）中對應的案件頁面
+- 找到唯一符合 → 記下 `$CASE_PAGE_ID`，STEP 4 建立品項時填入 `案件名稱` relation
+- 找到多個 → **AskUserQuestion** 讓使用者選擇
+- 找不到 → 告知使用者「找不到對應案件，品項的案件名稱 relation 將留空，請事後手動補上」
+
 **編號規則**（`編號` title 欄位，每個品項一筆）：
 - 格式：`供應商簡稱-YYMMDD-序號`
 - 供應商簡稱：取名稱前 2~3 字（去掉「工程行/有限公司/股份有限公司」等後綴）
@@ -220,10 +226,12 @@ properties:
   工程案件名稱: { select: { name: "羅東聖母S棟病房整修" } }
   備註: { rich_text: [{ text: { content: "..." } }] }
   供應商: { relation: [{ id: "供應商page_id" }] }
+  案件名稱: { relation: [{ id: "$CASE_PAGE_ID" }] }
 ```
 
 - `總價` 欄位為公式（數量×單價），自動計算，**不需填入**
 - `供應商` 欄位在建立時同步填入，無需事後更新
+- `案件名稱` 欄位連結案件管理系統頁面，找不到時留空並告知使用者
 - 建立完成後記錄所有品項的 page_id 清單
 
 ---
@@ -294,19 +302,13 @@ console.log(JSON.stringify(dirs));
 
 #### 3. 確認目標子目錄
 
-優先順序：
-1. `$PROJECT_FOLDER/F供應商報價與資料/廠商報價/`
-2. `$PROJECT_FOLDER/廠商報價/`
-3. 兩者都不存在 → 建立 `$PROJECT_FOLDER/廠商報價/`
+目標資料夾（固定）：`$PROJECT_FOLDER/F供應商報價與資料/`
+- 若不存在則自動建立
 
 ```js
 const fs = require('fs'), path = require('path');
-const p1 = path.join(PROJECT_FOLDER, 'F供應商報價與資料', '廠商報價');
-const p2 = path.join(PROJECT_FOLDER, '廠商報價');
-let dest;
-if (fs.existsSync(p1))      dest = p1;
-else if (fs.existsSync(p2)) dest = p2;
-else { fs.mkdirSync(p2, { recursive: true }); dest = p2; }
+const dest = path.join(PROJECT_FOLDER, 'F供應商報價與資料');
+if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
 console.log(dest);
 ```
 
