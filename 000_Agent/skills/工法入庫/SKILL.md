@@ -14,7 +14,8 @@ description: "建材/工法/廠商資料入庫 — 同步建立裝修百科全�
 ## 資料庫常數（勿改動）
 - **裝修百科全書** DB ID：`1e25b3e6-e630-4f67-8677-f97a9a8dd159`
 - **供應商資料庫** DB ID：`8ed44912-2c9e-4c9a-bbd1-d7bbc1933b3b`
-- **本機路徑**：`D:\Dropbox\Tu-agent\400_Knowledge\工程\建材規格\`
+- **本機路徑（Mac）**：`/Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent/400_Knowledge/工程/建材規格/`
+- **本機路徑（Win）**：`D:\Dropbox\Tu-agent\400_Knowledge\工程\建材規格\`
 - **Notion Token**：`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`
 
 ---
@@ -44,7 +45,7 @@ description: "建材/工法/廠商資料入庫 — 同步建立裝修百科全�
 
 ## Step 2：建立裝修百科全書條目
 
-用 `mcp__notion-win__API-post-page` 建立：
+用 `mcp__notion__API-post-page` 建立：
 
 ```
 parent: {"database_id": "1e25b3e6-e630-4f67-8677-f97a9a8dd159"}
@@ -63,9 +64,9 @@ properties:
 
 對每一家供應商：
 
-1. 先用 `mcp__notion-win__API-post-search` 搜尋公司名
+1. 先用 `mcp__notion__API-post-search` 搜尋公司名
 2. 若已存在 → 記錄現有 `page_id` 和 `url`，不重複建立，在備註加上新產品資訊
-3. 若不存在 → 用 `mcp__notion-win__API-post-page` 建立：
+3. 若不存在 → 用 `mcp__notion__API-post-page` 建立：
 
 ```
 parent: {"database_id": "8ed44912-2c9e-4c9a-bbd1-d7bbc1933b3b"}
@@ -137,11 +138,19 @@ append_blocks(供應商_page_id, [
 ## Step 5：本機知識庫
 
 建立 markdown 檔案：
-- 路徑：`D:\Dropbox\Tu-agent\400_Knowledge\工程\建材規格\YYYY-MM-DD_產品名.md`
+- 路徑（Mac）：`/Users/tuzhenghong/Library/CloudStorage/Dropbox/Tu-agent/400_Knowledge/工程/建材規格/YYYY-MM-DD_產品名.md`
+- 路徑（Win）：`D:\Dropbox\Tu-agent\400_Knowledge\工程\建材規格\YYYY-MM-DD_產品名.md`
 - 日期：今天的日期（從 MEMORY.md currentDate 讀取）
 
 檔案內容包含：
 ```markdown
+---
+tags: [工法, {工種}, {關鍵字1}, {關鍵字2}]
+date: YYYY-MM-DD
+category: {工種工程}
+來源: {路徑或網址}
+---
+
 # 產品名（品牌）
 
 ## 產品資訊
@@ -154,11 +163,17 @@ append_blocks(供應商_page_id, [
 
 ## 選用判斷
 | 需求 | 適合？ |
-|------|------|
+|------|--------|
 | 場景 | ✅/⚠️/❌ |
 
-## 施工注意事項
-- 條列
+> [!warning] 施工禁令
+> - 列出絕對禁止事項（化學相容、材料規格、操作限制等）
+
+> [!tip] 施工要點
+> - 列出關鍵施工步驟與品質控制要點
+
+> [!info] 驗收稽核清單
+> - 列出驗收時需核對的項目
 
 ## 供應商
 | 公司 | 電話 | 網址 |
@@ -211,7 +226,9 @@ append_blocks(供應商_page_id, [
 
 ## Step 7：更新記憶
 
-在 `C:\Users\deco01\.claude\projects\D--Dropbox-Tu-agent\memory\ref_建材工法庫.md` 追加這筆入庫記錄：
+在以下路徑追加這筆入庫記錄（依執行平台選擇）：
+- Mac：`/Users/tuzhenghong/.claude/projects/-Users-tuzhenghong-Library-CloudStorage-Dropbox-Tu-agent/memory/ref_建材工法庫.md`
+- Win：`C:\Users\deco01\.claude\projects\D--Dropbox-Tu-agent\memory\ref_建材工法庫.md`
 
 格式：
 ```
