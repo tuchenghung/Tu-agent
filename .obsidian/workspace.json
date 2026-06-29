@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c0ee1eb783c039dc",
+        "id": "f4770cec9b63f680",
         "type": "tabs",
         "children": [
           {
-            "id": "fb51fd407dec60e9",
+            "id": "a619bdd2cf06cd8d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "500_Investment/投資.md",
+                "file": "400_Knowledge/工程/建材規格/2026-06-24_冷凍冷藏庫建置通用知識.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "投資"
+              "title": "2026-06-24_冷凍冷藏庫建置通用知識"
             }
           }
         ]
@@ -74,7 +74,8 @@
               "title": "書籤"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -197,8 +198,14 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "fb51fd407dec60e9",
+  "active": "a619bdd2cf06cd8d",
   "lastOpenFiles": [
+    "2026-06-24.md",
+    "未命名.canvas",
+    "000_Agent/memory/daily/2026-06-24.md",
+    "400_Knowledge/工程/建材規格/2026-06-24_冷凍冷藏庫建置通用知識.md.tmp.6868.2f411606d239",
+    "400_Knowledge/工程/建材規格/2026-06-24_冷凍冷藏庫建置通用知識.md",
+    "500_Investment/投資.md",
     "000_Agent/scripts/stock_alert_log.txt",
     "000_Agent/scripts/stock_alert_1343.py",
     "500_Investment/個股/台灣精銳.md.tmp.25018.ffc2ff121bbe",
@@ -207,7 +214,6 @@
     "500_Investment/個股/雙鴻.md",
     "500_Investment/個股/奇鋐.md",
     "500_Investment/個股/SMCI.md",
-    "500_Investment/投資.md",
     "500_Investment/決策日誌/範本.md",
     "500_Investment/風險管理/停損追蹤.md",
     "node_modules/dotenv/skills/dotenv/SKILL.md",
@@ -224,18 +230,12 @@
     "000_Agent/memory/daily/AI工作日誌.md",
     "400_Knowledge/系統架構/Obsidian知識庫.md",
     "000_Agent/skills/新增任務/SKILL.md",
-    "000_Agent/skills/Skill目錄.md",
-    "000_Agent/skills/零股入帳.md",
-    "400_Knowledge/工程/2026-05-24_三家廠商報價合併標單填寫SOP.md",
     "000_Agent/memory/daily/AI工作日誌.md.tmp.25018.3b26f61ba3fc",
-    "未命名.canvas",
     "000_Agent/skills/工法入庫/SKILL.md.tmp.25018.9030266f456b",
     "400_Knowledge/工程/鋁窗鐵窗工程.md.tmp.25018.e4bacdf9b6d0",
     "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/工項報價清單.csv",
     "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修/00_總覽.md.tmp.70928.e16486579fa4",
     "100_Todo/projects/202605-市醫和平院區醫療大樓8樓婦兒科病房整修",
-    "clients-list.png",
-    "未命名.base",
-    "000_Agent/scripts/add_dropbox_link_to_notion.mjs"
+    "clients-list.png"
   ]
 }
