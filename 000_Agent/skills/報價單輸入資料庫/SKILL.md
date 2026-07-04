@@ -482,6 +482,55 @@ console.log('✅ 複製成功：', path.join(DEST_DIR, NEW_FILENAME));
 
 若報價單跨多個工種（如水電+消防），以主工種為主，在備註補充說明。
 
+#### 2.5 同步建立/更新案件財務管理頁面的「本案發包明細」表格
+
+> 發包管理資料庫的成本會透過 rollup 自動反映到案件財務管理頁面的「成本」欄位，但案件財務管理頁面內若已有「本案發包明細」inline 子資料庫（供快速瀏覽單一案件所有發包項目），也要同步寫入一筆，不能只寫發包管理就結束。
+
+1. 用 `API-get-block-children` 讀取 `$PROJECT_ID`（案件財務管理頁面）的 block children，找 `type: "child_database"` 且標題含「本案發包明細」的區塊
+2. **情況 A：已存在** → 記下該 database_id，直接新增一筆品項
+3. **情況 B：不存在** → 先建立：
+   - ⚠️ Notion MCP 的 `API-create-a-data-source` 在本環境呼叫會回傳 `invalid_request_url`（新版 data source 端點與 MCP server 設定的 `Notion-Version: 2022-06-28` 不相容），改用 curl 直連舊版 `POST https://api.notion.com/v1/databases` 建立：
+     ```bash
+     curl -s -X POST https://api.notion.com/v1/databases \
+       -H "Authorization: Bearer $(取自 ~/.claude.json 的 mcpServers.notion.env.OPENAPI_MCP_HEADERS)" \
+       -H "Notion-Version: 2022-06-28" \
+       -H "Content-Type: application/json" \
+       -d '{
+         "parent": {"type": "page_id", "page_id": "$PROJECT_ID"},
+         "title": [{"type": "text", "text": {"content": "本案發包明細"}}],
+         "properties": {
+           "工種/品項": {"title": {}},
+           "廠商": {"rich_text": {}},
+           "合約金額": {"number": {"format": "number"}},
+           "已付金額": {"number": {"format": "number"}},
+           "狀態": {"select": {"options": [
+             {"name": "未發包", "color": "gray"},
+             {"name": "已發包", "color": "blue"},
+             {"name": "施工中", "color": "yellow"},
+             {"name": "完工", "color": "green"}
+           ]}},
+           "備註": {"rich_text": {}}
+         }
+       }'
+     ```
+   - 建立後立即 `PATCH /v1/databases/{id}` 設定 `{"is_inline": true}`，否則會顯示成連結頁面而非嵌入表格
+4. 在該 database（inline 或新建）用 `API-post-page` 新增一筆：
+   ```json
+   {
+     "parent": { "database_id": "本案發包明細_database_id" },
+     "properties": {
+       "工種/品項": { "title": [{ "text": { "content": "{工種簡稱或品項摘要}" } }] },
+       "廠商": { "rich_text": [{ "text": { "content": "{廠商全名}" } }] },
+       "合約金額": { "number": 含稅金額 },
+       "已付金額": { "number": 0 },
+       "狀態": { "select": { "name": "{對應STEP8狀態：已發包/施工中/完工}" } },
+       "備註": { "rich_text": [{ "text": { "content": "{品項摘要，同發包管理備註}" } }] }
+     }
+   }
+   ```
+   - **合約金額填含稅金額**，與發包管理「成本」欄位使用的含稅金額一致，方便對照
+   - 之後若有零星耗材/雜支（五金零件、加班茶水等）需歸入同一案件成本，也比照本步驟同時寫入發包管理＋本案發包明細兩處，缺一不可
+
 #### 3. 回報
 
 ```
