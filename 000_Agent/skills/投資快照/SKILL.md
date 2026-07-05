@@ -167,6 +167,42 @@ toggle 內容：完整持倉表格（8欄）
 > 台股先完成時，跳過此步驟，等美股快照完成後再執行。
 > 美股先完成時，台股快照完成後立即補做此步驟。
 
+### 台美合計頁：持股類別圓餅圖（每次必做）
+
+在「主要變動」callout 之後、資產成長趨勢圖之前，插入本次持股類別比例的圓環圖（doughnut chart）：
+
+1. 使用當次「持股類別比例（台美合計）」表格中各類別的合計NT$與佔比，依佔比由高到低排序
+2. 用 QuickChart.io 產生圖片網址：
+   - `type: doughnut`，`cutoutPercentage: 50`
+   - labels：`類別名稱 XX.X%`（含百分比）
+   - data：各類別合計NT$
+   - 固定配色（10色，依上面排序順序套用，維持每週視覺一致）：`#42a5f5 #7e57c2 #78909c #26c6da #5c6bc0 #ef5350 #ffca28 #66bb6a #ff7043 #ab47bc`
+   - `plugins.title.text`：`持股類別比例（台美合計 YYYY-MM-DD）`
+   - `plugins.legend.position: right`（畫布較窄時會自動換行到上方，屬正常現象）
+   - **圓心必須顯示總資產金額**（含千位數逗號）：用 `plugins.doughnutlabel.labels`，兩行 `[{text:'NT$x,xxx,xxx', font:{size:22,weight:'bold'}}, {text:'總資產', font:{size:14}, color:'#888'}]`
+3. **URL 過長處理（必看）**：加上 doughnutlabel 設定後網址常超過 Notion 2000 字元上限。**改用 QuickChart 短網址 API**：`POST https://quickchart.io/chart/create`，body 為 `{backgroundColor:'white', width:700, height:420, format:'png', chart: {上面的config}}`，回傳 `{success:true, url:'https://quickchart.io/chart/render/xxxx'}`，用這個短網址嵌入 Notion
+4. 插入順序：`divider → heading_3（📊 持股類別圓餅圖（台美合計）） → image block`
+
+> ⚠️ **Notion API 踩坑**：`PATCH /v1/blocks/{id}`（更新既有 image block 的網址）對 URL 格式驗證比建立時嚴格，`/chart/render/xxxx` 短網址會被拒絕（回傳 "Invalid URL"），即使用同一網址建立新 block 完全沒問題。**要更新已存在的圖表圖片時不要用 PATCH block，改成：先 DELETE 舊 block → 再用 `PATCH /v1/blocks/{parent}/children` + `after` 參數在原位置插入新 block。**
+
+### 台美合計頁：資產成長趨勢圖（每次必做）
+
+在當次「台美合計」頁面最底部插入累計至當天的總市值成長線圖：
+
+1. 查詢投資週報 DB 所有「（台美合計）」頁面的 `快照日期` 與 `總市值（元）`，依日期排序取得完整歷史數據點
+2. 用 QuickChart.io 產生折線圖圖片網址（Chart.js v2 語法，`type: line`）：
+   - `labels`：所有歷史快照日期（YYYY-MM-DD）
+   - `data`：對應總市值（元）
+   - Y 軸 `min`/`max` 設定：取數據最小值/最大值上下各留 20-30% 緩衝，並取整到 5 萬的倍數（避免預設從 0 起跳導致波動看起來太平）
+   - 標題文字：`台美合計資產成長趨勢（累計至 YYYY-MM-DD）`
+   - **不可使用自訂 callback function 字串**（QuickChart 對含 `function()` 的 ticks.callback 會回傳 400 錯誤圖），純數字 min/max 即可
+   - URL 範例：`https://quickchart.io/chart?width=760&height=380&c={urlencode(chart.js設定JSON)}`
+3. 用 Node.js `PATCH /blocks/{頁面ID}/children` 插入：`divider → heading_3（📈 資產成長趨勢（累計至 YYYY-MM-DD）） → image block（type: external, external.url: 上述網址）`
+
+> ⚠️ 隱私提醒：此圖表會把「總市值」等彙總數字（不含個股明細）透過網址傳給 QuickChart.io 第三方服務。使用者已於 2026-07-05 確認接受此方式，之後每次快照可直接執行，不需重複詢問。
+
+> ⚠️ **標題命名踩坑**：投資週報 DB 早期（2026-06-01、06-10）合計頁標題用的是「（台美股合計）」，2026-06-21 之後才改成「（台美合計）」。**查詢歷史合計資料時，不能只用字串比對「台美合計」**（會漏掉含「股」字的舊格式），必須抓出全部頁面後用 `.includes('合計')` 或直接列出全部再篩選，避免像 2026-07-05 那次漏掉 06-01/06-10 兩筆資料。
+
 ---
 
 ## 美股快照完整流程（8 步，缺一不可）
@@ -333,6 +369,24 @@ fetch(`https://api.notion.com/v1/blocks/${TW_PAGE}/children?page_size=100`, ...)
 1. 查出 `YYYY-MM-DD 快照` 前後的 toggle ID
 2. 用 `after: {前一個toggle的id}` 插入
 3. 若無前一個（第一筆），直接插在第一個 callout 後面
+
+---
+
+## 新增資產來源類別（例：保單/保費帳戶）
+
+投資追蹤系統目前有「台股」「美股」兩個資產來源，2026-07-05 起新增第三個來源「保單」（變額壽險保費帳戶投資標的）。若使用者提供新的資產截圖（券商以外的來源，如保單帳戶、其他平台），依此流程擴充：
+
+1. **判斷是否為全新來源**：畫面格式與台股/美股截圖明顯不同（例如保單帳戶的「投資標的內容」表格），且使用者未曾提供過 → 這是新資產來源，先用 AskUserQuestion 確認是否要納入台美合計、以及類別命名，不要自行假設
+2. **本機快照**：`500_Investment/持倉快照/YYYY-MM-DD_{來源名}.md`，記錄總市值、累計投入成本、報酬率、明細
+3. **投資週報 DB 新增一筆**：`YYYY-MM-DD（{來源名}）`，比照台股/美股頁面格式填入總市值/總損益/損益%/獲利檔/虧損檔/持股數
+4. **台美合計頁擴充**（若當週三個來源快照都完成）：
+   - 持股類別比例表：從 8 欄擴為 10 欄，新增「{來源名}NT$」與「{來源名}標的」兩欄；且新增一列代表該來源本身作為一個類別（不強行拆分到既有10大主題），置於合計列之前
+   - 台股vs美股比例表：改標題為「台股 vs 美股 vs {來源名} 比例」，新增一列
+   - 集中度警示：重新計算前三大類別百分比
+   - vs上次比較的「整體摘要」表：新增「{來源名}（TWD）」列，並拆出「其中：市場成長」vs「其中：新增{來源名}資產」兩列，避免把新追蹤到的資產誤當成市場報酬
+   - 圓餅圖：重新產生（11色以上時可延用既有配色再加新色），圓心總額更新為新的總市值
+   - **資產成長趨勢線圖維持原樣（不納入新來源）**：在成長趨勢圖上方加一行灰色斜體註解，說明新來源從何時開始追蹤、線圖僅追蹤原有來源以維持歷史可比性，避免新增資產被誤讀為單週暴漲
+5. 表格/圖表修改時的 Notion 技術細節，見下方「API 技術備注」（table_width 不可改需刪除重建、image block 更新需刪除重建等）
 
 ---
 
