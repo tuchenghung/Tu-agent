@@ -58,8 +58,7 @@ const BASE = '$BASE';
 const dirs = [
   'A業主提供資料', 'B規劃圖面', 'C簡報資料', 'D預算報價',
   'E業主合同資料', 'F供應商報價與資料', 'G進度計畫管理', 'H照片', 'I其他',
-  'D預算報價/參考報價',
-  'F供應商報價與資料/廠商報價'
+  'D預算報價/參考報價'
 ];
 for (const d of dirs) fs.mkdirSync(path.join(BASE, d), { recursive: true });
 console.log('✅ 建立完成：');
@@ -169,7 +168,7 @@ console.log('Done:', d.results?.length, 'blocks');
 - C 簡報資料
 - D 預算報價（含：參考報價）
 - E 業主合同資料
-- F 供應商報價與資料（含：廠商報價）
+- F 供應商報價與資料
 - G 進度計畫管理
 - H 照片
 - I 其他
