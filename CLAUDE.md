@@ -220,8 +220,10 @@
 
 1. **寫發包成本時兩處都要寫**：`/報價單輸入資料庫` skill STEP 8 詢問已發包後，以及任何零星耗材/雜支（五金零件、加班茶水等）入帳時，除了寫入發包管理資料庫，也要同步在案件財務管理頁面的「本案發包明細」表格新增一筆，不能只寫一邊
 2. **新案件建立時就先建空表格**：`/規劃轉施工` skill 在建立案件財務管理記錄後，立即建立空白「本案發包明細」表格，不用等第一筆發包才臨時建立
-3. **金額統一用含稅**：「本案發包明細」表格的「合約金額」欄位一律填含稅金額，與發包管理「成本」欄位使用的含稅金額一致，方便對照
-4. **建立 inline 子資料庫的已知限制**：Notion MCP 的 `API-create-a-data-source` 工具在本環境會回傳 `invalid_request_url`（新版 data source 端點與 MCP server 設定的 `Notion-Version: 2022-06-28` 不相容），需改用 curl 直連舊版 `POST https://api.notion.com/v1/databases` 建立，再 `PATCH` 設定 `is_inline: true`
+3. **金額統一用含稅**：「本案發包明細」表格（或其等效檢視）的「合約金額」/「成本」欄位一律填含稅金額
+4. ⚠️ **「本案發包明細」有時其實是發包管理資料庫的過濾檢視**（用 `專案` relation 篩選單一案件），欄位跟發包管理一模一樣（廠商名稱/工種/成本/狀態），此時只要發包管理記錄的 `專案` relation 填對，資料會自動出現，**不需要另外寫入獨立表格**。動手寫入前先確認案件財務管理頁面上實際看到的表格欄位是哪一種，不要預設一定是獨立子資料庫（2026-07-08 曾誤判並多建一個重複表格）
+5. **建立獨立 inline 子資料庫的已知限制**：Notion MCP 的 `API-create-a-data-source` 工具在本環境會回傳 `invalid_request_url`（新版 data source 端點與 MCP server 設定的 `Notion-Version: 2022-06-28` 不相容），需改用 curl 直連舊版 `POST https://api.notion.com/v1/databases` 建立，再 `PATCH` 設定 `is_inline: true`
+6. **若既有子資料庫回報 `does not contain any data sources accessible`**：這通常是該資料庫本身資料來源損毀（孤兒物件），不是分享權限問題，反覆調整 Notion Connections 沒有用。**絕對不要因此自建一個新的同名資料庫**，會造成頁面上出現重複表格。應請使用者在 Notion 內「複製」該表格產生新的健康資料來源，或直接確認發包管理本身資料正確即可，不強求寫入該表格
 
 
 <!-- AI 分身起始助手紀錄:START -->
