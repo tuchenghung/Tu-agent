@@ -196,6 +196,7 @@
   },
   "active": "a619bdd2cf06cd8d",
   "lastOpenFiles": [
+    "000_Agent/scripts/add_dropbox_link_yineng_260720.mjs",
     "500_Investment/個股/SPCX.md",
     "500_Investment/決策日誌/2026-07-18_快照心得.md",
     "500_Investment/持倉快照/2026-07-18_美股.md",
@@ -227,7 +228,6 @@
     "500_Investment/決策日誌/範本.md",
     "500_Investment/風險管理/停損追蹤.md",
     "node_modules/dotenv/skills/dotenv/SKILL.md",
-    "000_Agent/templates/日誌.md",
     "000_Agent/memory/daily/AI工作日誌.md.tmp.25018.3b26f61ba3fc",
     "000_Agent/skills/工法入庫/SKILL.md.tmp.25018.9030266f456b",
     "400_Knowledge/工程/鋁窗鐵窗工程.md.tmp.25018.e4bacdf9b6d0",
