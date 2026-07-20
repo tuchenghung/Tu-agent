@@ -9,9 +9,13 @@ description: "從 Excel 範本新建宏祐集團工程報價單：選擇格式 �
 
 ---
 
+## ⚠️ 適用範圍：僅限宏祐集團
+
+這個 skill 的範本（小型/中型/大型）**都是宏祐集團格式**（甲/乙分類架構、單位在數量前、微軟正黑體）。**yushi 集團報價單格式完全不同**（無甲乙分類、單純編號列表、數量在單位前、標楷體），不要拿這裡的範本套用給 yushi 案件（2026-07-20 曾誤用中型範本給yushi做雙葉食品6T電源工程，事後才發現）。yushi 報價單請以 `yushi/規劃中案件/20260608-南崁廠房高架地板工程/D預算報價/20260715南崁廠房高架地板工程.xlsx` 為基準複製修改，不要用這個skill的範本。
+
 ## 平台
 
-**僅支援 Windows**（win32com 依賴 Excel COM）。
+**僅支援 Windows**（win32com 依賴 Excel COM）。Mac 上若需建立宏祐報價單，改用 openpyxl 手動控管格式（col widths/row heights/formulas/logo anchor 全部手動設定，參考 `reference_quote_excel_template` 記憶）；插入/刪除列後務必檢查公式是否需要手動修正列號（openpyxl 不會自動調整），見 `reference_openpyxl_row_insert_formula_bug` 記憶。
 
 ```
 NODE = C:\Users\deco01\nodejs\node.exe
