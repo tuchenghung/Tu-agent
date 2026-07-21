@@ -28,6 +28,9 @@ client-secret-*.json
 # Claude Code 本機狀態（不該跨機同步）
 .claude/settings.local.json
 .claude/projects/
+
+# 超過 GitHub 100MB 限制的大型廠商簡報（僅靠 Dropbox 同步，不進 git）
+400_Knowledge/工程/廠商型錄/台灣瑪摩_HEAVY DUTY車道系統專用磚簡報.pptx
 .claude/shell-snapshots/
 .claude/todos/
 .claude/statsig/
