@@ -1,0 +1,21 @@
+{
+  "run_id": "eval-3-without_skill",
+  "expectations": [
+    {
+      "text": "未默默假設演算法，主動詢問加成法/毛利率法",
+      "passed": false,
+      "evidence": "有辨識出歧義並列出提問，但仍給了一個「暫定」最終金額（以加成法為主要建議價$157,009）當作結論呈現，等於還是給了唯一答案，只是加註但書——比skill版本更容易讓使用者誤以為這就是定案數字"
+    },
+    {
+      "text": "列出兩種算法金額比較",
+      "passed": true,
+      "evidence": "同樣列出加成法$157,009 vs 毛利率法$163,551"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 1,
+    "total": 2,
+    "pass_rate": 0.5
+  }
+}

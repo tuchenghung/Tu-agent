@@ -1,0 +1,26 @@
+{
+  "run_id": "eval-1-without_skill",
+  "expectations": [
+    {
+      "text": "使用1台尺=30.3cm換算基準，且中間過程保留足夠精度",
+      "passed": false,
+      "evidence": "換算基準正確(30.3cm)，但中間過程四捨五入到14.85尺才相乘（非全精度14.8515），這次剛好沒有造成最終金額偏差，但屬於僥倖，不是可靠的計算習慣"
+    },
+    {
+      "text": "最終加成後金額為$162,011",
+      "passed": true,
+      "evidence": "巧合下仍得出$162,011"
+    },
+    {
+      "text": "輸出遵循skill規定的表格格式",
+      "passed": false,
+      "evidence": "自行發揮了不同的章節結構（換算基準/成本明細/加成利潤/結論/備注），非skill指定的固定表格格式，每次運行格式可能不一致"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.3333
+  }
+}

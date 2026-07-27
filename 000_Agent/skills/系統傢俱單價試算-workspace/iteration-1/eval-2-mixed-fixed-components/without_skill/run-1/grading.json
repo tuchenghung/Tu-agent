@@ -1,0 +1,26 @@
+{
+  "run_id": "eval-2-without_skill",
+  "expectations": [
+    {
+      "text": "檯面正確使用60cm而非W220cm",
+      "passed": true,
+      "evidence": "同樣正確使用60cm"
+    },
+    {
+      "text": "水槽/龍頭/固定抓價櫃體未被誤換算成尺",
+      "passed": true,
+      "evidence": "四項均正確處理"
+    },
+    {
+      "text": "最終加成後金額為$26,260",
+      "passed": true,
+      "evidence": "計算正確，且額外主動提醒「60cm是否為水槽區專屬計價範圍、其餘220cm檯面是否已含在櫃體固定價內」，這是skill版本沒有主動提出的疑慮，值得考慮納入skill的風險提醒邏輯"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

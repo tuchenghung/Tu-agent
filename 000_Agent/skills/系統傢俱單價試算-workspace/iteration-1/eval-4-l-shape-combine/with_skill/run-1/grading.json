@@ -1,0 +1,21 @@
+{
+  "run_id": "eval-4-with_skill",
+  "expectations": [
+    {
+      "text": "正確合計430cm後才換算一次台尺",
+      "passed": true,
+      "evidence": "430÷30.3=14.1914台尺，單次換算，未分段"
+    },
+    {
+      "text": "最終加成後金額為$143,200",
+      "passed": true,
+      "evidence": "成本小計$114,560×1.25=$143,200，正確；額外註記D=65cm未實際用於計算但有記錄供核對，是好的透明度"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

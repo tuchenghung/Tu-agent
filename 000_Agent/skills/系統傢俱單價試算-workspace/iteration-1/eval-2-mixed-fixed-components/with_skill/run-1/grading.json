@@ -1,0 +1,26 @@
+{
+  "run_id": "eval-2-with_skill",
+  "expectations": [
+    {
+      "text": "檯面正確使用60cm而非W220cm",
+      "passed": true,
+      "evidence": "60cm × $70/cm = $4,200，正確排除W220cm"
+    },
+    {
+      "text": "水槽/龍頭/固定抓價櫃體未被誤換算成尺",
+      "passed": true,
+      "evidence": "四項成本各自獨立列出，櫃體$8,000未除以30.3"
+    },
+    {
+      "text": "最終加成後金額為$26,260",
+      "passed": true,
+      "evidence": "成本小計$20,200×1.3=$26,260，正確"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

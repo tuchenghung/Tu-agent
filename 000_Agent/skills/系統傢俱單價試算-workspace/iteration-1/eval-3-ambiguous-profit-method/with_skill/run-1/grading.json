@@ -1,0 +1,21 @@
+{
+  "run_id": "eval-3-with_skill",
+  "expectations": [
+    {
+      "text": "未默默假設演算法，主動詢問加成法/毛利率法",
+      "passed": true,
+      "evidence": "明確停在「成本小計」步驟，未產出單一最終價，直接列出待使用者選擇的問題"
+    },
+    {
+      "text": "列出兩種算法金額比較",
+      "passed": true,
+      "evidence": "加成法≈$157,009、毛利率法≈$163,551，差距≈$6,542"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "run_id": "eval-1-with_skill",
+  "expectations": [
+    {"text": "使用1台尺=30.3cm換算基準，且中間過程保留足夠精度", "passed": true, "evidence": "使用14.8515台尺（450÷30.3精確值），未提前四捨五入"},
+    {"text": "最終加成後金額為$162,011", "passed": true, "evidence": "成本小計$129,609 ×1.25 = $162,011，數字正確"},
+    {"text": "輸出遵循skill規定的表格格式", "passed": true, "evidence": "完整依照skill模板：基礎尺寸列出換算式、表格含計算式欄、成本小計粗體、加成後金額粗體、結尾單句總結+詢問是否繼續"}
+  ],
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}
+}
