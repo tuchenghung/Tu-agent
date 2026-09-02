@@ -60,3 +60,21 @@ node_modules/
 
 # Claude Code session temp files
 *.tmp.*
+
+# 一次性暫存腳本 / dump 檔（請改用 session scratchpad 目錄，勿留在 repo 根目錄）
+_tmp_*
+scratch_*
+*_dump.txt
+*_dump[0-9]*.txt
+/verify[0-9]*.txt
+/verify_after.txt
+/lr[0-9]*.txt
+/lastrow*.txt
+/merge_check*.txt
+/merged_dump.txt
+/detail_search*.txt
+/sheetnames*.txt
+/repr_dump.txt
+/scan_formulas.txt
+/capa_dump.txt
+/baseline*.txt
