@@ -10,12 +10,13 @@
 
 ## 用戶偏好
 
-（還是空的，等你跟 AI 合作幾次後自然會長出來）
+- **共用資料根目錄（2026-09-07）**：使用者指定 `D:\Dropbox\Tu-agent` 為 AI Agent 資料存放資料夾，Markdown 資料及未來新增的工作資料皆存放於此，依既有資料層路由分類。Claude Code 也使用同一份資料；修改共用檔案前須重新讀取，避免覆蓋其他工具的新內容，並遵守 Windows / macOS 設定隔離原則。
 
 ---
 
 ## Feedback（AI 學到的原則）
 
+- **Agent 分工澄清（2026-09-07）**：過度以兩個 Agent 同時修改同一任務為前提提醒 → 使用者會讓 Codex 與 Claude Code 處理不同任務，按此分工正常共用資料 → 不必反覆提醒同任務衝突；共用記憶與規則檔仍須在修改前讀取最新內容。
 - **雙系統隔離原則**：使用者同時有 Windows 11（PC）與 macOS（MacBook Pro M3 Pro），兩邊透過 Dropbox 同步專案資料夾。在 Windows 操作時不得修改 Mac 專屬設定（如 `~/.nvm/`、Mac 路徑的 MCP 設定）；在 Mac 操作時同理不動 Windows 設定（如 `C:\Users\deco01\nodejs\`、`-win` 結尾的 MCP 設定）。設定檔若有平台差異，以當前執行平台為準，不要跨平台套用。
 - [建立 Notion 資源前先查重](feedback_check_before_create.md) — 建 database/page 前用 `API-get-block-children` 確認頁面上無同名資源，避免重複建立。
 
