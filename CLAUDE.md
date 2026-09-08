@@ -199,6 +199,7 @@
 | `/claude-api` | Claude API / Anthropic SDK 應用開發 |
 | `/請購開單` | 請購單開單流程（找資料夾→複製範本→填 Excel→輸出 PDF→開 Outlook 郵件） |
 | `/工法入庫` | 建材/工法入庫（Notion 裝修百科全書 + 本機 400_Knowledge/工程/建材規格/ 同步建立，需附來源） |
+| `/公共工程領標整理` | 電子領標包整理（歸檔至 A業主提供資料/YYYYMMDD-第N次領標文件/、產出合約摘要.md／圖說索引.md／規範索引.md／詢價勾選表.xlsx、關鍵日期建 Notion 任務＋Calendar 提醒；前提：案件 A-I 資料夾已建立） |
 | `/新增任務` | 新增任務至 Notion 行動任務資料庫，有截止日時自動建 Google Calendar 提醒 |
 | `/新建報價單` | 從範本新建宏祐集團報價單 Excel（填表頭→複製到 D預算報價/→開啟 Excel） |
 
