@@ -1,0 +1,947 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-09-10",
+  "source_file": "/Users/tuzhenghong/Library/CloudStorage/Dropbox/宏祐/規劃中案件/20260826-B10多功能訓練館整修工程/D預算報價/20260902-宏宇預算書-B10營區多功能訓練館整修工程.xlsx",
+  "source_sha256": "f2c581dd308eaa2750b16532e976e940b7576b26809ad0ea92b0a6b35d5e2d2b",
+  "source_modified": false,
+  "mode": "read_only_mapping",
+  "sheets": [
+    {
+      "name": "工作表1",
+      "dimensions": "A1:Y41",
+      "state": "visible",
+      "print_area": "'工作表1'!$A$1:$G$39",
+      "hidden_rows": [
+        5
+      ],
+      "hidden_columns": [
+        {
+          "key": "Y",
+          "min": 25,
+          "max": 25
+        },
+        {
+          "key": "JU",
+          "min": 281,
+          "max": 281
+        },
+        {
+          "key": "TQ",
+          "min": 537,
+          "max": 537
+        },
+        {
+          "key": "ADM",
+          "min": 793,
+          "max": 793
+        },
+        {
+          "key": "ANI",
+          "min": 1049,
+          "max": 1049
+        },
+        {
+          "key": "AXE",
+          "min": 1305,
+          "max": 1305
+        },
+        {
+          "key": "BHA",
+          "min": 1561,
+          "max": 1561
+        },
+        {
+          "key": "BQW",
+          "min": 1817,
+          "max": 1817
+        },
+        {
+          "key": "CAS",
+          "min": 2073,
+          "max": 2073
+        },
+        {
+          "key": "CKO",
+          "min": 2329,
+          "max": 2329
+        },
+        {
+          "key": "CUK",
+          "min": 2585,
+          "max": 2585
+        },
+        {
+          "key": "DEG",
+          "min": 2841,
+          "max": 2841
+        },
+        {
+          "key": "DOC",
+          "min": 3097,
+          "max": 3097
+        },
+        {
+          "key": "DXY",
+          "min": 3353,
+          "max": 3353
+        },
+        {
+          "key": "EHU",
+          "min": 3609,
+          "max": 3609
+        },
+        {
+          "key": "ERQ",
+          "min": 3865,
+          "max": 3865
+        },
+        {
+          "key": "FBM",
+          "min": 4121,
+          "max": 4121
+        },
+        {
+          "key": "FLI",
+          "min": 4377,
+          "max": 4377
+        },
+        {
+          "key": "FVE",
+          "min": 4633,
+          "max": 4633
+        },
+        {
+          "key": "GFA",
+          "min": 4889,
+          "max": 4889
+        },
+        {
+          "key": "GOW",
+          "min": 5145,
+          "max": 5145
+        },
+        {
+          "key": "GYS",
+          "min": 5401,
+          "max": 5401
+        },
+        {
+          "key": "HIO",
+          "min": 5657,
+          "max": 5657
+        },
+        {
+          "key": "HSK",
+          "min": 5913,
+          "max": 5913
+        },
+        {
+          "key": "ICG",
+          "min": 6169,
+          "max": 6169
+        },
+        {
+          "key": "IMC",
+          "min": 6425,
+          "max": 6425
+        },
+        {
+          "key": "IVY",
+          "min": 6681,
+          "max": 6681
+        },
+        {
+          "key": "JFU",
+          "min": 6937,
+          "max": 6937
+        },
+        {
+          "key": "JPQ",
+          "min": 7193,
+          "max": 7193
+        },
+        {
+          "key": "JZM",
+          "min": 7449,
+          "max": 7449
+        },
+        {
+          "key": "KJI",
+          "min": 7705,
+          "max": 7705
+        },
+        {
+          "key": "KTE",
+          "min": 7961,
+          "max": 7961
+        },
+        {
+          "key": "LDA",
+          "min": 8217,
+          "max": 8217
+        },
+        {
+          "key": "LMW",
+          "min": 8473,
+          "max": 8473
+        },
+        {
+          "key": "LWS",
+          "min": 8729,
+          "max": 8729
+        },
+        {
+          "key": "MGO",
+          "min": 8985,
+          "max": 8985
+        },
+        {
+          "key": "MQK",
+          "min": 9241,
+          "max": 9241
+        },
+        {
+          "key": "NAG",
+          "min": 9497,
+          "max": 9497
+        },
+        {
+          "key": "NKC",
+          "min": 9753,
+          "max": 9753
+        },
+        {
+          "key": "NTY",
+          "min": 10009,
+          "max": 10009
+        },
+        {
+          "key": "ODU",
+          "min": 10265,
+          "max": 10265
+        },
+        {
+          "key": "ONQ",
+          "min": 10521,
+          "max": 10521
+        },
+        {
+          "key": "OXM",
+          "min": 10777,
+          "max": 10777
+        },
+        {
+          "key": "PHI",
+          "min": 11033,
+          "max": 11033
+        },
+        {
+          "key": "PRE",
+          "min": 11289,
+          "max": 11289
+        },
+        {
+          "key": "QBA",
+          "min": 11545,
+          "max": 11545
+        },
+        {
+          "key": "QKW",
+          "min": 11801,
+          "max": 11801
+        },
+        {
+          "key": "QUS",
+          "min": 12057,
+          "max": 12057
+        },
+        {
+          "key": "REO",
+          "min": 12313,
+          "max": 12313
+        },
+        {
+          "key": "ROK",
+          "min": 12569,
+          "max": 12569
+        },
+        {
+          "key": "RYG",
+          "min": 12825,
+          "max": 12825
+        },
+        {
+          "key": "SIC",
+          "min": 13081,
+          "max": 13081
+        },
+        {
+          "key": "SRY",
+          "min": 13337,
+          "max": 13337
+        },
+        {
+          "key": "TBU",
+          "min": 13593,
+          "max": 13593
+        },
+        {
+          "key": "TLQ",
+          "min": 13849,
+          "max": 13849
+        },
+        {
+          "key": "TVM",
+          "min": 14105,
+          "max": 14105
+        },
+        {
+          "key": "UFI",
+          "min": 14361,
+          "max": 14361
+        },
+        {
+          "key": "UPE",
+          "min": 14617,
+          "max": 14617
+        },
+        {
+          "key": "UZA",
+          "min": 14873,
+          "max": 14873
+        },
+        {
+          "key": "VIW",
+          "min": 15129,
+          "max": 15129
+        },
+        {
+          "key": "VSS",
+          "min": 15385,
+          "max": 15385
+        },
+        {
+          "key": "WCO",
+          "min": 15641,
+          "max": 15641
+        },
+        {
+          "key": "WMK",
+          "min": 15897,
+          "max": 15897
+        },
+        {
+          "key": "WWG",
+          "min": 16153,
+          "max": 16153
+        }
+      ],
+      "merged_ranges": [
+        "A1:G1",
+        "A29:G29",
+        "A2:G2",
+        "A30:G30",
+        "A31:G31",
+        "A32:G32",
+        "A33:G33",
+        "A34:G34",
+        "A35:G35",
+        "A36:G36",
+        "A37:G37",
+        "A38:G38",
+        "B10:E10",
+        "B11:E11",
+        "B12:E12",
+        "B13:E13",
+        "B14:E14",
+        "B15:E15",
+        "B16:E16",
+        "B17:E17",
+        "B18:E18",
+        "B19:E19",
+        "B20:E20",
+        "B21:E21",
+        "B22:E22",
+        "B23:E23",
+        "B24:E24",
+        "B25:E25",
+        "B26:E26",
+        "B27:E27",
+        "B28:E28",
+        "B4:C4",
+        "B6:D6",
+        "B7:D7",
+        "B8:E8",
+        "B9:E9",
+        "F3:G3",
+        "F6:G6",
+        "F7:G7"
+      ],
+      "formula_count": 49
+    },
+    {
+      "name": "詳細價目表",
+      "dimensions": "A1:M936",
+      "state": "visible",
+      "print_area": "'詳細價目表'!$A$1:$G$931",
+      "hidden_rows": [
+        5
+      ],
+      "hidden_columns": [],
+      "merged_ranges": [
+        "A1:G1",
+        "A2:G2",
+        "A929:G929",
+        "A930:G930",
+        "B6:D6",
+        "B7:D7",
+        "F3:G3",
+        "F6:G6",
+        "F7:G7"
+      ],
+      "formula_count": 672
+    }
+  ],
+  "mapping": {
+    "sheet": "詳細價目表",
+    "headers": {
+      "A8": "項 次",
+      "B8": "項  目  及  說  明",
+      "C8": "單 位",
+      "D8": "數 量",
+      "E8": "單 價",
+      "F8": "複 價",
+      "G8": "編碼(備註)",
+      "H8": "數量",
+      "I8": "單價",
+      "J8": "復價",
+      "K8": "毛利",
+      "L8": "毛利率",
+      "M8": null
+    },
+    "formal_read_only": {
+      "item": "A",
+      "description": "B",
+      "unit": "C",
+      "quantity": "D",
+      "unit_price": "E",
+      "amount": "F",
+      "code_and_notes": "G"
+    },
+    "internal_candidate": {
+      "quantity": "H",
+      "unit_price": "I",
+      "amount": "J",
+      "gross_profit": "K",
+      "gross_margin": "L",
+      "unlabelled_note": "M"
+    },
+    "semantic_status": "H:L結構已確認；成本用途依公式推定，未有成本字樣表頭；M無表頭",
+    "write_enabled": false,
+    "eligible_future_input_columns": [
+      "H",
+      "I"
+    ],
+    "never_overwrite": [
+      "A:G",
+      "J:L",
+      "existing_nonblank_values",
+      "subtotal_rows",
+      "merged_cells"
+    ],
+    "preserve_print_area": true
+  },
+  "detail_row_count": 399,
+  "existing_internal_quantity_rows": [
+    49,
+    52,
+    55,
+    59,
+    62,
+    63,
+    64,
+    66,
+    72,
+    75,
+    77,
+    80,
+    83,
+    86,
+    88,
+    91,
+    93,
+    95,
+    97,
+    100,
+    102,
+    104,
+    107,
+    110,
+    113,
+    116,
+    119,
+    122,
+    125,
+    127,
+    130,
+    133,
+    136,
+    139,
+    142,
+    145,
+    148,
+    151,
+    154,
+    157,
+    161,
+    165,
+    168,
+    171,
+    175,
+    178,
+    181,
+    184,
+    187,
+    190,
+    193,
+    196,
+    199,
+    202,
+    204,
+    207,
+    210,
+    212,
+    214,
+    217,
+    219,
+    222,
+    225,
+    227,
+    229,
+    232,
+    235,
+    238,
+    241,
+    244,
+    246,
+    250,
+    253,
+    255,
+    258,
+    260,
+    262,
+    264,
+    268,
+    270,
+    273,
+    275
+  ],
+  "existing_internal_price_rows": [
+    49,
+    52,
+    55,
+    59,
+    62,
+    63,
+    64,
+    66,
+    72,
+    75,
+    77,
+    80,
+    83,
+    86,
+    88,
+    91,
+    93,
+    95,
+    97,
+    100,
+    102,
+    104,
+    107,
+    110,
+    113,
+    116,
+    119,
+    122,
+    125,
+    127,
+    130,
+    133,
+    136,
+    139,
+    142,
+    145,
+    148,
+    151,
+    154,
+    157,
+    161,
+    165,
+    168,
+    171,
+    175,
+    178,
+    181,
+    184,
+    187,
+    190,
+    193,
+    196,
+    199,
+    202,
+    204,
+    207,
+    210,
+    212,
+    214,
+    217,
+    219,
+    222,
+    225,
+    227,
+    229,
+    232,
+    235,
+    238,
+    241,
+    244,
+    246,
+    250,
+    253,
+    255,
+    258,
+    260,
+    262,
+    264,
+    268,
+    270,
+    273,
+    275
+  ],
+  "samples": [
+    {
+      "id": "B10-detail-11",
+      "sheet": "詳細價目表",
+      "row": 11,
+      "description": "施工警告標示，施工警示帶",
+      "unit": "式",
+      "cells": {
+        "A11": {
+          "value": "1",
+          "cached_value": "1"
+        },
+        "B11": {
+          "value": "施工警告標示，施工警示帶",
+          "cached_value": "施工警告標示，施工警示帶"
+        },
+        "C11": {
+          "value": "式",
+          "cached_value": "式"
+        },
+        "D11": {
+          "value": 1,
+          "cached_value": 1
+        },
+        "E11": {
+          "value": 15214,
+          "cached_value": 15214
+        },
+        "F11": {
+          "value": "=D11*E11",
+          "cached_value": 15214
+        },
+        "G11": {
+          "value": "0158200004-1",
+          "cached_value": "0158200004-1"
+        },
+        "H11": {
+          "value": null,
+          "cached_value": null
+        },
+        "I11": {
+          "value": null,
+          "cached_value": null
+        },
+        "J11": {
+          "value": null,
+          "cached_value": null
+        },
+        "K11": {
+          "value": null,
+          "cached_value": null
+        },
+        "L11": {
+          "value": null,
+          "cached_value": null
+        },
+        "M11": {
+          "value": null,
+          "cached_value": null
+        }
+      },
+      "cost_source_status": "未提供廠商與原始報價來源",
+      "write_authorized": false
+    },
+    {
+      "id": "B10-detail-49",
+      "sheet": "詳細價目表",
+      "row": 49,
+      "description": "結構用混凝土，280kgf/cm2",
+      "unit": "M3",
+      "cells": {
+        "A49": {
+          "value": "1",
+          "cached_value": "1"
+        },
+        "B49": {
+          "value": "結構用混凝土，280kgf/cm2",
+          "cached_value": "結構用混凝土，280kgf/cm2"
+        },
+        "C49": {
+          "value": "M3",
+          "cached_value": "M3"
+        },
+        "D49": {
+          "value": 23.9,
+          "cached_value": 23.9
+        },
+        "E49": {
+          "value": 3043,
+          "cached_value": 3043
+        },
+        "F49": {
+          "value": "=D49*E49",
+          "cached_value": 72727.7
+        },
+        "G49": {
+          "value": "0331007003,#詳",
+          "cached_value": "0331007003,#詳"
+        },
+        "H49": {
+          "value": 23.9,
+          "cached_value": 23.9
+        },
+        "I49": {
+          "value": 3263,
+          "cached_value": 3263
+        },
+        "J49": {
+          "value": "=I49*H49",
+          "cached_value": 77985.7
+        },
+        "K49": {
+          "value": "=F49-J49",
+          "cached_value": -5258
+        },
+        "L49": {
+          "value": "=K49/F49",
+          "cached_value": -0.07229707525468289
+        },
+        "M49": {
+          "value": null,
+          "cached_value": null
+        }
+      },
+      "cost_source_status": "未提供廠商與原始報價來源",
+      "write_authorized": false
+    },
+    {
+      "id": "B10-detail-72",
+      "sheet": "詳細價目表",
+      "row": 72,
+      "description": "舖地磚，止滑石英磚，600x600mm，t=8mm",
+      "unit": "M2",
+      "cells": {
+        "A72": {
+          "value": "(1)",
+          "cached_value": "(1)"
+        },
+        "B72": {
+          "value": "舖地磚，止滑石英磚，600x600mm，t=8mm",
+          "cached_value": "舖地磚，止滑石英磚，600x600mm，t=8mm"
+        },
+        "C72": {
+          "value": "M2",
+          "cached_value": "M2"
+        },
+        "D72": {
+          "value": 253.27,
+          "cached_value": 253.27
+        },
+        "E72": {
+          "value": 2467,
+          "cached_value": 2467
+        },
+        "F72": {
+          "value": "=D72*E72",
+          "cached_value": 624817.09
+        },
+        "G72": {
+          "value": "09341W8802,#詳",
+          "cached_value": "09341W8802,#詳"
+        },
+        "H72": {
+          "value": 253.27,
+          "cached_value": 253.27
+        },
+        "I72": {
+          "value": 2191,
+          "cached_value": 2191
+        },
+        "J72": {
+          "value": "=I72*H72",
+          "cached_value": 554914.5700000001
+        },
+        "K72": {
+          "value": "=F72-J72",
+          "cached_value": 69902.5199999999
+        },
+        "L72": {
+          "value": "=K72/F72",
+          "cached_value": 0.11187677340899864
+        },
+        "M72": {
+          "value": null,
+          "cached_value": null
+        }
+      },
+      "cost_source_status": "未提供廠商與原始報價來源",
+      "write_authorized": false
+    },
+    {
+      "id": "B10-detail-88",
+      "sheet": "詳細價目表",
+      "row": 88,
+      "description": "明溝，新設明溝加蓋",
+      "unit": "M",
+      "cells": {
+        "A88": {
+          "value": "(7)",
+          "cached_value": "(7)"
+        },
+        "B88": {
+          "value": "明溝，新設明溝加蓋",
+          "cached_value": "明溝，新設明溝加蓋"
+        },
+        "C88": {
+          "value": "M",
+          "cached_value": "M"
+        },
+        "D88": {
+          "value": 20,
+          "cached_value": 20
+        },
+        "E88": {
+          "value": 3328,
+          "cached_value": 3328
+        },
+        "F88": {
+          "value": "=D88*E88",
+          "cached_value": 66560
+        },
+        "G88": {
+          "value": "02620X0001-B,#",
+          "cached_value": "02620X0001-B,#"
+        },
+        "H88": {
+          "value": 20,
+          "cached_value": 20
+        },
+        "I88": {
+          "value": 8500,
+          "cached_value": 8500
+        },
+        "J88": {
+          "value": "=I88*H88",
+          "cached_value": 170000
+        },
+        "K88": {
+          "value": "=F88-J88",
+          "cached_value": -103440
+        },
+        "L88": {
+          "value": "=K88/F88",
+          "cached_value": -1.5540865384615385
+        },
+        "M88": {
+          "value": "含水溝本體",
+          "cached_value": "含水溝本體"
+        }
+      },
+      "cost_source_status": "未提供廠商與原始報價來源",
+      "write_authorized": false
+    },
+    {
+      "id": "B10-detail-270",
+      "sheet": "詳細價目表",
+      "row": 270,
+      "description": "混凝土表面修飾，破損剝落修復",
+      "unit": "式",
+      "cells": {
+        "A270": {
+          "value": "2",
+          "cached_value": "2"
+        },
+        "B270": {
+          "value": "混凝土表面修飾，破損剝落修復",
+          "cached_value": "混凝土表面修飾，破損剝落修復"
+        },
+        "C270": {
+          "value": "式",
+          "cached_value": "式"
+        },
+        "D270": {
+          "value": 1,
+          "cached_value": 1
+        },
+        "E270": {
+          "value": 81777,
+          "cached_value": 81777
+        },
+        "F270": {
+          "value": "=D270*E270",
+          "cached_value": 81777
+        },
+        "G270": {
+          "value": "0335010002,#詳",
+          "cached_value": "0335010002,#詳"
+        },
+        "H270": {
+          "value": 1,
+          "cached_value": 1
+        },
+        "I270": {
+          "value": 80000,
+          "cached_value": 80000
+        },
+        "J270": {
+          "value": "=I270*H270",
+          "cached_value": 80000
+        },
+        "K270": {
+          "value": "=F270-J270",
+          "cached_value": 1777
+        },
+        "L270": {
+          "value": "=K270/F270",
+          "cached_value": 0.021729826234760385
+        },
+        "M270": {
+          "value": "預估",
+          "cached_value": "預估"
+        }
+      },
+      "cost_source_status": "未提供廠商與原始報價來源",
+      "write_authorized": false
+    }
+  ],
+  "limitations": [
+    "沒有廠商、報價日期、稅別、來源文件表頭，不得臆測。",
+    "總表I:K沒有表頭，角色由跨表公式推定。",
+    "空白成本不得作為零成本；SUM可能將未估成本列忽略。",
+    "僅讀取公式與保存快取，沒有執行Excel重新計算。",
+    "列號需搭配版本雜湊、工項名稱、單位與編碼核對；編碼含跨列續文且可能重複，不可單獨作唯一鍵。"
+  ]
+}

@@ -1,0 +1,2135 @@
+{
+  "macro": {
+    "path": "D:\\Dropbox\\宏祐\\規劃中案件\\礁溪杏和醫院\\20260818-礁溪杏和醫院8F病房整修工程\\D預算報價\\業主報價\\20260723-礁溪杏和醫院8F病房整修工程整修工程V3.xlsx",
+    "sha256": "35ea80a82564d36dceed22c5fc374b61f29af0e1096d99286616fc5f9d322bcc",
+    "sheet": "8F裝修工程 ",
+    "columns": {
+      "A": {
+        "width": 11.44140625,
+        "hidden": false
+      },
+      "B": {
+        "width": 35.21875,
+        "hidden": false
+      },
+      "C": {
+        "width": 6.44140625,
+        "hidden": false
+      },
+      "D": {
+        "width": 9.77734375,
+        "hidden": false
+      },
+      "E": {
+        "width": 13.21875,
+        "hidden": false
+      },
+      "F": {
+        "width": 15.109375,
+        "hidden": false
+      },
+      "G": {
+        "width": 20.77734375,
+        "hidden": false
+      },
+      "H": {
+        "width": 14.44140625,
+        "hidden": false
+      },
+      "I": {
+        "width": 11.0,
+        "hidden": false
+      },
+      "J": {
+        "width": 8.88671875,
+        "hidden": false
+      }
+    },
+    "rowHeights": {
+      "1": 62.25,
+      "2": 21.0,
+      "3": 17.1,
+      "4": 17.1,
+      "5": 17.1,
+      "6": 17.1,
+      "7": 18.6,
+      "8": 9.75,
+      "9": 24.0,
+      "10": 24.0,
+      "11": 24.0,
+      "12": 24.0,
+      "13": 24.0,
+      "14": 24.0,
+      "15": 24.0,
+      "16": 24.0,
+      "17": 24.0,
+      "18": 24.0,
+      "19": 24.0,
+      "20": 24.0,
+      "21": 24.0,
+      "22": 24.0,
+      "23": 24.0,
+      "24": 24.0,
+      "25": 24.0,
+      "26": 24.0,
+      "27": 24.0,
+      "28": 24.0,
+      "29": 24.0,
+      "30": 25.05,
+      "31": 25.05,
+      "32": 25.05,
+      "33": 25.05,
+      "34": 25.05,
+      "35": 25.05,
+      "36": 25.05,
+      "37": 25.05,
+      "38": 24.0,
+      "39": 24.0,
+      "40": 24.0,
+      "41": 24.0,
+      "42": 24.0,
+      "43": 24.0,
+      "44": 24.0,
+      "45": 24.0,
+      "46": 24.0,
+      "47": 24.0,
+      "48": 24.0,
+      "49": 24.0,
+      "50": 28.8,
+      "51": 24.0,
+      "52": 24.0,
+      "53": 24.0,
+      "54": 24.0,
+      "55": 24.0,
+      "56": 24.0,
+      "57": 24.0,
+      "58": 24.0,
+      "59": 24.0,
+      "60": 42.0,
+      "61": 28.2,
+      "62": 24.0,
+      "63": 34.95,
+      "64": 36.0,
+      "65": 53.25,
+      "66": 55.5,
+      "67": 25.05,
+      "68": 34.95,
+      "69": 25.05,
+      "70": 22.2,
+      "71": 24.0,
+      "72": 24.0,
+      "73": 24.0,
+      "74": 24.0,
+      "75": 24.0,
+      "76": 24.0,
+      "77": 34.95,
+      "78": 34.95,
+      "79": 25.05,
+      "80": 25.05,
+      "81": 25.05,
+      "82": 25.05,
+      "83": 24.0,
+      "84": 24.0,
+      "85": 24.0,
+      "86": 29.4,
+      "87": 24.0,
+      "88": 24.0,
+      "89": 24.0,
+      "90": 24.0,
+      "91": 24.0,
+      "92": 38.7,
+      "93": 24.0,
+      "94": 24.0,
+      "95": 24.0,
+      "96": 24.0,
+      "97": 24.0,
+      "98": 24.0,
+      "99": 24.0,
+      "100": 24.0,
+      "101": 24.0,
+      "102": 34.95,
+      "103": 34.95,
+      "104": 34.95,
+      "105": 34.95,
+      "106": 25.05,
+      "107": 50.4,
+      "108": 35.85,
+      "109": 24.0,
+      "110": 24.0,
+      "111": 24.0,
+      "112": 24.0,
+      "113": 24.0,
+      "114": 33.0,
+      "115": 24.0,
+      "116": 24.0,
+      "117": 24.0,
+      "118": 24.0,
+      "119": 24.0,
+      "120": 34.95,
+      "121": 36.75,
+      "122": 24.0,
+      "123": 24.0,
+      "124": 24.0,
+      "125": 24.0,
+      "126": 24.0,
+      "127": 24.0,
+      "128": 34.95,
+      "129": 34.95,
+      "130": 34.95,
+      "131": 24.0,
+      "132": 24.0,
+      "133": 24.0,
+      "134": 24.0,
+      "135": 24.0,
+      "136": 24.0,
+      "137": 24.0,
+      "138": 24.0,
+      "139": 24.0,
+      "140": 24.0,
+      "141": 24.0,
+      "142": 24.0,
+      "143": 34.5,
+      "144": 24.0,
+      "145": 24.0,
+      "146": 24.0,
+      "147": 24.0,
+      "148": 34.95,
+      "149": 25.05,
+      "150": 34.95,
+      "151": 34.95,
+      "152": 34.95,
+      "153": 34.95,
+      "154": 24.0,
+      "155": 34.95,
+      "156": 34.95,
+      "157": 34.95,
+      "158": 24.0,
+      "159": 24.0,
+      "160": 24.0,
+      "161": 24.0,
+      "162": 24.0,
+      "163": 24.0,
+      "164": 24.0,
+      "165": 24.0,
+      "166": 24.0,
+      "167": 24.0,
+      "168": 24.0
+    },
+    "merges": [
+      "F3:G3",
+      "F4:G4",
+      "A3:B6",
+      "C5:E5",
+      "F5:G5",
+      "C4:E4",
+      "C3:E3",
+      "A2:G2",
+      "F6:G6",
+      "G77:G78",
+      "C6:E6"
+    ],
+    "printArea": "'8F裝修工程 '!$A$1:$G$168",
+    "printTitles": "$1:$8",
+    "pageSetup": "<openpyxl.worksheet.page.PrintPageSetup object>\nParameters:\norientation='portrait', paperSize=9, scale=80, fitToHeight=0, fitToWidth=None, firstPageNumber=None, useFirstPageNumber=None, paperHeight=None, paperWidth=None, pageOrder=None, usePrinterDefaults=None, blackAndWhite=None, draft=None, cellComments=None, errors=None, horizontalDpi=None, verticalDpi=None, copies=None, id=None",
+    "margins": "<openpyxl.worksheet.page.PageMargins object>\nParameters:\nleft=0.5905511811023622, right=0.5905511811023622, top=0.984251968503937, bottom=0.984251968503937, header=0.5905511811023622, footer=0.5905511811023622",
+    "printOptions": "<openpyxl.worksheet.page.PrintOptions object>\nParameters:\nhorizontalCentered=True, verticalCentered=None, headings=None, gridLines=None, gridLinesSet=None",
+    "headerFooter": "<openpyxl.worksheet.header_footer.HeaderFooter object>\nParameters:\ndifferentOddEven=None, differentFirst=None, scaleWithDoc=None, alignWithMargins=False, oddHeader=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F511C0>, oddFooter=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F51310>, evenHeader=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F50200>, evenFooter=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F50110>, firstHeader=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F13A10>, firstFooter=<openpyxl.worksheet.header_footer.HeaderFooterItem object at 0x000001E8C2F13EC0>",
+    "cells": {
+      "A1": {
+        "value": null,
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": null,
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "medium",
+          "bottom": null,
+          "left": "medium",
+          "right": null
+        }
+      },
+      "A2": {
+        "value": "新北市三重區三和路四段103號7樓  TEL: 02-22867899 FAX: 02-22869566",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 10.0,
+          "bold": true
+        },
+        "alignment": {
+          "horizontal": "center",
+          "vertical": "center",
+          "wrap": null
+        },
+        "numberFormat": "@",
+        "border": {
+          "top": null,
+          "bottom": null,
+          "left": "medium",
+          "right": "medium"
+        }
+      },
+      "A3": {
+        "value": "礁溪杏和醫院8F病房整修工程",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": true
+        },
+        "alignment": {
+          "horizontal": "center",
+          "vertical": "center",
+          "wrap": true
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "medium",
+          "bottom": "thin",
+          "left": "medium",
+          "right": null
+        }
+      },
+      "C3": {
+        "value": "CLIENT   業主 :",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 9.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": null,
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "medium",
+          "bottom": "hair",
+          "left": null,
+          "right": null
+        }
+      },
+      "F3": {
+        "value": "天主教靈醫會醫療財團法人礁溪杏和醫院",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 9.0,
+          "bold": true
+        },
+        "alignment": {
+          "horizontal": null,
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "medium",
+          "bottom": "hair",
+          "left": null,
+          "right": "medium"
+        }
+      },
+      "A7": {
+        "value": "項次",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "center",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "hair",
+          "bottom": null,
+          "left": "medium",
+          "right": "hair"
+        }
+      },
+      "B7": {
+        "value": "名         稱",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "center",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "hair",
+          "bottom": null,
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "D8": {
+        "value": "Quantity",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 8.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "center",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "_-* #,##0_-;\\-* #,##0_-;_-* \"-\"??_-;_-@_-",
+        "border": {
+          "top": null,
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "B9": {
+        "value": "直接工程費",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "left",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "B10": {
+        "value": "假設工程",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "left",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "E10": {
+        "value": "=F44",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "F10": {
+        "value": "=E10*D10",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "F26": {
+        "value": "=SUM(F20:F25)",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "F27": {
+        "value": "=F26+F16",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "F28": {
+        "value": "=ROUNDUP(F27*0.05,0)",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": true
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "F29": {
+        "value": "=SUM(F27:F28)",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 12.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "right",
+          "vertical": null,
+          "wrap": null
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)",
+        "border": {
+          "top": "hair",
+          "bottom": "hair",
+          "left": "hair",
+          "right": "hair"
+        }
+      },
+      "B30": {
+        "value": "1. 本報價單以白天常態施工估算，不包括夜間及假日施工。",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 10.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": null,
+          "vertical": "center",
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": "medium",
+          "bottom": null,
+          "left": null,
+          "right": null
+        }
+      },
+      "B36": {
+        "value": "7.付款方式：簽約金30%, 隔間工程完成30%, 清潔工程進場30%, 工程驗收10%.",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 10.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "left",
+          "vertical": "center",
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": null,
+          "bottom": null,
+          "left": null,
+          "right": null
+        }
+      },
+      "B37": {
+        "value": "8.本報價單有效期限2027.08.15。",
+        "font": {
+          "name": "微軟正黑體",
+          "size": 10.0,
+          "bold": false
+        },
+        "alignment": {
+          "horizontal": "left",
+          "vertical": "center",
+          "wrap": null
+        },
+        "numberFormat": "General",
+        "border": {
+          "top": null,
+          "bottom": "medium",
+          "left": null,
+          "right": null
+        }
+      }
+    },
+    "media": [
+      {
+        "archivePath": "xl/media/image1.jpeg",
+        "extractedPath": "D:\\Dropbox\\Tu-agent\\100_Todo\\projects\\sop-evidence\\macro-reference-image1.jpeg",
+        "bytes": 6737
+      }
+    ],
+    "drawingXml": {
+      "xl/drawings/drawing1.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<xdr:wsDr xmlns:xdr=\"http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing\" xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\"><xdr:twoCellAnchor editAs=\"oneCell\"><xdr:from><xdr:col>0</xdr:col><xdr:colOff>22860</xdr:colOff><xdr:row>0</xdr:row><xdr:rowOff>15240</xdr:rowOff></xdr:from><xdr:to><xdr:col>6</xdr:col><xdr:colOff>1350930</xdr:colOff><xdr:row>1</xdr:row><xdr:rowOff>0</xdr:rowOff></xdr:to><xdr:pic><xdr:nvPicPr><xdr:cNvPr id=\"2\" name=\"圖片 1\"><a:extLst><a:ext uri=\"{FF2B5EF4-FFF2-40B4-BE49-F238E27FC236}\"><a16:creationId xmlns:a16=\"http://schemas.microsoft.com/office/drawing/2014/main\" id=\"{5C6DC446-D54C-42C3-9927-CF40DB904F4F}\"/></a:ext></a:extLst></xdr:cNvPr><xdr:cNvPicPr><a:picLocks noChangeAspect=\"1\"/></xdr:cNvPicPr></xdr:nvPicPr><xdr:blipFill><a:blip xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" r:embed=\"rId1\"/><a:stretch><a:fillRect/></a:stretch></xdr:blipFill><xdr:spPr><a:xfrm><a:off x=\"19050\" y=\"19050\"/><a:ext cx=\"7584090\" cy=\"762000\"/></a:xfrm><a:prstGeom prst=\"rect\"><a:avLst/></a:prstGeom></xdr:spPr></xdr:pic><xdr:clientData/></xdr:twoCellAnchor></xdr:wsDr>"
+    }
+  },
+  "yashi": {
+    "path": "D:\\Dropbox\\yushi\\施工中案件\\20251118南港實驗室GTP實驗室修改工程\\D預算報價\\20260426南港實驗室GTP實驗室修改工程.xls",
+    "sha256": "9e37eee023a2d144fa86efe361a27c30bf94bdb6b3ae9343b85e1c56eff62b75",
+    "sheet": "報價",
+    "columns": {
+      "1": {
+        "width": 1744,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "2": {
+        "width": 8448,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "3": {
+        "width": 1616,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "4": {
+        "width": 1584,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "5": {
+        "width": 3024,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "6": {
+        "width": 3504,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "7": {
+        "width": 3888,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "8": {
+        "width": 3888,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "9": {
+        "width": 3504,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "10": {
+        "width": 3712,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "11": {
+        "width": 4000,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "12": {
+        "width": 3792,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "13": {
+        "width": 3712,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "14": {
+        "width": 3680,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "15": {
+        "width": 3248,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "16": {
+        "width": 3072,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "19": {
+        "width": 3280,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "21": {
+        "width": 3168,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "22": {
+        "width": 3296,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "23": {
+        "width": 3072,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      },
+      "25": {
+        "width": 3552,
+        "xf_index": 15,
+        "hidden": 0,
+        "bit1_flag": 1,
+        "outline_level": 0,
+        "collapsed": 0
+      }
+    },
+    "rowInfo": {
+      "1": {
+        "heightTwips": 636,
+        "hidden": 0
+      },
+      "2": {
+        "heightTwips": 319,
+        "hidden": 0
+      },
+      "3": {
+        "heightTwips": 300,
+        "hidden": 0
+      },
+      "4": {
+        "heightTwips": 432,
+        "hidden": 0
+      },
+      "5": {
+        "heightTwips": 480,
+        "hidden": 0
+      },
+      "6": {
+        "heightTwips": 495,
+        "hidden": 0
+      },
+      "7": {
+        "heightTwips": 480,
+        "hidden": 0
+      },
+      "8": {
+        "heightTwips": 480,
+        "hidden": 0
+      },
+      "9": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "10": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "11": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "12": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "13": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "14": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "15": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "16": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "17": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "18": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "19": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "20": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "21": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "22": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "23": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "24": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "25": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "26": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "27": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "28": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "29": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "30": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "31": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "32": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "33": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "34": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "35": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "36": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "37": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "38": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "39": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "40": {
+        "heightTwips": 672,
+        "hidden": 0
+      },
+      "41": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "42": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "43": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "44": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "45": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "46": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "47": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "48": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "49": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "50": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "51": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "52": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "53": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "54": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "55": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "56": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "57": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "58": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "59": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "60": {
+        "heightTwips": 495,
+        "hidden": 0
+      },
+      "61": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "62": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "63": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "64": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "65": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "66": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "67": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "68": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "69": {
+        "heightTwips": 615,
+        "hidden": 0
+      },
+      "70": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "71": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "72": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "73": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "74": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "75": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "76": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "77": {
+        "heightTwips": 501,
+        "hidden": 0
+      },
+      "80": {
+        "heightTwips": 323,
+        "hidden": 0
+      }
+    },
+    "merges": [
+      [
+        14,
+        15,
+        12,
+        16
+      ],
+      [
+        73,
+        77,
+        0,
+        1
+      ],
+      [
+        73,
+        77,
+        1,
+        7
+      ],
+      [
+        0,
+        1,
+        0,
+        7
+      ],
+      [
+        1,
+        2,
+        0,
+        7
+      ],
+      [
+        2,
+        3,
+        0,
+        7
+      ],
+      [
+        3,
+        4,
+        0,
+        7
+      ],
+      [
+        4,
+        5,
+        0,
+        2
+      ],
+      [
+        5,
+        6,
+        0,
+        4
+      ]
+    ],
+    "cells": {
+      "1,1": {
+        "value": "佑祥開發實業有限公司",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 480,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      },
+      "2,1": {
+        "value": "地址：新北市板橋區大觀路一段75巷1號5樓          統一編號:54301290",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 220,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      },
+      "3,1": {
+        "value": "TEL：0911-601-303  ",
+        "font": {
+          "name": "Times New Roman",
+          "heightTwips": 200,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      },
+      "4,1": {
+        "value": "南港實驗室GTP實驗室修改工程",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 400,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      },
+      "5,1": {
+        "value": "客      戶: 均相科技有限公司",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 1,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      },
+      "6,1": {
+        "value": "工程名稱: 南港實驗室GTP實驗室修改工程",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 1,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 1,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 1,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "6,7": {
+        "value": 46098.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 0,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 0,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "m/d/yy"
+      },
+      "7,1": {
+        "value": "項目",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "7,2": {
+        "value": "品    名    規    格",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "8,2": {
+        "value": "假設及拆除工程",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 1,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "9,2": {
+        "value": "電梯到實驗室過道地面保護",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 1,
+          "text_wrapped": 1,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "9,3": {
+        "value": 1.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 2,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "General"
+      },
+      "9,5": {
+        "value": 47500.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 3,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)"
+      },
+      "9,6": {
+        "value": 47500.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 3,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 0,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)"
+      },
+      "71,6": {
+        "value": 1468040.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 3,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 0,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)"
+      },
+      "72,6": {
+        "value": 73402.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 3,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 1,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 64
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)"
+      },
+      "73,6": {
+        "value": 1541442.0,
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 3,
+          "text_wrapped": 0,
+          "vert_align": 1
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 1,
+          "right_line_style": 1,
+          "top_line_style": 1,
+          "bottom_line_style": 0,
+          "left_colour_index": 64,
+          "right_colour_index": 64,
+          "top_colour_index": 64,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "#,##0_);[Red]\\(#,##0\\)"
+      },
+      "74,2": {
+        "value": "1、本報價依業主提供附件圖面估價，有效期限30天;逾期重新報價。\n2、付款方式:訂金總工程款30%;空調完成30%;油漆工程完成總工程款30%;驗收完成總工程款10%\n   完工總工程款10%。\n3、本報價未含配電工程及自動控制工程。\n4、本報價未含第三方檢測報告費。\n",
+        "font": {
+          "name": "標楷體",
+          "heightTwips": 240,
+          "bold": 0
+        },
+        "alignment": {
+          "indent_level": 0,
+          "shrink_to_fit": 0,
+          "text_direction": 0,
+          "rotation": 0,
+          "hor_align": 1,
+          "text_wrapped": 1,
+          "vert_align": 0
+        },
+        "border": {
+          "diag_up": 0,
+          "diag_down": 0,
+          "diag_colour_index": 0,
+          "diag_line_style": 0,
+          "left_line_style": 0,
+          "right_line_style": 0,
+          "top_line_style": 1,
+          "bottom_line_style": 0,
+          "left_colour_index": 0,
+          "right_colour_index": 0,
+          "top_colour_index": 64,
+          "bottom_colour_index": 0
+        },
+        "numberFormat": "General"
+      }
+    },
+    "names": [
+      {
+        "name": "_xlfn._FV",
+        "formula": "1c1d"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b05000000430000000800"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b010000004c0000000600"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b030000001e0000000600"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b02000000350000000600"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b04000000530000000800"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b000000004c0000000600"
+      },
+      {
+        "name": "Print_Area",
+        "formula": "3b060000001e0000000600"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0500000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0100000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0300000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0200000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0400000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0000000006000000ff00"
+      },
+      {
+        "name": "Print_Titles",
+        "formula": "3b0600000006000000ff00"
+      }
+    ],
+    "printAndDrawingRecords": [
+      {
+        "op": "0x14",
+        "length": 0,
+        "hex": ""
+      },
+      {
+        "op": "0x15",
+        "length": 0,
+        "hex": ""
+      },
+      {
+        "op": "0x83",
+        "length": 2,
+        "hex": "0100"
+      },
+      {
+        "op": "0x84",
+        "length": 2,
+        "hex": "0100"
+      },
+      {
+        "op": "0x26",
+        "length": 8,
+        "hex": "90c7e3f1783cce3f"
+      },
+      {
+        "op": "0x27",
+        "length": 8,
+        "hex": "90c7e3f1783cce3f"
+      },
+      {
+        "op": "0x28",
+        "length": 8,
+        "hex": "fcfd7ebfdfefe73f"
+      },
+      {
+        "op": "0x29",
+        "length": 8,
+        "hex": "fcfd7ebfdfefe73f"
+      },
+      {
+        "op": "0xa1",
+        "length": 34,
+        "hex": "0900640001000100010002002c012c010a8542a15028d43f0a8542a15028d43f0100"
+      },
+      {
+        "op": "0xec",
+        "length": 222,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 142,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0xec",
+        "length": 144,
+        "hex": "drawing/object payload omitted"
+      },
+      {
+        "op": "0x5d",
+        "length": 26,
+        "hex": "drawing/object payload omitted"
+      }
+    ],
+    "decodedPrint": {
+      "printArea": "A1:G77",
+      "repeatRows": "1:7",
+      "paper": "A4",
+      "orientation": "portrait",
+      "scale": 100,
+      "fitWidth": 1,
+      "fitHeight": 1,
+      "fitModeVerified": false,
+      "margins": {
+        "0x26": 0.2362204724409449,
+        "0x27": 0.2362204724409449,
+        "0x28": 0.7480314960629921,
+        "0x29": 0.7480314960629921
+      },
+      "headerMargin": 0.31496062992125984,
+      "footerMargin": 0.31496062992125984
+    }
+  },
+  "conversion": {
+    "excelRegistryPath": "C:/Program Files/Microsoft Office/Root/Office16/EXCEL.EXE",
+    "libreOfficeFound": false,
+    "nativeConversionNotAttempted": true
+  }
+}

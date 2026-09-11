@@ -58,6 +58,17 @@ __pycache__/
 # Node
 node_modules/
 
+# 巢狀獨立 git 專案（自有 .git，不併入本 repo 歷史，2026-09-11）
+/100_Todo/projects/quote-workbench/
+/100_Todo/projects/yushi-finance/
+
+# 一次性分析中間暫存檔（正式產出在 outputs/，2026-09-11）
+/tmp/
+
+# 大型3D中間檔工作備份（postal-3d正式位置在Dropbox宏祐案件資料夾，2026-09-11）
+/100_Todo/projects/postal-3d/
+/100_Todo/projects/shilin-tod-3d/
+
 # Claude Code session temp files
 *.tmp.*
 

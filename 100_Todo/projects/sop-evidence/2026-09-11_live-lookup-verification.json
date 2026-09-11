@@ -1,0 +1,995 @@
+{
+  "origin": "notion_live",
+  "fetchedAt": "2026-09-11T04:00:51.013Z",
+  "rows": [
+    {
+      "id": "https://app.notion.com/p/260903-005-3d07aebd089f81fd9568df3c1936b1fd",
+      "recordLabel": "自估-260903-005",
+      "item": "混凝土表面處理，抿石子處理",
+      "spec": "石粒+黏著劑+打底水泥砂漿+鋪貼抿平沖洗施工，編碼0336030002,#A3-3~A3-4",
+      "unit": "m2",
+      "quantity": 1147.11,
+      "unitPrice": 820,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-03",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260903-005-3d07aebd089f81fd9568df3c1936b1fd",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260903-004-3d07aebd089f81cab923c75a0708ae52",
+      "recordLabel": "自估-260903-004",
+      "item": "混凝土表面修飾，破損剝落修復",
+      "spec": "打鑿清除+水泥砂漿/環氧樹脂修補+整平，假設破損面積約70-80m²，編碼0335010002,#A3-3~A3-4、A6-9",
+      "unit": "式",
+      "quantity": 1,
+      "unitPrice": 80000,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-03",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260903-004-3d07aebd089f81cab923c75a0708ae52",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260903-003-3d07aebd089f814aa1fcfd6a96a4f344",
+      "recordLabel": "自估-260903-003",
+      "item": "混凝土表面修飾，水刀處理",
+      "spec": "高壓水刀操作+設備租賃+廢水處理，編碼0335060002,#A3-3~A3-4",
+      "unit": "m2",
+      "quantity": 1147.11,
+      "unitPrice": 200,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-03",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260903-003-3d07aebd089f814aa1fcfd6a96a4f344",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260903-002-3d07aebd089f8152b0b0c4649de1e948",
+      "recordLabel": "自估-260903-002",
+      "item": "矽酸質系塗布防水，牆面",
+      "spec": "完整牆面整修系統：原有粉刷層刮除+素地裂縫補強+樹脂砂漿整平(局部)+矽酸質滲透結晶防水材+依既有表面材恢復粉刷，編碼0716200032，詳圖A2-13~A2-15、A6-6",
+      "unit": "m2",
+      "quantity": 1189,
+      "unitPrice": 1500,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-03",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260903-002-3d07aebd089f8152b0b0c4649de1e948",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260903-001-3d07aebd089f81a2af1ffb8b80f1faeb",
+      "recordLabel": "自估-260903-001",
+      "item": "混凝土鋪面，厚度15公分(含以上，±1公分)",
+      "spec": "FC'=210kgf/cm²混凝土+點焊鋼絲網+原土夯實+1:3水泥粉光(掃粗面)，戶外，編碼0274222172，詳圖A2-10、A6-12",
+      "unit": "m2",
+      "quantity": 102.36,
+      "unitPrice": 1555,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-03",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260903-001-3d07aebd089f81a2af1ffb8b80f1faeb",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-001-3d07aebd089f81c0b5f5ffffff1ec022",
+      "recordLabel": "宏宇-260902-001",
+      "item": "鋁合金高架地板，PVC地磚",
+      "spec": "鋁合金壓鑄板600×600、正面貼2.0mmPVC（非HPL、規範未要求導電/防靜電）；防震桁樑＋基座系統（上/下基座、Ø21×t1.5鋼管牙桿、雙螺帽、墊片）、基座間距555、FFH約15~30cm；L型收邊角鋁；斜坡(柳安角材貼橡膠止滑板)+踏步詳圖。CNS 10678 A2171：集中載重500kgf撓度≤2mm／面板極限1500kgf／正方度±0.15mm／耐燃CNS 14705-1一級TAF／基座強度≥3000kgf／中央彎曲降伏>130kgf。編碼1027205002,#詳圖A2-10、A2-12、A6-3。位置：1F簡報廳+3F工作室。",
+      "unit": "m²",
+      "quantity": 120.56,
+      "unitPrice": 6067,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "宏宇智能營造",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-001-3d07aebd089f81c0b5f5ffffff1ec022",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cc7aebd089f818b8518ddafb0c54a73"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/3cf7aebd089f81219dd0f9664dfaf2f1",
+      "recordLabel": "外牆仿石質複層塗料-立銓實業",
+      "item": "仿石質複層塗料（外牆仿石漆）6層系統：有色底漆＋有色中底塗＋仿石多彩紋主材＋複合型厚塗材＋耐候釉固面漆＋1cm溝縫分割",
+      "spec": "噴塗工法；詳圖 A6-9，規範第09911章仿石質複層塗料 V5.0；材料需 CNS 4683/CNS 8082＋商檢局合格＋綠建材標章。未含基面處理（水刀處理／破損剝落修復／抿石子打底整平）、鷹架及高空作業車、水電、清運。以實作實算。",
+      "unit": "m²",
+      "quantity": 1147.11,
+      "unitPrice": 850,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-02",
+      "project": "",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/3cf7aebd089f81219dd0f9664dfaf2f1",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-020-3cf7aebd089f811f95afcadf0a4b7b61",
+      "recordLabel": "鈦豐-260902-020",
+      "item": "W15 鋁窗(CH918ATD)推拉窗",
+      "spec": "1100×1100mm，8mm清強化玻璃",
+      "unit": "樘",
+      "quantity": 4,
+      "unitPrice": 12191,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-020-3cf7aebd089f811f95afcadf0a4b7b61",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-019-3cf7aebd089f816faa41c8c5d1146a4c",
+      "recordLabel": "鈦豐-260902-019",
+      "item": "W14 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "3250×2000mm，5+5mm清強化玻璃(光膜)，2併不含室外金屬格",
+      "unit": "樘",
+      "quantity": 13,
+      "unitPrice": 66467,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-019-3cf7aebd089f816faa41c8c5d1146a4c",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-018-3cf7aebd089f81a3947bc51eeffda38b",
+      "recordLabel": "鈦豐-260902-018",
+      "item": "W13 鋁窗(CH918ATD)推拉窗",
+      "spec": "2400×1100mm，8mm清強化玻璃，2併",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 25921,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-018-3cf7aebd089f81a3947bc51eeffda38b",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-017-3cf7aebd089f812c902ec43ba3a565dd",
+      "recordLabel": "鈦豐-260902-017",
+      "item": "W12 鋁窗(CH918ATD)推拉窗",
+      "spec": "3750×1500mm，8mm清強化玻璃，2併",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 40324,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-017-3cf7aebd089f812c902ec43ba3a565dd",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-016-3cf7aebd089f81f19de6e6eb540698a6",
+      "recordLabel": "鈦豐-260902-016",
+      "item": "W11 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "5550×2000mm，8mm清強化玻璃，4併含加強鐵1支",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 112026,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-016-3cf7aebd089f81f19de6e6eb540698a6",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-015-3cf7aebd089f810ab5f7d31c9bdf385d",
+      "recordLabel": "鈦豐-260902-015",
+      "item": "W10 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "1100×1500mm，8mm清強化玻璃",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 19745,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-015-3cf7aebd089f810ab5f7d31c9bdf385d",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-014-3cf7aebd089f8128940ed8d1fe33b8c4",
+      "recordLabel": "鈦豐-260902-014",
+      "item": "W09 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "3700×2000mm，5+5mm清強化玻璃(光膜)，2併含加強鐵1支",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 72252,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-014-3cf7aebd089f8128940ed8d1fe33b8c4",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-013-3cf7aebd089f81b7aeb2e4284bbdd6ed",
+      "recordLabel": "鈦豐-260902-013",
+      "item": "W08 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "5350×2000mm，5+5mm清強化玻璃(光膜)，4併含加強鐵1支",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 120441,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-013-3cf7aebd089f81b7aeb2e4284bbdd6ed",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-012-3cf7aebd089f811bb180ff4fd92be88a",
+      "recordLabel": "鈦豐-260902-012",
+      "item": "W07 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "3000×2000mm，8mm清強化玻璃，2併含加強鐵1支",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 57310,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-012-3cf7aebd089f811bb180ff4fd92be88a",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-011-3cf7aebd089f81f6a7c4e848c1933e70",
+      "recordLabel": "鈦豐-260902-011",
+      "item": "W06 鋁窗(CH918ATD/D)推拉窗",
+      "spec": "2200×2000mm，8mm清強化玻璃，2併",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 46982,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-011-3cf7aebd089f81f6a7c4e848c1933e70",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-010-3cf7aebd089f81f0882cf5fb48206154",
+      "recordLabel": "鈦豐-260902-010",
+      "item": "W05 鋁窗(CH102F)固定窗",
+      "spec": "500×1200mm，8mm鋼絲玻璃(無法強化)",
+      "unit": "樘",
+      "quantity": 4,
+      "unitPrice": 6977,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-010-3cf7aebd089f81f0882cf5fb48206154",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-009-3cf7aebd089f810ba41bd6c8039f6d6c",
+      "recordLabel": "鈦豐-260902-009",
+      "item": "W04 鋁窗(CH918F/ATD)推拉窗",
+      "spec": "1500×2000mm，8mm清強化玻璃，開天固定30cm",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 24002,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-009-3cf7aebd089f810ba41bd6c8039f6d6c",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-008-3cf7aebd089f8153b327c94da24f90c6",
+      "recordLabel": "鈦豐-260902-008",
+      "item": "W03 鋁窗(CH102F)固定窗",
+      "spec": "800×1200mm，8mm清強化玻璃",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 6748,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-008-3cf7aebd089f8153b327c94da24f90c6",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-007-3cf7aebd089f8101bfcfdf95cc54afe5",
+      "recordLabel": "鈦豐-260902-007",
+      "item": "W02 鋁窗(CH102F)固定窗",
+      "spec": "1400×1700mm，8mm清強化玻璃",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 12226,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-007-3cf7aebd089f8101bfcfdf95cc54afe5",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-006-3cf7aebd089f819aa535e108edfe9e7a",
+      "recordLabel": "鈦豐-260902-006",
+      "item": "W01 鋁窗(CH102F)固定窗",
+      "spec": "2100×2100mm，8mm清強化玻璃",
+      "unit": "樘",
+      "quantity": 2,
+      "unitPrice": 18909,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-006-3cf7aebd089f819aa535e108edfe9e7a",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-005-3cf7aebd089f81a29979dd70bae36e3c",
+      "recordLabel": "鈦豐-260902-005",
+      "item": "D09 鋁門(CH102HMG+P)",
+      "spec": "1000×2200mm，8mm清強化玻璃，下段企口鋁板含旗型鉸鍊門止",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 36200,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-005-3cf7aebd089f81a29979dd70bae36e3c",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-004-3cf7aebd089f814bbf81e1d771a50661",
+      "recordLabel": "鈦豐-260902-004",
+      "item": "D07 鋁門(CH102HMG+P)",
+      "spec": "900×2200mm，8mm清強化玻璃，下段企口鋁板含旗型鉸鍊門止",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 33074,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-004-3cf7aebd089f814bbf81e1d771a50661",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-003-3cf7aebd089f81f2a5c2d6dc47ec0147",
+      "recordLabel": "鈦豐-260902-003",
+      "item": "D05 鋁門(CH102HMF/G+F)",
+      "spec": "1750×2800mm，8mm清強化玻璃，門高240含重型地鉸鍊門止",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 101418,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-003-3cf7aebd089f81f2a5c2d6dc47ec0147",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-002-3cf7aebd089f81a38232cad491dccb1b",
+      "recordLabel": "鈦豐-260902-002",
+      "item": "D02 鋁門(CH102HMG)",
+      "spec": "1750×2200mm，5+5mm清強化玻璃(光膜)，含重型地鉸鍊門止",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 96722,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-002-3cf7aebd089f81a38232cad491dccb1b",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260902-001-3cf7aebd089f81ddb25cef22d5bd88ce",
+      "recordLabel": "鈦豐-260902-001",
+      "item": "D01 鋁門(CH102HMF/G+F)",
+      "spec": "3250×2800mm，5+5mm清強化玻璃(光膜)，門寬200高240含重型地鉸鍊門止",
+      "unit": "樘",
+      "quantity": 1,
+      "unitPrice": 148838,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鈦豐鋁業",
+      "date": "2026-09-02",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260902-001-3cf7aebd089f81ddb25cef22d5bd88ce",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f8135b905fc3b03339d90"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81cf9a80efd83aba77bf"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/3cf7aebd089f810faba6c6b444561883",
+      "recordLabel": "球場防撞墊-鴻軍威工程行",
+      "item": "球場防撞墊（標單名：塑膠耐燃壁布；圖說 A6-7 三層構造：9mm防水夾板＋50mm泡棉＋0.8mm乳膠皮）連工帶料",
+      "spec": "詳圖 A6-7（壁磚、防撞墊大樣圖，張號33）；高 150cm（遇窗至窗台高），黏著劑＋中T鋼釘固定；位置 2F 禮堂（球場）四周牆面（詳 A2-2）。圖說尺寸誤差 ±5%。送審：型錄＋CNS 8907/8911 止滑＋CNS 8907 耐磨耗 ≤50mg＋TCLP 重金屬未檢出＋防焰認證＋ISO 9001/14001；1 年保固。",
+      "unit": "m²",
+      "quantity": 190,
+      "unitPrice": 3500,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "",
+      "date": "2026-09-01",
+      "project": "",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/3cf7aebd089f810faba6c6b444561883",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [],
+        "projects": [],
+        "documents": []
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260901-001-3cf7aebd089f816897a0f4d38afcbe1b",
+      "recordLabel": "鴻軍威-260901-001",
+      "item": "球場防撞墊（泡棉50mm）",
+      "spec": "9mm防水夾板＋50mm泡棉＋0.8mm乳膠皮；施作高度150cm（遇窗施作至窗台高）；中T鋼釘固定於牆；連工帶料、按圖施工。對應標單壹.5(8)「塑膠耐燃壁布，球場防撞墊」M2 190.00（編碼0972100002，詳圖A6-7、A6-25）",
+      "unit": "m²",
+      "quantity": 190,
+      "unitPrice": 3500,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "鴻軍威工程行",
+      "date": "2026-09-01",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260901-001-3cf7aebd089f816897a0f4d38afcbe1b",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3ca7aebd089f816b8092e8a453f234d6"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f812d8fcaf1726b0302b2"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    },
+    {
+      "id": "https://app.notion.com/p/260901-003-3cf7aebd089f81b89879d22ab477b967",
+      "recordLabel": "擎毅-260901-003",
+      "item": "PVC運動地墊（多功能／室內球場面層）",
+      "spec": "多功能運動地墊、厚6mm、具防焰/耐磨/抗拉測試報告、含耗損料、含施工。對應標單壹.四.1(8)「特殊地坪，室內球場面層，原5-10mm，PVC彈性耐磨地墊」M2 438.79（編碼0962010202，詳圖A2-11、A6-5）",
+      "unit": "m²",
+      "quantity": 439,
+      "unitPrice": 1500,
+      "originalAmount": null,
+      "tax": "未知",
+      "scope": "",
+      "conditions": "",
+      "version": "",
+      "priceType": "未知",
+      "supplier": "擎毅興業有限公司",
+      "date": "2026-09-01",
+      "project": "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11",
+      "projectLabel": "B10多功能訓練館整修工程",
+      "source": "https://app.notion.com/p/260901-003-3cf7aebd089f81b89879d22ab477b967",
+      "origin": "notion_live",
+      "fetchedAt": "2026-09-11T04:00:51.013Z",
+      "sourceRelations": {
+        "suppliers": [
+          "https://www.notion.so/3cf7aebd089f815cbe77c57f01c24e05"
+        ],
+        "projects": [
+          "https://www.notion.so/3c87aebd089f811bb1acef56baf50e11"
+        ],
+        "documents": [
+          "https://www.notion.so/3cf7aebd089f81eb93defaff2331a9f9"
+        ]
+      },
+      "referenceStatus": "needs_information"
+    }
+  ],
+  "hasMore": true,
+  "nextCursor": "s:e2981c7a-5f49-42ee-aa4b-d43d5893d5ef:3cf7aebd-089f-815a-b3ff-f46a82d5ca32",
+  "unresolvedSuppliers": 0
+}
